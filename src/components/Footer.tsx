@@ -1,10 +1,9 @@
 import { site, waLink } from "@/lib/site";
-import { IconWhatsApp, IconArrowUpRight } from "./Icons";
 
 const links = [
-  { href: "#referanslar", label: "İşler" },
+  { href: "#isler", label: "İşler" },
   { href: "#hizmetler", label: "Hizmetler" },
-  { href: "#surec", label: "Süreç" },
+  { href: "#yontem", label: "Yöntem" },
   { href: "#paketler", label: "Paketler" },
   { href: "#sss", label: "S.S.S." },
   { href: "#iletisim", label: "İletişim" },
@@ -14,57 +13,56 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden border-t border-line bg-paper-2">
+    <footer className="bg-ink text-paper">
       {/* kapanış çağrısı */}
-      <div className="container-x border-b border-line py-20 lg:py-24">
-        <div className="flex flex-col items-start justify-between gap-10 lg:flex-row lg:items-end">
-          <h2 className="display max-w-[16ch] text-[clamp(2.2rem,6vw,4.2rem)]">
-            Sıradaki proje <span className="serif text-gold">sizinki</span> olsun.
+      <div className="wrap">
+        <div className="flex flex-col items-start justify-between gap-10 border-b border-white/15 py-16 lg:flex-row lg:items-end lg:py-20">
+          <h2 className="display-tight max-w-[14ch] text-[clamp(2.2rem,6.4vw,4.6rem)]">
+            Sıradaki proje sizinki olsun.
           </h2>
           <div className="flex flex-wrap gap-3">
-            <a href="#iletisim" className="btn btn-dark">
+            <a
+              href="#iletisim"
+              className="inline-flex h-[52px] items-center border border-paper bg-paper px-7 text-[15px] font-medium text-ink transition-colors hover:bg-transparent hover:text-paper"
+            >
               Teklif alın
-              <IconArrowUpRight className="h-4 w-4" />
             </a>
             <a
               href={waLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-ghost"
+              className="inline-flex h-[52px] items-center border border-white/30 px-7 text-[15px] font-medium text-paper transition-colors hover:border-paper hover:bg-paper hover:text-ink"
             >
-              <IconWhatsApp className="h-[18px] w-[18px]" />
               WhatsApp
             </a>
           </div>
         </div>
-      </div>
 
-      {/* alt bilgi */}
-      <div className="container-x py-12">
-        <div className="grid gap-10 md:grid-cols-12">
+        {/* alt bilgi */}
+        <div className="grid gap-10 py-14 md:grid-cols-12">
           <div className="md:col-span-5">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/logo.png"
-              alt={site.name}
-              width={160}
-              height={111}
-              className="h-[56px] w-auto"
-            />
-            <p className="mt-5 max-w-[34ch] text-[14.5px] leading-relaxed text-muted">
+            <p className="max-w-[34ch] text-[15px] leading-[1.65] text-white/60">
               {site.tagline}. İstanbul merkezli, Türkiye geneline hizmet veren
               web tasarım stüdyosu.
             </p>
+            <a
+              href={site.parentBrand.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mono link-slide mt-6 inline-block text-white/45"
+            >
+              Bir {site.parentBrand.name} markasıdır ↗
+            </a>
           </div>
 
           <div className="md:col-span-3">
-            <span className="eyebrow">Menü</span>
-            <ul className="mt-4 space-y-2.5">
+            <span className="mono text-white/40">Menü</span>
+            <ul className="mt-4 space-y-2">
               {links.map((l) => (
                 <li key={l.href}>
                   <a
                     href={l.href}
-                    className="text-[14.5px] text-muted transition-colors hover:text-ink"
+                    className="link-slide text-[15px] text-white/75 transition-colors hover:text-paper"
                   >
                     {l.label}
                   </a>
@@ -74,12 +72,12 @@ export default function Footer() {
           </div>
 
           <div className="md:col-span-4">
-            <span className="eyebrow">İletişim</span>
-            <ul className="mt-4 space-y-2.5 text-[14.5px]">
+            <span className="mono text-white/40">İletişim</span>
+            <ul className="mt-4 space-y-2 text-[15px]">
               <li>
                 <a
                   href={`tel:${site.phoneRaw}`}
-                  className="text-muted transition-colors hover:text-ink"
+                  className="link-slide text-white/75 hover:text-paper"
                 >
                   {site.phoneDisplay}
                 </a>
@@ -87,7 +85,7 @@ export default function Footer() {
               <li>
                 <a
                   href={`mailto:${site.email}`}
-                  className="text-muted transition-colors hover:text-ink"
+                  className="link-slide text-white/75 hover:text-paper"
                 >
                   {site.email}
                 </a>
@@ -98,28 +96,32 @@ export default function Footer() {
                     href={site.social.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-muted transition-colors hover:text-ink"
+                    className="link-slide text-white/75 hover:text-paper"
                   >
-                    Instagram
+                    Instagram ↗
                   </a>
                 </li>
               )}
             </ul>
           </div>
         </div>
+      </div>
 
-        <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-line pt-7 text-[13.5px] text-muted-2 sm:flex-row sm:items-center">
-          <p>
-            © {year} {site.name}. Tüm hakları saklıdır.
+      {/* dev kelime markası — sayfanın kapanışı */}
+      <div className="overflow-hidden px-[2vw] pb-[2vw]">
+        <div
+          aria-hidden
+          className="display-tight select-none whitespace-nowrap text-center text-[18.2vw] leading-[0.78] text-white/90"
+        >
+          MEDYA&nbsp;333
+        </div>
+      </div>
+
+      <div className="wrap">
+        <div className="border-t border-white/15 py-6">
+          <p className="mono text-white/40">
+            © {year} {site.name} — Tüm hakları saklıdır
           </p>
-          <a
-            href={site.parentBrand.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transition-colors hover:text-ink"
-          >
-            Bir {site.parentBrand.name} markasıdır
-          </a>
         </div>
       </div>
     </footer>

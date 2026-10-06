@@ -3,24 +3,15 @@
 import { useEffect, useState } from "react";
 import { site, waLink } from "@/lib/site";
 
-const links = [
-  { href: "#referanslar", label: "İşler" },
-  { href: "#hizmetler", label: "Hizmetler" },
-  { href: "#surec", label: "Süreç" },
+const LINKS = [
+  { href: "#isler", label: "İşler" },
+  { href: "#yontem", label: "Yöntem" },
   { href: "#paketler", label: "Paketler" },
-  { href: "#sss", label: "S.S.S." },
+  { href: "#iletisim", label: "İletişim" },
 ];
 
 export default function Nav() {
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 16);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -30,109 +21,93 @@ export default function Nav() {
   }, [open]);
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "border-b border-line bg-paper/80 backdrop-blur-xl"
-          : "border-b border-transparent"
-      }`}
-    >
-      <div className="container-x flex h-[76px] items-center justify-between gap-6">
-        <a href="#top" className="flex items-center gap-3" aria-label={site.name}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/logo-mark.png"
-            alt=""
-            width={88}
-            height={39}
-            className="h-[34px] w-auto"
-          />
-          <span className="hidden text-[13px] font-medium uppercase tracking-[0.2em] text-muted-2 sm:block">
-            Web
-          </span>
-        </a>
-
-        <nav className="hidden items-center gap-8 lg:flex">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="text-[14.5px] text-muted transition-colors hover:text-ink"
-            >
-              {l.label}
-            </a>
-          ))}
-        </nav>
-
-        <div className="hidden items-center gap-3 lg:flex">
-          <a
-            href={waLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[14.5px] text-muted transition-colors hover:text-ink"
-          >
-            WhatsApp
+    <header className="sticky top-0 z-50 rule-b bg-paper/92 backdrop-blur-sm">
+      <div className="wrap">
+        <div className="flex h-16 items-center justify-between gap-6 lg:h-[72px]">
+          <a href="#" className="flex items-baseline gap-2.5">
+            <span className="display-sm text-[19px] tracking-[-0.04em]">
+              MEDYA&nbsp;333
+            </span>
+            <span className="mono hidden sm:inline">İstanbul</span>
           </a>
-          <a href="#iletisim" className="btn btn-dark !px-5 !py-3 !text-[14.5px]">
-            Teklif Al
-          </a>
-        </div>
 
-        <button
-          onClick={() => setOpen((o) => !o)}
-          aria-label="Menü"
-          aria-expanded={open}
-          className="grid h-11 w-11 place-items-center rounded-full border border-line lg:hidden"
-        >
-          <span className="relative block h-3 w-[18px]">
-            <span
-              className={`absolute left-0 h-[1.5px] w-[18px] bg-ink transition-all duration-300 ${
-                open ? "top-[5px] rotate-45" : "top-0"
-              }`}
-            />
-            <span
-              className={`absolute left-0 h-[1.5px] w-[18px] bg-ink transition-all duration-300 ${
-                open ? "top-[5px] -rotate-45" : "top-[11px]"
-              }`}
-            />
-          </span>
-        </button>
-      </div>
+          <nav className="hidden items-center gap-8 md:flex">
+            {LINKS.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                className="link-slide text-[14px] font-medium tracking-tight text-ink"
+              >
+                {l.label}
+              </a>
+            ))}
+          </nav>
 
-      {/* mobil menü */}
-      <div
-        className={`overflow-hidden border-t border-line bg-paper transition-[max-height] duration-500 lg:hidden ${
-          open ? "max-h-[520px]" : "max-h-0 border-t-transparent"
-        }`}
-      >
-        <div className="container-x flex flex-col py-4">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              onClick={() => setOpen(false)}
-              className="border-b border-line py-4 text-[17px] text-ink last:border-0"
-            >
-              {l.label}
-            </a>
-          ))}
-          <div className="mt-5 grid grid-cols-2 gap-3 pb-2">
+          <div className="flex items-center gap-3">
             <a
               href={waLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-ghost"
+              className="hidden h-10 items-center border border-ink bg-ink px-4 text-[13px] font-medium text-paper transition-colors hover:bg-paper hover:text-ink sm:inline-flex"
             >
               WhatsApp
             </a>
-            <a
-              href="#iletisim"
-              onClick={() => setOpen(false)}
-              className="btn btn-dark"
+            <button
+              type="button"
+              aria-label={open ? "Menüyü kapat" : "Menüyü aç"}
+              aria-expanded={open}
+              onClick={() => setOpen((v) => !v)}
+              className="grid h-10 w-10 place-items-center border border-line-2 md:hidden"
             >
-              Teklif Al
-            </a>
+              <span className="relative block h-[9px] w-4">
+                <span
+                  className="absolute left-0 h-[1.5px] w-full bg-ink transition-transform duration-300"
+                  style={{
+                    top: 0,
+                    transform: open ? "translateY(4px) rotate(45deg)" : "none",
+                  }}
+                />
+                <span
+                  className="absolute left-0 h-[1.5px] w-full bg-ink transition-transform duration-300"
+                  style={{
+                    bottom: 0,
+                    transform: open ? "translateY(-4px) rotate(-45deg)" : "none",
+                  }}
+                />
+              </span>
+            </button>
           </div>
+        </div>
+      </div>
+
+      {/* mobil menü */}
+      <div
+        className="overflow-hidden border-t border-line bg-paper transition-[max-height] duration-400 md:hidden"
+        style={{ maxHeight: open ? "22rem" : 0 }}
+      >
+        <div className="wrap py-2">
+          {LINKS.map((l, i) => (
+            <a
+              key={l.href}
+              href={l.href}
+              onClick={() => setOpen(false)}
+              className="flex items-baseline gap-3 border-b border-line py-3.5 last:border-0"
+            >
+              <span className="mono text-[10px]">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <span className="display-sm text-[22px]">{l.label}</span>
+            </a>
+          ))}
+          <a
+            href={waLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setOpen(false)}
+            className="btn mt-3 mb-4 w-full"
+          >
+            WhatsApp — {site.phoneDisplay}
+          </a>
         </div>
       </div>
     </header>

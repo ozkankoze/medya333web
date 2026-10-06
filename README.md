@@ -96,42 +96,73 @@ Panelde yapabileceklerin:
 
 ### Referans ekran görüntüsü ekleme
 
-1. Sitenin ekran görüntüsünü al (1600×800 px, JPG önerilir — 2:1 oran)
-2. `public/referanslar/` klasörüne koy, push et
-3. Panelde ilgili referansın **Görsel adresi** alanına `/referanslar/dosyaadi.jpg` yaz
+Sitedeki görseller **kırpılmamış, tam sayfa** ekran görüntüleridir. Vitrin
+çerçevesinin içinde yavaşça aşağı kayarak sitenin tamamını gösterirler.
+
+1. Sitenin **tam sayfa** (full page) ekran görüntüsünü al — genişlik 1200 px
+2. `public/referanslar/` klasörüne hem `.jpg` hem `.webp` olarak koy, push et
+3. Panelde **Görsel adresi** alanına `/referanslar/dosyaadi.jpg` yaz
+4. `src/lib/shots.ts` içindeki `RATIO` listesine dosya adını ve
+   `yükseklik / genişlik` oranını ekle (ör. 4333 / 1200 = `3.611`)
+
+> 4. adım atlanırsa görsel yine görünür, sadece kayma hızı varsayılan değere düşer.
 
 Şu an yayında olan 8 referans:
 
-| Dosya | Site |
-|---|---|
-| `locksansafety.jpg` | locksansafety.com |
-| `otocentermarket.jpg` | otocentermarket.com |
-| `derengigi.jpg` | derengigi.com |
-| `nextstop.jpg` | nextstopbackpackers.com |
-| `erenmobilya.jpg` | erenmobilyatasarimatasehir.com |
-| `kkdmarkt.jpg` | kkdmarkt.com |
-| `sofilxloto.jpg` | sofilxloto.com |
-| `ekedurunleri.jpg` | ekedurunleri.com |
+| Dosya | Site | Oran |
+|---|---|---|
+| `locksansafety` | locksansafety.com | 3.611 |
+| `otocentermarket` | otocentermarket.com | 2.928 |
+| `derengigi` | derengigi.com | 3.611 |
+| `nextstop` | nextstopbackpackers.com | 1.813 |
+| `erenmobilya` | erenmobilyatasarimatasehir.com | 3.611 |
+| `kkdmarkt` | kkdmarkt.com | 2.700 |
+| `sofilxloto` | sofilxloto.com | 3.611 |
+| `ekedurunleri` | ekedurunleri.com | 3.611 |
 
-Görsel yoksa otomatik olarak marka renkli bir önizleme kartı gösterilir.
+Görsel yoksa otomatik olarak marka adıyla bir önizleme kartı gösterilir.
 
 ---
 
 ## Tasarım sistemi
 
-Açık (beyaz) tema. Renkler ve tipografi `src/app/globals.css` içindeki
-`@theme` bloğunda tanımlı — tek yerden değiştirilir.
+**Sert siyah–beyaz, editoryal.** Renk vurgusu yok; boşluk, tipografi ve
+hairline çizgiler konuşur. Tokenlar `src/app/globals.css` → `@theme`.
 
 | Token | Değer | Kullanım |
 |---|---|---|
-| `paper` / `paper-2` | `#ffffff` / `#f6f5f2` | zemin, dönüşümlü bölümler |
-| `ink` | `#0b0b0c` | ana metin, koyu butonlar |
-| `muted` | `#6c6c73` | açıklama metinleri |
-| `line` | `#e5e3dd` | ince ayraçlar |
-| `gold` | `#a97d33` | marka vurgusu (italik kelimeler) |
+| `paper` | `#ffffff` | ana zemin |
+| `wash` | `#f4f4f2` | dönüşümlü bölüm zemini (Yöntem, S.S.S.) |
+| `ink` | `#000000` | metin, koyu butonlar, footer |
+| `muted` | `#5b5b5b` | açıklama metinleri |
+| `muted-2` | `#8e8e8e` | mono etiketler, ikincil |
+| `line` / `line-2` | `#e4e4e4` / `#c9c9c9` | ince ayraçlar, çerçeveler |
 
-Yazı tipleri: **Inter** (gövde) + **Instrument Serif** italik (vurgu kelimeleri).
-Vurgu için `<span className="serif text-gold">kelime</span>` yeterli.
+Yazı tipleri:
+
+| Rol | Font | Sınıf |
+|---|---|---|
+| Başlık | **Bricolage Grotesque** 600 | `.display`, `.display-tight`, `.display-sm` |
+| Gövde | **Inter** | varsayılan |
+| Etiket / numara | **JetBrains Mono** 500 | `.mono` |
+
+Önemli notlar:
+
+- Satır aralığı **1'in altına indirilmez**. Türkçe'de `ğ ü ş ç ı` ve `y p`
+  alt uzantıları bir üst satıra girer. (`.display` = `line-height: 1`)
+- Vurgu için renk değil **ters blok** kullanılır:
+  `<span className="bg-ink text-paper px-[0.12em]">kelime</span>`
+- Bölümler dolgu ile değil **çizgi** ile ayrılır: `.rule-t` / `.rule-b`
+
+### Vitrin (hero) nasıl çalışır
+
+`src/components/Stage.tsx` — tarayıcı çerçevesi içinde tam sayfa görseli
+`creep` animasyonuyla kaydırır, 9 saniyede bir sıradaki referansa geçer.
+Fare üzerine gelince durur. Pencere yüksekliği `.stage { --win }` ile
+breakpoint başına ayarlanır.
+
+Kartlarda (`ProjectCard.tsx`) aynı görsel fare üzerine gelince kayar;
+dokunmatik cihazlarda hover olmadığı için otomatik akar.
 
 
 
@@ -232,13 +263,17 @@ src/
     admin/             → yönetim paneli
     api/contact/       → form kayıt servisi
     globals.css        → renkler, tipografi, animasyonlar
-  components/          → sayfa bölümleri
   components/
+    Hero.tsx           → Canlı Vitrin bölümü
+    Stage.tsx          → vitrin motoru (kayan tam sayfa görsel)
+    Manifesto.tsx      → "Telefon çalsın diye yapılır" bölümü
+    Portfolio.tsx      → referans kartları
     Analytics.tsx      → Google etiketi + otomatik dönüşüm yakalama
   lib/
     site.ts            → İLETİŞİM BİLGİLERİ ve site ayarları
     content.ts         → hizmetler, paketler, süreç, S.S.S. metinleri
     projects.ts        → başlangıç referansları
+    shots.ts           → ekran görüntüsü oranları ve WebP eşleşmesi
     gtag.ts            → Google Ads dönüşüm etiketleri
     db.ts              → Neon bağlantısı ve tablolar
 ```

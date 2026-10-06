@@ -1,39 +1,40 @@
 @import "tailwindcss";
 
+/* ------------------------------------------------------------------
+   MEDYA 333 — tasarım sistemi
+   Sert siyah-beyaz. Renk değil, BOŞLUK ve TİPOGRAFİ konuşur.
+   Tek vurgu aracı: ölçek, hairline çizgi ve negatif alan.
+------------------------------------------------------------------ */
+
 @theme {
-  /* ---- YÜZEYLER ---- */
   --color-paper: #ffffff;
-  --color-paper-2: #f6f5f2; /* sıcak kırık beyaz */
-  --color-paper-3: #edebe5;
+  --color-wash: #f4f4f2;
+  --color-ink: #000000;
+  --color-ink-2: #141414;
+  --color-muted: #5b5b5b;
+  --color-muted-2: #8e8e8e;
+  --color-line: #e4e4e4;
+  --color-line-2: #c9c9c9;
 
-  /* ---- MÜREKKEP ---- */
-  --color-ink: #0b0b0c;
-  --color-ink-2: #1c1c1f;
-  --color-muted: #6c6c73;
-  --color-muted-2: #9b9ba1;
+  /* Sadece yönetim paneli (/admin) için — genel sitede kullanılmaz. */
+  --color-paper-2: #f8f8f6;
+  --color-gold: #8a6a22;
+  --color-accent: #5b5b5b;
 
-  /* ---- ÇİZGİLER ---- */
-  --color-line: #e5e3dd;
-  --color-line-2: #d3d0c8;
-
-  /* ---- ALTIN (marka) ---- */
-  --color-gold: #a97d33;
-  --color-gold-2: #c9962f;
-  --color-gold-soft: #f3ead8;
-
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+  --font-display: "Bricolage Grotesque", "Inter", ui-sans-serif, system-ui,
     sans-serif;
-  --font-serif: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
+/* ---------------- temel ---------------- */
+
 * {
-  border-color: var(--color-line);
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {
-  overflow-x: clip;
   scroll-behavior: smooth;
-  scroll-padding-top: 92px;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -41,9 +42,10 @@ body {
   background: var(--color-paper);
   color: var(--color-ink);
   font-family: var(--font-sans);
-  font-feature-settings: "cv11", "ss01";
+  font-feature-settings: "cv05" 1, "ss03" 1;
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 ::selection {
@@ -51,7 +53,324 @@ body {
   color: var(--color-paper);
 }
 
-/* ============ YERLEŞİM ============ */
+/* ---------------- ızgara / sayfa düzeni ---------------- */
+
+.wrap {
+  width: 100%;
+  max-width: 1480px;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+@media (min-width: 768px) {
+  .wrap {
+    padding-inline: 40px;
+  }
+}
+@media (min-width: 1280px) {
+  .wrap {
+    padding-inline: 56px;
+  }
+}
+
+/* Basılı sayfa hissi veren dikey ızgara çizgileri. */
+.grid-lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.grid-lines > span {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--color-line);
+  opacity: 0.75;
+}
+
+/* Bölüm ayracı: dolgu değil, çizgi. */
+.rule-t {
+  border-top: 1px solid var(--color-line);
+}
+.rule-b {
+  border-bottom: 1px solid var(--color-line);
+}
+
+/* ---------------- tipografi ---------------- */
+
+/* Not: Türkçe'de ğ ü ş ç ı ve y/p alt uzantıları yüzünden satır aralığı
+   1'in altına indirilmiyor — aksi halde satırlar birbirine giriyor. */
+.display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1;
+  text-wrap: balance;
+}
+
+.display-tight {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.display-sm {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.02;
+}
+
+/* Küçük teknik etiket — mono, büyük harf, açık harf aralığı.
+   Numaralandırma ve meta bilgiler için. */
+.mono {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.mono-ink {
+  color: var(--color-ink);
+}
+
+/* Altı çizili vurgu — renk yerine çizgi. */
+.underline-ink {
+  box-shadow: inset 0 -0.08em 0 var(--color-ink);
+}
+
+/* ---------------- butonlar ---------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 52px;
+  padding-inline: 26px;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  border: 1px solid var(--color-ink);
+  background: var(--color-ink);
+  color: var(--color-paper);
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+.btn:hover {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-ink);
+  border-color: var(--color-line-2);
+}
+.btn-ghost:hover {
+  background: var(--color-ink);
+  color: var(--color-paper);
+  border-color: var(--color-ink);
+}
+
+/* Metin bağlantısı: hover'da alt çizgi soldan dolar. */
+.link-slide {
+  position: relative;
+  display: inline-block;
+}
+.link-slide::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 1px;
+  width: 100%;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.22, 0.7, 0.25, 1);
+}
+.link-slide:hover::after {
+  transform: scaleX(1);
+}
+
+/* ---------------- vitrin (tarayıcı çerçevesi) ---------------- */
+
+.frame {
+  border: 1px solid var(--color-line-2);
+  background: var(--color-paper);
+}
+
+.frame-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 38px;
+  padding-inline: 14px;
+  border-bottom: 1px solid var(--color-line);
+  background: var(--color-wash);
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1px solid var(--color-line-2);
+}
+
+/* Tam boy ekran görüntüsü çerçeve içinde yavaşça kayar. */
+@keyframes creep {
+  0% {
+    transform: translateY(0);
+  }
+  12% {
+    transform: translateY(0);
+  }
+  88% {
+    transform: translateY(calc(-100% + var(--win, 460px)));
+  }
+  100% {
+    transform: translateY(calc(-100% + var(--win, 460px)));
+  }
+}
+.creep {
+  animation: creep var(--dur, 26s) linear infinite alternate;
+}
+
+@keyframes barfill {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* Vitrin penceresi — ekranda ne kadar görüneceği. */
+.stage {
+  --win: 230px;
+}
+@media (min-width: 640px) {
+  .stage {
+    --win: 330px;
+  }
+}
+@media (min-width: 1024px) {
+  .stage {
+    --win: 420px;
+  }
+}
+@media (min-width: 1536px) {
+  .stage {
+    --win: 510px;
+  }
+}
+.win {
+  height: var(--win);
+}
+
+/* Kart penceresi */
+.peek {
+  --win: 240px;
+}
+@media (min-width: 1024px) {
+  .peek {
+    --win: 300px;
+  }
+}
+
+/* Kart içinde: fare varsa üzerine gelince kaysın. */
+.peek img {
+  transition: transform var(--dur, 7s) cubic-bezier(0.3, 0, 0.3, 1);
+}
+.peek:hover img,
+.peek:focus-visible img {
+  transform: translateY(calc(-100% + var(--win, 280px)));
+}
+
+/* Dokunmatik cihazda hover yok — görsel kendi kendine aksın,
+   mobilde de sitenin tamamı görülebilsin. */
+@media (hover: none) {
+  .peek img {
+    transition: none;
+    animation: creep var(--dur, 22s) linear infinite alternate;
+  }
+}
+
+/* ---------------- ince detaylar ---------------- */
+
+.noise-none {
+  background-image: none;
+}
+
+/* Yatay kaydırmada kenar yumuşatma.
+   Masaüstünde liste ızgaraya dönüştüğü için maske kapanır,
+   aksi halde ilk sütunun numaraları kırpılır. */
+.fade-x {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 48px,
+    #000 calc(100% - 48px),
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 48px,
+    #000 calc(100% - 48px),
+    transparent
+  );
+}
+@media (min-width: 1024px) {
+  .fade-x {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
+
+.no-bar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-bar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ---------------- erişilebilirlik ---------------- */
+
+:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .creep {
+    animation: none;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Yönetim paneli (/admin) uyumluluk sınıfları.
+   Panel iç kullanım için; editoryal sistemden bağımsız, sade tutuldu.
+------------------------------------------------------------------ */
+
 .container-x {
   width: 100%;
   max-width: 1240px;
@@ -60,168 +379,32 @@ body {
 }
 @media (min-width: 768px) {
   .container-x {
-    padding-inline: 40px;
+    padding-inline: 32px;
   }
 }
 
-/* ============ TİPOGRAFİ ============ */
-.display {
-  font-weight: 600;
-  letter-spacing: -0.035em;
-  line-height: 0.98;
-}
-.display-sm {
-  font-weight: 600;
-  letter-spacing: -0.028em;
-  line-height: 1.06;
-}
-
-/* vurgu kelimeler için zarif italik serif */
-.serif {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  font-style: italic;
-  letter-spacing: -0.01em;
+.card {
+  border: 1px solid var(--color-line);
+  background: var(--color-paper);
 }
 
 .eyebrow {
-  font-size: 11.5px;
+  font-family: var(--font-mono);
+  font-size: 11px;
   font-weight: 500;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-muted-2);
 }
 
-/* ============ BİLEŞENLER ============ */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  border-radius: 999px;
-  font-size: 15px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  padding: 14px 24px;
-  transition: all 0.25s cubic-bezier(0.22, 0.7, 0.25, 1);
-  white-space: nowrap;
-}
 .btn-dark {
   background: var(--color-ink);
   color: var(--color-paper);
-}
-.btn-dark:hover {
-  background: var(--color-ink-2);
-  transform: translateY(-2px);
-  box-shadow: 0 12px 28px -10px rgba(11, 11, 12, 0.45);
-}
-.btn-ghost {
-  border: 1px solid var(--color-line-2);
-  color: var(--color-ink);
-  background: transparent;
-}
-.btn-ghost:hover {
   border-color: var(--color-ink);
-  transform: translateY(-2px);
-}
-
-.card {
-  background: var(--color-paper);
-  border: 1px solid var(--color-line);
-  border-radius: 20px;
-}
-.card-hover {
-  transition: all 0.35s cubic-bezier(0.22, 0.7, 0.25, 1);
-}
-.card-hover:hover {
-  border-color: var(--color-line-2);
-  transform: translateY(-4px);
-  box-shadow: 0 24px 48px -28px rgba(11, 11, 12, 0.28);
-}
-
-.pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  border: 1px solid var(--color-line);
-  border-radius: 999px;
-  padding: 7px 14px;
-  font-size: 13px;
-  color: var(--color-muted);
-  background: var(--color-paper);
 }
 
 .hairline {
+  display: inline-block;
   height: 1px;
   background: var(--color-line);
-}
-
-/* yumuşak ızgara dokusu */
-.bg-grid {
-  background-image: linear-gradient(
-      to right,
-      rgba(11, 11, 12, 0.045) 1px,
-      transparent 1px
-    ),
-    linear-gradient(to bottom, rgba(11, 11, 12, 0.045) 1px, transparent 1px);
-  background-size: 72px 72px;
-}
-
-.mask-fade-b {
-  -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
-}
-.mask-fade-x {
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent,
-    #000 12%,
-    #000 88%,
-    transparent
-  );
-  mask-image: linear-gradient(
-    to right,
-    transparent,
-    #000 12%,
-    #000 88%,
-    transparent
-  );
-}
-
-/* ============ HAREKET ============ */
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-.animate-marquee {
-  animation: marquee 38s linear infinite;
-}
-
-@keyframes pulse-dot {
-  0%,
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.45;
-    transform: scale(0.82);
-  }
-}
-.animate-dot {
-  animation: pulse-dot 2.1s ease-in-out infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  .animate-marquee,
-  .animate-dot {
-    animation: none;
-  }
 }

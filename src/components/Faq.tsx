@@ -1,70 +1,48 @@
-"use client";
-
-import { useState } from "react";
 import { faqs } from "@/lib/content";
-import Reveal from "./Reveal";
-import SectionHeading from "./SectionHeading";
-import { IconPlus } from "./Icons";
 
 export default function Faq() {
-  const [open, setOpen] = useState<number | null>(0);
-
   return (
-    <section id="sss" className="relative overflow-hidden bg-paper-2 py-24 lg:py-32">
-      <div className="container-x">
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+    <section id="sss" className="rule-b bg-wash">
+      <div className="wrap">
+        <div className="grid gap-8 py-16 lg:grid-cols-12 lg:py-24">
           <div className="lg:col-span-4">
-            <Reveal>
-              <SectionHeading
-                eyebrow="S.S.S."
-                title={
-                  <>
-                    Sık sorulan <span className="serif text-gold">sorular</span>
-                  </>
-                }
-                desc="Aradığınızı bulamadıysanız WhatsApp'tan yazın, aynı gün dönüş yapıyoruz."
-              />
-            </Reveal>
+            <span className="mono">007 — Sorular</span>
+            <h2 className="display-tight mt-7 text-[clamp(2.3rem,6.4vw,4.2rem)]">
+              Herkesin
+              <br />
+              sorduğu
+              <br />
+              yedi şey.
+            </h2>
           </div>
 
           <div className="lg:col-span-8">
             <div className="border-t border-line-2">
-              {faqs.map((f, i) => {
-                const isOpen = open === i;
-                return (
-                  <div key={f.q} className="border-b border-line-2">
-                    <button
-                      onClick={() => setOpen(isOpen ? null : i)}
-                      aria-expanded={isOpen}
-                      className="flex w-full items-start justify-between gap-6 py-6 text-left"
+              {faqs.map((f, i) => (
+                <details
+                  key={f.q}
+                  className="group border-b border-line-2 [&_summary::-webkit-details-marker]:hidden"
+                >
+                  <summary className="flex cursor-pointer list-none items-start gap-5 py-5">
+                    <span className="mono mt-1.5 shrink-0 text-[10px]">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="display-sm flex-1 text-[clamp(1.1rem,2.2vw,1.4rem)]">
+                      {f.q}
+                    </span>
+                    <span
+                      aria-hidden
+                      className="relative mt-2 block h-3 w-3 shrink-0"
                     >
-                      <span className="text-[16.5px] font-medium leading-snug tracking-[-0.01em] lg:text-[17.5px]">
-                        {f.q}
-                      </span>
-                      <span
-                        className={`mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full border border-line-2 transition-all duration-300 ${
-                          isOpen ? "rotate-45 border-ink bg-ink text-paper" : ""
-                        }`}
-                      >
-                        <IconPlus className="h-3.5 w-3.5" />
-                      </span>
-                    </button>
-                    <div
-                      className="grid transition-all duration-400 ease-out"
-                      style={{
-                        gridTemplateRows: isOpen ? "1fr" : "0fr",
-                        opacity: isOpen ? 1 : 0,
-                      }}
-                    >
-                      <div className="overflow-hidden">
-                        <p className="pb-7 pr-10 text-[15.5px] leading-relaxed text-muted">
-                          {f.a}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
+                      <span className="absolute left-0 top-1/2 h-px w-3 -translate-y-1/2 bg-ink" />
+                      <span className="absolute left-1/2 top-0 h-3 w-px -translate-x-1/2 bg-ink transition-transform duration-300 group-open:rotate-90 group-open:opacity-0" />
+                    </span>
+                  </summary>
+                  <p className="max-w-[62ch] pb-6 pl-10 text-[15px] leading-[1.7] text-muted">
+                    {f.a}
+                  </p>
+                </details>
+              ))}
             </div>
           </div>
         </div>

@@ -1,8 +1,8 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
-import Services from "@/components/Services";
+import Manifesto from "@/components/Manifesto";
 import Portfolio from "@/components/Portfolio";
-import WhyUs from "@/components/WhyUs";
+import Services from "@/components/Services";
 import Process from "@/components/Process";
 import Packages from "@/components/Packages";
 import Faq from "@/components/Faq";
@@ -18,9 +18,9 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
-        <Services />
+        <Manifesto />
         <Portfolio />
-        <WhyUs />
+        <Services />
         <Process />
         <Packages />
         <Faq />
