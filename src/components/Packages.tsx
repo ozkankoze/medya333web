@@ -7,7 +7,7 @@ export default function Packages() {
       <div className="wrap">
         <div className="flex flex-wrap items-end justify-between gap-6 py-16 lg:py-24">
           <div>
-            <span className="mono">006 — Paketler</span>
+            <span className="mono">004 — Paketler</span>
             <h2 className="display-tight mt-7 text-[clamp(2.3rem,6.4vw,4.6rem)]">
               Fiyat neden
               <br />

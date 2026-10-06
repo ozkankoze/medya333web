@@ -35,7 +35,7 @@ export default function Contact() {
         <div className="grid gap-12 py-16 lg:grid-cols-12 lg:gap-14 lg:py-24">
           {/* sol */}
           <div className="lg:col-span-5">
-            <span className="mono">008 — İletişim</span>
+            <span className="mono">006 — İletişim</span>
 
             <h2 className="display-tight mt-7 text-[clamp(2.3rem,6.2vw,4.4rem)]">
               Bir kahve içip

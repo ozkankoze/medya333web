@@ -21,8 +21,7 @@
   --color-gold: #8a6a22;
   --color-accent: #5b5b5b;
 
-  --font-display: "Bricolage Grotesque", "Inter", ui-sans-serif, system-ui,
-    sans-serif;
+  --font-display: "Inter Tight", "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 }
@@ -102,24 +101,24 @@ body {
    1'in altına indirilmiyor — aksi halde satırlar birbirine giriyor. */
 .display {
   font-family: var(--font-display);
-  font-weight: 600;
-  letter-spacing: -0.035em;
+  font-weight: 700;
+  letter-spacing: -0.038em;
   line-height: 1;
   text-wrap: balance;
 }
 
 .display-tight {
   font-family: var(--font-display);
-  font-weight: 600;
-  letter-spacing: -0.04em;
+  font-weight: 700;
+  letter-spacing: -0.042em;
   line-height: 1;
 }
 
 .display-sm {
   font-family: var(--font-display);
   font-weight: 600;
-  letter-spacing: -0.025em;
-  line-height: 1.02;
+  letter-spacing: -0.028em;
+  line-height: 1.04;
 }
 
 /* Küçük teknik etiket — mono, büyük harf, açık harf aralığı.

@@ -6,7 +6,7 @@ export default function Faq() {
       <div className="wrap">
         <div className="grid gap-8 py-16 lg:grid-cols-12 lg:py-24">
           <div className="lg:col-span-4">
-            <span className="mono">007 — Sorular</span>
+            <span className="mono">005 — Sorular</span>
             <h2 className="display-tight mt-7 text-[clamp(2.3rem,6.4vw,4.2rem)]">
               Herkesin
               <br />

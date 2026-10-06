@@ -10,7 +10,7 @@ export default async function Portfolio() {
       <div className="wrap">
         <div className="grid gap-6 py-16 lg:grid-cols-12 lg:py-24">
           <div className="lg:col-span-5">
-            <span className="mono">003 — İşler</span>
+            <span className="mono">001 — İşler</span>
             <h2 className="display-tight mt-7 text-[clamp(2.3rem,6.4vw,4.6rem)]">
               Kırpmadık.
               <br />

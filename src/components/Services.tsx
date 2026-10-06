@@ -6,7 +6,7 @@ export default function Services() {
       <div className="wrap">
         <div className="flex flex-wrap items-end justify-between gap-6 py-14 lg:py-20">
           <div>
-            <span className="mono">004 — Kapsam</span>
+            <span className="mono">002 — Kapsam</span>
             <h2 className="display-tight mt-7 text-[clamp(2.3rem,6.4vw,4.6rem)]">
               Ne yapıyoruz?
             </h2>
