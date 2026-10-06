@@ -10,15 +10,13 @@ export default function SectionHeading({
   center?: boolean;
 }) {
   return (
-    <div className={center ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
-      <span className="inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.04] px-3 py-1 text-[11.5px] font-medium uppercase tracking-[0.14em] text-muted">
-        {eyebrow}
-      </span>
-      <h2 className="font-display mt-4 text-[clamp(1.75rem,4.2vw,2.7rem)] font-bold leading-[1.14]">
-        {title}
-      </h2>
+    <div className={center ? "mx-auto max-w-2xl text-center" : "max-w-3xl"}>
+      <span className="eyebrow">{eyebrow}</span>
+      <h2 className="display-sm mt-5 text-[clamp(2rem,5vw,3.4rem)]">{title}</h2>
       {desc && (
-        <p className="mt-4 text-[16px] leading-relaxed text-muted">{desc}</p>
+        <p className="mt-5 max-w-[56ch] text-[16.5px] leading-relaxed text-muted">
+          {desc}
+        </p>
       )}
     </div>
   );

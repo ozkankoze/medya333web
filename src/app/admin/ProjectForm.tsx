@@ -2,7 +2,7 @@ import { Project } from "@/lib/projects";
 import { saveProjectAction, deleteProjectAction } from "./actions";
 
 const field =
-  "w-full rounded-lg border border-line bg-ink-2/70 px-3 py-2.5 text-[14px] outline-none focus:border-accent/70";
+  "w-full rounded-lg border border-line bg-paper-2/60 px-3 py-2.5 text-[14px] outline-none focus:border-ink";
 const label = "mb-1.5 block text-[12px] text-muted";
 
 export default function ProjectForm({ p }: { p?: Project }) {
@@ -38,7 +38,7 @@ export default function ProjectForm({ p }: { p?: Project }) {
       <div className="grid grid-cols-3 gap-3">
         <div>
           <label className={label}>Renk</label>
-          <input name="accent" type="color" defaultValue={p?.accent ?? "#6E56F8"} className="h-[42px] w-full rounded-lg border border-line bg-ink-2" />
+          <input name="accent" type="color" defaultValue={p?.accent ?? "#0B0B0C"} className="h-[42px] w-full rounded-lg border border-line bg-paper-2" />
         </div>
         <div>
           <label className={label}>Sıra</label>
@@ -46,7 +46,7 @@ export default function ProjectForm({ p }: { p?: Project }) {
         </div>
         <div>
           <label className={label}>Yayında</label>
-          <label className="flex h-[42px] items-center gap-2 rounded-lg border border-line bg-ink-2/70 px-3">
+          <label className="flex h-[42px] items-center gap-2 rounded-lg border border-line bg-paper-2/60 px-3">
             <input name="published" type="checkbox" defaultChecked={p ? p.published : true} className="h-4 w-4 accent-[#c9922f]" />
             <span className="text-[13px] text-muted">Göster</span>
           </label>
@@ -54,7 +54,7 @@ export default function ProjectForm({ p }: { p?: Project }) {
       </div>
 
       <div className="flex gap-2.5 sm:col-span-2">
-        <button className="rounded-lg bg-gradient-to-r from-accent to-accent-soft px-5 py-2.5 text-[14px] font-semibold text-[#1a1206]">
+        <button className="rounded-lg bg-gradient-to-r from-ink to-ink-2 px-5 py-2.5 text-[14px] font-semibold text-paper">
           {isNew ? "Referans ekle" : "Kaydet"}
         </button>
         {p && (

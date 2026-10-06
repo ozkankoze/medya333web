@@ -2,74 +2,70 @@
 
 import { useState } from "react";
 import { faqs } from "@/lib/content";
-import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
+import SectionHeading from "./SectionHeading";
+import { IconPlus } from "./Icons";
 
 export default function Faq() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="sss" className="relative py-24 lg:py-32">
+    <section id="sss" className="relative overflow-hidden bg-paper-2 py-24 lg:py-32">
       <div className="container-x">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
-          <Reveal>
-            <div className="lg:sticky lg:top-28">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-4">
+            <Reveal>
               <SectionHeading
                 eyebrow="S.S.S."
                 title={
                   <>
-                    Merak edilenler
+                    Sık sorulan <span className="serif text-gold">sorular</span>
                   </>
                 }
-                desc="Aklınızdaki soru burada yoksa çekinmeden sorun — teklif almadan önce bilgi almanız bizim de işimizi kolaylaştırıyor."
+                desc="Aradığınızı bulamadıysanız WhatsApp'tan yazın, aynı gün dönüş yapıyoruz."
               />
-            </div>
-          </Reveal>
+            </Reveal>
+          </div>
 
-          <div className="space-y-2.5">
-            {faqs.map((f, i) => {
-              const isOpen = open === i;
-              return (
-                <Reveal key={f.q} delay={i * 40}>
-                  <div
-                    className={`overflow-hidden rounded-2xl border transition-colors ${
-                      isOpen
-                        ? "border-accent/40 bg-white/[0.045]"
-                        : "border-line bg-white/[0.02]"
-                    }`}
-                  >
+          <div className="lg:col-span-8">
+            <div className="border-t border-line-2">
+              {faqs.map((f, i) => {
+                const isOpen = open === i;
+                return (
+                  <div key={f.q} className="border-b border-line-2">
                     <button
                       onClick={() => setOpen(isOpen ? null : i)}
                       aria-expanded={isOpen}
-                      className="flex w-full items-center justify-between gap-4 px-5 py-4.5 text-left"
+                      className="flex w-full items-start justify-between gap-6 py-6 text-left"
                     >
-                      <span className="font-display text-[15.5px] font-semibold">
+                      <span className="text-[16.5px] font-medium leading-snug tracking-[-0.01em] lg:text-[17.5px]">
                         {f.q}
                       </span>
                       <span
-                        className={`relative grid h-7 w-7 shrink-0 place-items-center rounded-lg border border-line transition-transform duration-300 ${
-                          isOpen ? "rotate-45 border-accent/60 text-accent-soft" : "text-muted"
+                        className={`mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full border border-line-2 transition-all duration-300 ${
+                          isOpen ? "rotate-45 border-ink bg-ink text-paper" : ""
                         }`}
                       >
-                        <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                          <path d="M12 5v14M5 12h14" />
-                        </svg>
+                        <IconPlus className="h-3.5 w-3.5" />
                       </span>
                     </button>
                     <div
-                      className="grid transition-[grid-template-rows] duration-300 ease-out"
-                      style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
+                      className="grid transition-all duration-400 ease-out"
+                      style={{
+                        gridTemplateRows: isOpen ? "1fr" : "0fr",
+                        opacity: isOpen ? 1 : 0,
+                      }}
                     >
                       <div className="overflow-hidden">
-                        <p className="px-5 pb-5 text-[14.5px] leading-relaxed text-muted">
+                        <p className="pb-7 pr-10 text-[15.5px] leading-relaxed text-muted">
                           {f.a}
                         </p>
                       </div>
                     </div>
                   </div>
-                </Reveal>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>

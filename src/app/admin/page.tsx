@@ -31,9 +31,9 @@ type Lead = {
 };
 
 const statusStyles: Record<string, string> = {
-  yeni: "border-gold-lite/50 text-gold-lite",
+  yeni: "border-gold/40 text-gold",
   arandi: "border-amber-400/50 text-amber-300",
-  teklif: "border-accent/60 text-accent-soft",
+  teklif: "border-accent/60 text-gold",
   kazanildi: "border-emerald-400/50 text-emerald-300",
   kapandi: "border-line text-muted-2",
 };
@@ -53,11 +53,11 @@ export default async function AdminPage() {
     return (
       <div className="container-x py-20">
         <div className="card mx-auto max-w-lg p-8 text-center">
-          <h1 className="font-display text-[20px] font-bold">
+          <h1 className="display-sm text-[20px] font-semibold">
             Veritabanı bağlı değil
           </h1>
           <p className="mt-3 text-[14.5px] leading-relaxed text-muted">
-            Vercel proje ayarlarından <code className="text-accent-soft">DATABASE_URL</code>{" "}
+            Vercel proje ayarlarından <code className="text-gold">DATABASE_URL</code>{" "}
             değişkenini Neon bağlantı adresiyle tanımlayın, sonra projeyi yeniden
             deploy edin.
           </p>
@@ -74,21 +74,21 @@ export default async function AdminPage() {
 
   return (
     <div className="min-h-dvh pb-24">
-      <header className="sticky top-0 z-30 border-b border-line bg-ink/90 backdrop-blur-xl">
+      <header className="sticky top-0 z-30 border-b border-line bg-paper/85 backdrop-blur-xl">
         <div className="container-x flex h-[68px] items-center justify-between">
           <div className="flex items-center gap-2.5">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/logo-mark.png" alt="" width={68} height={30} className="h-[30px] w-auto" />
-            <span className="font-display text-[15px] font-semibold">
+            <span className="display-sm text-[15px] font-semibold">
               Yönetim Paneli
             </span>
           </div>
           <div className="flex items-center gap-3">
-            <a href="/" className="text-[13.5px] text-muted hover:text-fg">
+            <a href="/" className="text-[13.5px] text-muted hover:text-ink">
               Siteyi gör
             </a>
             <form action={logoutAction}>
-              <button className="rounded-lg border border-line px-3.5 py-2 text-[13.5px] text-muted hover:text-fg">
+              <button className="rounded-lg border border-line px-3.5 py-2 text-[13.5px] text-muted hover:text-ink">
                 Çıkış
               </button>
             </form>
@@ -105,7 +105,7 @@ export default async function AdminPage() {
             { v: projects.length, l: "Yayındaki referans" },
           ].map((s) => (
             <div key={s.l} className="card p-5">
-              <div className="font-display text-[26px] font-bold">{s.v}</div>
+              <div className="display-sm text-[26px] font-semibold">{s.v}</div>
               <div className="mt-1 text-[13px] text-muted">{s.l}</div>
             </div>
           ))}
@@ -113,7 +113,7 @@ export default async function AdminPage() {
 
         {/* talepler */}
         <section className="mt-12">
-          <h2 className="font-display text-[20px] font-bold">Teklif talepleri</h2>
+          <h2 className="display-sm text-[20px] font-semibold">Teklif talepleri</h2>
           {leads.length === 0 ? (
             <p className="mt-4 text-[14.5px] text-muted">
               Henüz talep yok. Siteden form gönderildiğinde burada görünecek.
@@ -130,7 +130,7 @@ export default async function AdminPage() {
                     >
                       {statusLabels[l.status] ?? l.status}
                     </span>
-                    <span className="font-display text-[15px] font-semibold">
+                    <span className="display-sm text-[15px] font-semibold">
                       {l.name}
                     </span>
                     <span className="text-[13.5px] text-muted">{l.phone}</span>
@@ -154,7 +154,7 @@ export default async function AdminPage() {
                       ))}
                     </dl>
                     {l.message && (
-                      <p className="mt-4 whitespace-pre-wrap rounded-xl border border-line bg-ink-2/60 p-4 text-[14px] leading-relaxed text-fg/90">
+                      <p className="mt-4 whitespace-pre-wrap rounded-xl border border-line bg-paper-2/70 p-4 text-[14px] leading-relaxed text-ink/90">
                         {l.message}
                       </p>
                     )}
@@ -170,7 +170,7 @@ export default async function AdminPage() {
                       </a>
                       <a
                         href={`tel:${l.phone}`}
-                        className="rounded-lg border border-line px-3.5 py-2 text-[13.5px] text-muted hover:text-fg"
+                        className="rounded-lg border border-line px-3.5 py-2 text-[13.5px] text-muted hover:text-ink"
                       >
                         Ara
                       </a>
@@ -179,10 +179,10 @@ export default async function AdminPage() {
                         <select
                           name="status"
                           defaultValue={l.status}
-                          className="rounded-lg border border-line bg-ink-2/70 px-3 py-2 text-[13.5px] outline-none focus:border-accent/70"
+                          className="rounded-lg border border-line bg-paper-2/60 px-3 py-2 text-[13.5px] outline-none focus:border-ink"
                         >
                           {Object.entries(statusLabels).map(([k, v]) => (
-                            <option key={k} value={k} className="bg-ink-2">
+                            <option key={k} value={k} className="bg-paper-2">
                               {v}
                             </option>
                           ))}
@@ -208,7 +208,7 @@ export default async function AdminPage() {
         {/* referanslar */}
         <section className="mt-14">
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <h2 className="font-display text-[20px] font-bold">Referanslar</h2>
+            <h2 className="display-sm text-[20px] font-semibold">Referanslar</h2>
             {projects.length === 0 && (
               <form action={importSeedAction}>
                 <button className="rounded-lg border border-line px-3.5 py-2 text-[13.5px] hover:border-accent/60">
@@ -234,7 +234,7 @@ export default async function AdminPage() {
                     className="h-3 w-3 shrink-0 rounded-full"
                     style={{ background: p.accent }}
                   />
-                  <span className="font-display text-[15px] font-semibold">
+                  <span className="display-sm text-[15px] font-semibold">
                     {p.title}
                   </span>
                   <span className="text-[13px] text-muted-2">{p.category}</span>
@@ -255,7 +255,7 @@ export default async function AdminPage() {
           </div>
 
           <div className="card mt-5 p-5">
-            <h3 className="font-display mb-4 text-[16px] font-semibold">
+            <h3 className="display-sm mb-4 text-[16px] font-semibold">
               Yeni referans ekle
             </h3>
             <ProjectForm />

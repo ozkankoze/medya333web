@@ -15,7 +15,7 @@ export default function LoginForm() {
         <div className="flex items-center gap-2.5">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/logo-mark.png" alt="" width={72} height={32} className="h-8 w-auto" />
-          <span className="font-display text-[15px] font-semibold">
+          <span className="display-sm text-[15px] font-semibold">
             Yönetim Paneli
           </span>
         </div>
@@ -29,7 +29,7 @@ export default function LoginForm() {
           type="password"
           autoFocus
           required
-          className="w-full rounded-xl border border-line bg-ink-2/70 px-4 py-3.5 text-[15px] outline-none focus:border-accent/70"
+          className="w-full rounded-xl border border-line bg-paper-2/60 px-4 py-3.5 text-[15px] outline-none focus:border-ink"
           placeholder="••••••••"
         />
 
@@ -41,7 +41,7 @@ export default function LoginForm() {
 
         <button
           disabled={pending}
-          className="mt-5 w-full rounded-xl bg-gradient-to-r from-accent to-accent-soft py-3.5 text-[15px] font-semibold text-[#1a1206] disabled:opacity-60"
+          className="mt-5 w-full rounded-xl bg-gradient-to-r from-ink to-ink-2 py-3.5 text-[15px] font-semibold text-paper disabled:opacity-60"
         >
           {pending ? "Kontrol ediliyor…" : "Giriş yap"}
         </button>

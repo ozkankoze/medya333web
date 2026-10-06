@@ -1,39 +1,63 @@
 import { services } from "@/lib/content";
-import { iconMap } from "./Icons";
-import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
+import SectionHeading from "./SectionHeading";
+import {
+  IconBuilding,
+  IconCart,
+  IconTarget,
+  IconSearch,
+  IconRefresh,
+  IconShield,
+} from "./Icons";
+
+const icons = {
+  building: IconBuilding,
+  cart: IconCart,
+  target: IconTarget,
+  search: IconSearch,
+  refresh: IconRefresh,
+  shield: IconShield,
+} as const;
 
 export default function Services() {
   return (
-    <section id="hizmetler" className="relative py-24 lg:py-32">
+    <section id="hizmetler" className="relative overflow-hidden bg-paper-2 py-24 lg:py-32">
       <div className="container-x">
         <Reveal>
           <SectionHeading
             eyebrow="Hizmetler"
             title={
               <>
-                Bir siteye ihtiyacınız yok.
-                <br />
-                <span className="text-muted">Sonuç getiren bir siteye var.</span>
+                İhtiyacınız ne olursa olsun,{" "}
+                <span className="serif text-gold">tek elden</span>.
               </>
             }
-            desc="Projenin büyüklüğü ne olursa olsun aynı standartla çalışıyoruz: temiz tasarım, hızlı altyapı, ölçülebilir sonuç."
+            desc="Tasarımdan yayına, SEO'dan bakıma kadar her adımı biz yürütüyoruz. Farklı firmalarla uğraşmanıza gerek kalmıyor."
           />
         </Reveal>
 
-        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 border-t border-line-2">
           {services.map((s, i) => {
-            const Icon = iconMap[s.icon];
+            const Icon = icons[s.icon as keyof typeof icons];
             return (
-              <Reveal key={s.title} delay={i * 60}>
-                <div className="card card-hover group h-full p-6">
-                  <div className="grid h-11 w-11 place-items-center rounded-xl border border-line bg-ink-2 text-accent-soft transition-colors group-hover:border-accent/50 group-hover:text-gold-lite">
-                    <Icon className="h-[21px] w-[21px]" />
+              <Reveal key={s.title} delay={i * 50}>
+                <div className="group grid grid-cols-1 items-start gap-4 border-b border-line-2 py-8 transition-colors hover:bg-paper md:grid-cols-12 md:gap-8 md:py-9">
+                  <div className="flex items-center gap-4 md:col-span-1">
+                    <span className="text-[13px] tabular-nums text-muted-2">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
                   </div>
-                  <h3 className="font-display mt-5 text-[17.5px] font-semibold">
-                    {s.title}
-                  </h3>
-                  <p className="mt-2.5 text-[14.5px] leading-relaxed text-muted">
+
+                  <div className="flex items-center gap-4 md:col-span-4">
+                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-line bg-paper text-gold transition-colors group-hover:border-gold/40">
+                      <Icon className="h-5 w-5" />
+                    </span>
+                    <h3 className="display-sm text-[clamp(1.15rem,2vw,1.45rem)]">
+                      {s.title}
+                    </h3>
+                  </div>
+
+                  <p className="text-[15.5px] leading-relaxed text-muted md:col-span-7">
                     {s.text}
                   </p>
                 </div>

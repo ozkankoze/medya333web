@@ -1,61 +1,75 @@
 import Reveal from "./Reveal";
-
-const stats = [
-  { value: "1.5sn", label: "Ortalama açılma süresi hedefi" },
-  { value: "100%", label: "Mobil uyumlu teslim" },
-  { value: "7/24", label: "Site kesintisiz yayında" },
-  { value: "1 yıl", label: "Teslim sonrası destek" },
-];
+import { IconCheck } from "./Icons";
 
 const points = [
   {
-    title: "Hazır tema kullanmıyoruz",
-    text: "Her proje sıfırdan tasarlanır. Siteniz ne başkasına benzer ne de gereksiz kodla yavaşlar.",
+    title: "Hazır tema yok",
+    text: "Her proje boş sayfadan başlar. Siteniz, aynı temayı kullanan yüzlerce siteye benzemez.",
   },
   {
-    title: "Site tamamen sizin olur",
-    text: "Domain, hosting ve tüm şifreler sizin adınıza. İstediğiniz an başka bir yere taşıyabilirsiniz.",
+    title: "Hız bir özellik değil, şart",
+    text: "Core Web Vitals'ı geçen, mobilde saniyeler içinde açılan siteler. Yavaş site müşteri kaybettirir.",
   },
   {
-    title: "Teslimden sonra kaybolmuyoruz",
-    text: "Yayına aldıktan sonra güncelleme, yedekleme ve teknik destek devam eder.",
+    title: "Siteniz size ait",
+    text: "Domain, hosting, kod — hepsi sizin adınıza. Şifreler teslimde size geçer, bize bağımlı kalmazsınız.",
+  },
+  {
+    title: "Panelden kendiniz yönetin",
+    text: "Yazı, görsel, ürün ve fiyat değişikliklerini teknik bilgi gerekmeden yaparsınız. Eğitimi de biz veriyoruz.",
+  },
+  {
+    title: "Teslimle bitmiyor",
+    text: "Yayından sonra güncelleme, yedekleme ve güvenlik desteği devam eder. Telefonun ucundayız.",
+  },
+  {
+    title: "İstanbul'da, yanınızda",
+    text: "İsterseniz yerinizde buluşup konuşuruz. Ekrandan anlatılamayan şeyler yüz yüze çözülür.",
   },
 ];
 
 export default function WhyUs() {
   return (
-    <section className="relative py-8 lg:py-12">
+    <section className="relative overflow-hidden py-24 lg:py-32">
       <div className="container-x">
-        <Reveal>
-          <div className="card overflow-hidden p-0">
-            <div className="grid divide-y divide-line sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4 lg:divide-x">
-              {stats.map((s) => (
-                <div key={s.label} className="px-6 py-7 text-center">
-                  <div className="font-display bg-gradient-to-br from-white to-accent-soft bg-clip-text text-[30px] font-bold text-transparent">
-                    {s.value}
+        <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-5">
+            <Reveal>
+              <span className="eyebrow">Neden biz</span>
+              <h2 className="display-sm mt-5 text-[clamp(2rem,4.6vw,3.2rem)]">
+                Ucuz site pahalıya{" "}
+                <span className="serif text-gold">mal olur</span>.
+              </h2>
+              <p className="mt-6 max-w-[46ch] text-[16.5px] leading-relaxed text-muted">
+                Bir web sitesi masraf kalemi değil, satış kanalıdır. Yanlış
+                kurulduğunda müşteri kaçırır; doğru kurulduğunda kendi parasını
+                çıkarır. Biz ikincisini yapıyoruz.
+              </p>
+              <a href="#iletisim" className="btn btn-dark mt-9">
+                Projenizi konuşalım
+              </a>
+            </Reveal>
+          </div>
+
+          <div className="lg:col-span-7">
+            <div className="grid gap-x-8 gap-y-9 sm:grid-cols-2">
+              {points.map((p, i) => (
+                <Reveal key={p.title} delay={i * 60}>
+                  <div>
+                    <span className="grid h-8 w-8 place-items-center rounded-full bg-ink text-paper">
+                      <IconCheck className="h-4 w-4" />
+                    </span>
+                    <h3 className="mt-4 text-[17px] font-semibold tracking-[-0.01em]">
+                      {p.title}
+                    </h3>
+                    <p className="mt-2 text-[15px] leading-relaxed text-muted">
+                      {p.text}
+                    </p>
                   </div>
-                  <div className="mt-1.5 text-[13px] leading-snug text-muted">
-                    {s.label}
-                  </div>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
-        </Reveal>
-
-        <div className="mt-6 grid gap-4 lg:grid-cols-3">
-          {points.map((p, i) => (
-            <Reveal key={p.title} delay={i * 80}>
-              <div className="card h-full p-6">
-                <h3 className="font-display text-[16.5px] font-semibold">
-                  {p.title}
-                </h3>
-                <p className="mt-2.5 text-[14.5px] leading-relaxed text-muted">
-                  {p.text}
-                </p>
-              </div>
-            </Reveal>
-          ))}
         </div>
       </div>
     </section>

@@ -96,13 +96,44 @@ Panelde yapabileceklerin:
 
 ### Referans ekran görüntüsü ekleme
 
-1. Sitenin ekran görüntüsünü al (1600×1000 px, JPG önerilir)
+1. Sitenin ekran görüntüsünü al (1600×800 px, JPG önerilir — 2:1 oran)
 2. `public/referanslar/` klasörüne koy, push et
 3. Panelde ilgili referansın **Görsel adresi** alanına `/referanslar/dosyaadi.jpg` yaz
 
-Görsel yoksa otomatik olarak marka renkli, tarayıcı çerçeveli bir önizleme kartı gösterilir — site yine de düzgün görünür.
+Şu an yayında olan 8 referans:
+
+| Dosya | Site |
+|---|---|
+| `locksansafety.jpg` | locksansafety.com |
+| `otocentermarket.jpg` | otocentermarket.com |
+| `derengigi.jpg` | derengigi.com |
+| `nextstop.jpg` | nextstopbackpackers.com |
+| `erenmobilya.jpg` | erenmobilyatasarimatasehir.com |
+| `kkdmarkt.jpg` | kkdmarkt.com |
+| `sofilxloto.jpg` | sofilxloto.com |
+| `ekedurunleri.jpg` | ekedurunleri.com |
+
+Görsel yoksa otomatik olarak marka renkli bir önizleme kartı gösterilir.
 
 ---
+
+## Tasarım sistemi
+
+Açık (beyaz) tema. Renkler ve tipografi `src/app/globals.css` içindeki
+`@theme` bloğunda tanımlı — tek yerden değiştirilir.
+
+| Token | Değer | Kullanım |
+|---|---|---|
+| `paper` / `paper-2` | `#ffffff` / `#f6f5f2` | zemin, dönüşümlü bölümler |
+| `ink` | `#0b0b0c` | ana metin, koyu butonlar |
+| `muted` | `#6c6c73` | açıklama metinleri |
+| `line` | `#e5e3dd` | ince ayraçlar |
+| `gold` | `#a97d33` | marka vurgusu (italik kelimeler) |
+
+Yazı tipleri: **Inter** (gövde) + **Instrument Serif** italik (vurgu kelimeleri).
+Vurgu için `<span className="serif text-gold">kelime</span>` yeterli.
+
+
 
 ## 5. Google Ads dönüşüm takibi (kurulu)
 

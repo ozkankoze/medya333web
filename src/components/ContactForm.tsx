@@ -8,7 +8,7 @@ import { IconArrow, IconCheck } from "./Icons";
 type State = "idle" | "sending" | "ok" | "error";
 
 const inputCls =
-  "w-full rounded-xl border border-line bg-ink-2/70 px-4 py-3.5 text-[15px] text-fg outline-none transition-colors placeholder:text-muted-2 focus:border-accent/70 focus:bg-ink-2";
+  "w-full rounded-xl border border-line bg-paper-2/60 px-4 py-3.5 text-[15px] text-ink outline-none transition-all placeholder:text-muted-2 focus:border-ink focus:bg-paper";
 
 export default function ContactForm() {
   const [state, setState] = useState<State>("idle");
@@ -46,11 +46,11 @@ export default function ContactForm() {
 
   if (state === "ok") {
     return (
-      <div className="card grid place-items-center p-10 text-center">
-        <div className="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-accent to-gold-lite">
-          <IconCheck className="h-7 w-7 text-[#1a1206]" />
+      <div className="card grid place-items-center p-12 text-center">
+        <div className="grid h-14 w-14 place-items-center rounded-2xl bg-ink">
+          <IconCheck className="h-7 w-7 text-paper" />
         </div>
-        <h3 className="font-display mt-5 text-[20px] font-bold">
+        <h3 className="display-sm mt-5 text-[22px]">
           Talebiniz bize ulaştı
         </h3>
         <p className="mt-2.5 max-w-sm text-[14.5px] leading-relaxed text-muted">
@@ -59,7 +59,7 @@ export default function ContactForm() {
         </p>
         <button
           onClick={() => setState("idle")}
-          className="mt-6 text-[14px] font-medium text-accent-soft underline underline-offset-4 hover:text-gold-lite"
+          className="mt-6 text-[14px] font-medium text-gold underline underline-offset-4 hover:text-ink"
         >
           Yeni bir talep gönder
         </button>
@@ -68,7 +68,7 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="card p-6 sm:p-8">
+    <form onSubmit={onSubmit} className="card p-7 sm:p-9">
       <input
         type="text"
         name="website"
@@ -109,7 +109,7 @@ export default function ContactForm() {
           </label>
           <select id="service" name="service" className={inputCls} defaultValue={serviceOptions[0]}>
             {serviceOptions.map((s) => (
-              <option key={s} value={s} className="bg-ink-2">
+              <option key={s} value={s} className="bg-paper">
                 {s}
               </option>
             ))}
@@ -121,7 +121,7 @@ export default function ContactForm() {
           </label>
           <select id="budget" name="budget" className={inputCls} defaultValue={budgets[0]}>
             {budgets.map((b) => (
-              <option key={b} value={b} className="bg-ink-2">
+              <option key={b} value={b} className="bg-paper">
                 {b}
               </option>
             ))}
@@ -143,7 +143,7 @@ export default function ContactForm() {
       </div>
 
       {state === "error" && (
-        <p className="mt-4 rounded-xl border border-red-500/40 bg-red-500/10 px-4 py-3 text-[13.5px] text-red-300">
+        <p className="mt-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-[13.5px] text-red-700">
           {error}
         </p>
       )}
@@ -151,7 +151,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={state === "sending"}
-        className="group mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-accent to-accent-soft px-6 py-4 text-[15px] font-semibold text-[#1a1206] transition-transform hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-60"
+        className="btn btn-dark group mt-7 w-full !py-4 !text-[15.5px] disabled:cursor-not-allowed disabled:opacity-55"
       >
         {state === "sending" ? "Gönderiliyor…" : "Teklif talebini gönder"}
         {state !== "sending" && (

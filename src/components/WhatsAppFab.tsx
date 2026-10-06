@@ -20,7 +20,7 @@ export default function WhatsAppFab() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="WhatsApp ile yazın"
-      className={`fixed bottom-5 right-5 z-40 flex items-center gap-2.5 rounded-full bg-[#25D366] px-4 py-3.5 font-semibold text-[#04220f] shadow-[0_16px_40px_-12px_rgba(37,211,102,.8)] transition-all duration-300 ${
+      className={`fixed bottom-5 right-5 z-40 flex items-center gap-2.5 rounded-full bg-[#25D366] px-4 py-3.5 font-semibold text-white shadow-[0_14px_34px_-10px_rgba(37,211,102,.55)] transition-all duration-300 ${
         show
           ? "pointer-events-auto translate-y-0 opacity-100"
           : "pointer-events-none translate-y-4 opacity-0"

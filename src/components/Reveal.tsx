@@ -17,10 +17,20 @@ export default function Reveal({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    if (typeof IntersectionObserver === "undefined") {
+
+    const reduce =
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+
+    if (reduce || typeof IntersectionObserver === "undefined") {
       setShown(true);
       return;
     }
+
+    // Güvenlik ağı: gözlemci herhangi bir sebeple tetiklenmezse
+    // içerik gizli kalmasın.
+    const failsafe = window.setTimeout(() => setShown(true), 1600);
+
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
@@ -30,10 +40,18 @@ export default function Reveal({
           }
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -60px 0px" }
+      { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
     );
     io.observe(el);
-    return () => io.disconnect();
+
+    // Zaten ekrandaysa (sayfa ortasından açılmışsa) hemen göster
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight && r.bottom > 0) setShown(true);
+
+    return () => {
+      window.clearTimeout(failsafe);
+      io.disconnect();
+    };
   }, []);
 
   return (

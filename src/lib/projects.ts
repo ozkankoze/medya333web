@@ -20,71 +20,130 @@ export type Project = {
 export const seedProjects: Project[] = [
   {
     id: -1,
-    title: "KKD Markt",
-    url: "https://www.kkdmarkt.com/",
+    title: "Locksan Safety",
+    url: "https://www.locksansafety.com",
     category: "E-Ticaret",
     description:
-      "İş güvenliği ve kişisel koruyucu donanım ürünleri için kurulan e-ticaret altyapısı. 931+ ürün, 9 ana kategori; OEM/parça araması ve mobil öncelikli teklif akışı.",
-    image_url: "/referanslar/kkdmarkt.jpg",
-    tags: "E-Ticaret,Ürün Kataloğu,Mobil Uyumlu,SEO",
-    accent: "#F59E0B",
-    sort_order: 10,
+      "LOTO / EKED iş güvenliği ekipmanları üreticisi için 400+ ürünlük e-ticaret altyapısı. Ürün filtreleme, katalog indirme ve hızlı teklif akışı.",
+    image_url: "/referanslar/locksansafety.jpg",
+    tags: "E-Ticaret,Katalog,SEO",
+    accent: "#D62828",
+    sort_order: 1,
     published: true,
   },
   {
     id: -2,
-    title: "Locks & Safety",
-    url: "https://www.locksansafety.com/",
-    category: "Kurumsal Web Sitesi",
+    title: "Oto Center Market",
+    url: "https://www.otocentermarket.com",
+    category: "E-Ticaret",
     description:
-      "Eked/Loto güvenlik ürünleri üreticisi için kurumsal tanıtım sitesi. Ürün kataloğu, eğitim & danışmanlık sayfaları ve doğrudan iletişim kanallarıyla sade bir yapı.",
-    image_url: "/referanslar/locksansafety.jpg",
-    tags: "Kurumsal,Ürün Vitrini,İletişim Odaklı",
-    accent: "#22D3EE",
-    sort_order: 20,
+      "2.600+ ürün ve 54 araç markası için OEM / motor kodu ile parça bulma motoru. Araç seviyesinde uyumluluk kontrolü ve sipariş takibi.",
+    image_url: "/referanslar/otocentermarket.jpg",
+    tags: "E-Ticaret,Ürün Arama,Entegrasyon",
+    accent: "#1D4ED8",
+    sort_order: 2,
     published: true,
   },
   {
     id: -3,
-    title: "Oto Center Market",
-    url: "https://www.otocentermarket.com/",
-    category: "E-Ticaret",
+    title: "Deren Gigi",
+    url: "https://www.derengigi.com",
+    category: "Özel Tasarım",
     description:
-      "Oto yedek parça e-ticareti. 2.677+ ürün ve 54+ araç markası; motor kodu seviyesinde uyumluluk sorgusu, sepet ve sipariş takibiyle tam mağaza altyapısı.",
-    image_url: "/referanslar/otocentermarket.jpg",
-    tags: "E-Ticaret,Araç Uyumluluğu,Filtreleme,Sipariş Takibi",
-    accent: "#3B82F6",
-    sort_order: 30,
+      "DJ ve prodüktör için deneysel kimlik sitesi. Akışkan WebGL görsel, sesle tepki veren arayüz ve tam ekran tipografi.",
+    image_url: "/referanslar/derengigi.jpg",
+    tags: "Özel Tasarım,Animasyon,WebGL",
+    accent: "#A855F7",
+    sort_order: 3,
     published: true,
   },
   {
     id: -4,
-    title: "Medya 333",
-    url: "https://www.medya333.com/",
-    category: "Sipariş Platformu",
+    title: "Next Stop Network",
+    url: "https://www.nextstopbackpackers.com",
+    category: "Platform",
     description:
-      "Kendi markamız Medya 333 için sosyal medya hizmet ve sipariş platformu. 4 platform, 22 hizmet; anlık fiyat hesaplama, sipariş oluşturma ve adım adım takip.",
-    image_url: "/referanslar/medya333.jpg",
-    tags: "Platform,Sipariş Yönetimi,Anlık Fiyatlama,Üyelik",
-    accent: "#D4A857",
-    sort_order: 40,
+      "Hostel ağı için çok dilli rezervasyon platformu. Destinasyon arama, tarih ve kişi filtreleri, üyelik bazlı Next Pass sistemi.",
+    image_url: "/referanslar/nextstop.jpg",
+    tags: "Platform,Rezervasyon,Çok Dilli",
+    accent: "#EC4899",
+    sort_order: 4,
+    published: true,
+  },
+  {
+    id: -5,
+    title: "Eren Mobilya Tasarım",
+    url: "https://www.erenmobilyatasarimatasehir.com",
+    category: "Kurumsal",
+    description:
+      "Ataşehir'de ölçüye özel mutfak ve dolap üretimi yapan atölye için galeri odaklı kurumsal site. Proje vitrini ve yerel SEO kurgusu.",
+    image_url: "/referanslar/erenmobilya.jpg",
+    tags: "Kurumsal,Galeri,Yerel SEO",
+    accent: "#8B6F47",
+    sort_order: 5,
+    published: true,
+  },
+  {
+    id: -6,
+    title: "KKD Markt",
+    url: "https://www.kkdmarkt.com",
+    category: "E-Ticaret",
+    description:
+      "Kişisel koruyucu donanım pazaryeri: 931 ürün, 9 ana kategori, 23 global marka. Kategori ağacı ve hızlı teklif talebi üzerine kurulu.",
+    image_url: "/referanslar/kkdmarkt.jpg",
+    tags: "E-Ticaret,Çok Kategori,B2B",
+    accent: "#E11D48",
+    sort_order: 6,
+    published: true,
+  },
+  {
+    id: -7,
+    title: "Sofilx LOTO",
+    url: "https://www.sofilxloto.com",
+    category: "E-Ticaret",
+    description:
+      "Kilitleme-etiketleme ekipmanlarında 2010'dan beri faaliyet gösteren markanın ürün vitrini. Kampanya alanı ve WhatsApp'tan teklif akışı.",
+    image_url: "/referanslar/sofilxloto.jpg",
+    tags: "E-Ticaret,Marka,Teklif Akışı",
+    accent: "#B91C2C",
+    sort_order: 7,
+    published: true,
+  },
+  {
+    id: -8,
+    title: "SOFT Safety",
+    url: "https://www.ekedurunleri.com",
+    category: "Kurumsal",
+    description:
+      "Enerji izolasyon çözümleri için sade, editoryal ürün anlatımı. Teknik föy tabloları ve mühendis diline uygun içerik mimarisi.",
+    image_url: "/referanslar/ekedurunleri.jpg",
+    tags: "Kurumsal,Teknik İçerik,Katalog",
+    accent: "#DC2626",
+    sort_order: 8,
     published: true,
   },
 ];
 
-export async function getProjects(includeUnpublished = false): Promise<Project[]> {
-  if (!sql) return includeUnpublished ? seedProjects : seedProjects.filter((p) => p.published);
+export async function getProjects(
+  includeUnpublished = false
+): Promise<Project[]> {
+  if (!sql)
+    return includeUnpublished
+      ? seedProjects
+      : seedProjects.filter((p) => p.published);
   try {
     await ensureSchema();
     const rows = includeUnpublished
       ? await sql`SELECT * FROM projects ORDER BY sort_order ASC, id ASC`
       : await sql`SELECT * FROM projects WHERE published = TRUE ORDER BY sort_order ASC, id ASC`;
     if (!rows.length) {
-      return includeUnpublished ? seedProjects : seedProjects.filter((p) => p.published);
+      return includeUnpublished
+        ? seedProjects
+        : seedProjects.filter((p) => p.published);
     }
     return rows as Project[];
   } catch (e) {
-    console.error("getProjects failed, seed verisine düşüldü:", e);
+    console.error("getProjects başarısız, seed verisine düşüldü:", e);
     return seedProjects;
   }
 }

@@ -1,84 +1,92 @@
 import { packages } from "@/lib/content";
-import { waLink } from "@/lib/site";
-import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
-import { IconCheck } from "./Icons";
+import SectionHeading from "./SectionHeading";
+import { IconCheck, IconArrow } from "./Icons";
 
 export default function Packages() {
   return (
-    <section id="paketler" className="relative py-24 lg:py-32">
+    <section id="paketler" className="relative overflow-hidden py-24 lg:py-32">
       <div className="container-x">
         <Reveal>
           <SectionHeading
             center
             eyebrow="Paketler"
-            title="Size uygun olanı birlikte seçelim"
-            desc="Her işin ihtiyacı farklı olduğu için sabit fiyat vermiyoruz. Kapsamı netleştirip size özel, net bir teklif hazırlıyoruz."
+            title={
+              <>
+                Size uygun olanı <span className="serif text-gold">birlikte</span>{" "}
+                seçelim.
+              </>
+            }
+            desc="Her işin kapsamı farklı olduğu için fiyatı sitede yazmıyoruz. 10 dakikalık bir görüşmede net rakam veriyoruz."
           />
         </Reveal>
 
-        <div className="mt-14 grid gap-5 lg:grid-cols-3">
+        <div className="mt-16 grid gap-6 lg:grid-cols-3">
           {packages.map((pkg, i) => (
             <Reveal key={pkg.name} delay={i * 90}>
               <div
-                className={`relative flex h-full flex-col rounded-[20px] p-7 ${
+                className={`flex h-full flex-col rounded-[22px] p-8 lg:p-9 ${
                   pkg.highlight
-                    ? "border border-accent/45 bg-gradient-to-b from-accent/[0.14] to-transparent shadow-[0_30px_80px_-40px_rgba(201,146,47,.65)]"
-                    : "card"
+                    ? "bg-ink text-paper"
+                    : "border border-line bg-paper"
                 }`}
               >
                 {pkg.highlight && (
-                  <span className="absolute -top-3 left-7 rounded-full bg-gradient-to-r from-accent to-gold-lite px-3 py-1 text-[11px] font-semibold text-[#1a1206]">
+                  <span className="mb-5 inline-flex w-fit rounded-full bg-paper/12 px-3 py-1 text-[12px] font-medium tracking-wide text-gold-2">
                     En çok tercih edilen
                   </span>
                 )}
-                <h3 className="font-display text-[22px] font-bold">{pkg.name}</h3>
-                <p className="mt-2 text-[14px] leading-relaxed text-muted">
+
+                <h3 className="display-sm text-[1.75rem]">{pkg.name}</h3>
+                <p
+                  className={`mt-3 text-[15px] leading-relaxed ${
+                    pkg.highlight ? "text-paper/65" : "text-muted"
+                  }`}
+                >
                   {pkg.subtitle}
                 </p>
 
-                <div className="my-6 h-px bg-line" />
+                <div
+                  className={`my-7 h-px ${
+                    pkg.highlight ? "bg-paper/15" : "bg-line"
+                  }`}
+                />
 
-                <ul className="flex-1 space-y-3">
+                <ul className="flex-1 space-y-3.5">
                   {pkg.features.map((f) => (
-                    <li key={f} className="flex gap-2.5 text-[14.5px] text-fg/90">
+                    <li key={f} className="flex gap-3 text-[15px] leading-snug">
                       <IconCheck
-                        className={`mt-0.5 h-4 w-4 shrink-0 ${
-                          pkg.highlight ? "text-gold-lite" : "text-accent-soft"
+                        className={`mt-[3px] h-4 w-4 shrink-0 ${
+                          pkg.highlight ? "text-gold-2" : "text-gold"
                         }`}
                       />
-                      <span>{f}</span>
+                      <span className={pkg.highlight ? "text-paper/88" : ""}>
+                        {f}
+                      </span>
                     </li>
                   ))}
                 </ul>
 
                 <a
                   href="#iletisim"
-                  className={`mt-8 rounded-xl px-5 py-3.5 text-center text-[14.5px] font-semibold transition-transform hover:scale-[1.02] ${
+                  className={`btn mt-9 w-full ${
                     pkg.highlight
-                      ? "bg-gradient-to-r from-accent to-accent-soft text-[#1a1206]"
-                      : "border border-line bg-white/[0.03] text-fg hover:border-accent/60"
+                      ? "bg-paper text-ink hover:bg-paper-3"
+                      : "btn-dark"
                   }`}
                 >
                   Fiyat teklifi al
+                  <IconArrow className="h-4 w-4" />
                 </a>
               </div>
             </Reveal>
           ))}
         </div>
 
-        <Reveal delay={150}>
-          <p className="mt-10 text-center text-[14px] text-muted-2">
-            Listede olmayan bir ihtiyacınız mı var?{" "}
-            <a
-              href={waLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-accent-soft underline underline-offset-4 hover:text-gold-lite"
-            >
-              WhatsApp'tan yazın
-            </a>
-            , birlikte kurgulayalım.
+        <Reveal>
+          <p className="mt-10 text-center text-[14.5px] text-muted-2">
+            Listede olmayan bir ihtiyacınız mı var? Yazın, özel kapsam
+            çıkaralım.
           </p>
         </Reveal>
       </div>
