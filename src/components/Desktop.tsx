@@ -112,8 +112,60 @@ export default function Desktop({ projects }: { projects: Project[] }) {
   return (
     <section id="isler" className="relative z-[2] bg-void py-[46px] lg:py-[72px]">
       <div className="gutter">
-        {/* CRT gövdesi */}
-        <div className="mx-auto max-w-[1060px] rounded-[22px] bg-[linear-gradient(170deg,#ded8c6,#c3bca8_42%,#a9a291)] p-4 pb-0 shadow-[inset_0_2px_0_rgba(255,255,255,.65),inset_0_-2px_0_rgba(0,0,0,.18),0_40px_90px_-40px_rgba(0,0,0,.9)] lg:rounded-[26px] lg:p-[22px] lg:pb-0">
+        {/* Mobilde monitör yok — aynı liste sade haliyle */}
+        <div className="lg:hidden">
+          <span className="mono text-faint">Referanslar</span>
+          <h2 className="display mt-3.5 text-[clamp(2rem,8.4vw,2.9rem)] [font-variant-numeric:lining-nums]">
+            {projects.length} firma. Hepsi yayında.
+          </h2>
+          <div className="mt-6 border-t border-[var(--line)]">
+            {projects.map((p) => (
+              <a
+                key={p.id ?? p.url}
+                href={p.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 border-b border-[var(--line)] py-3.5"
+              >
+                <i
+                  aria-hidden
+                  className="block h-2.5 w-2.5 flex-none rounded-[2px]"
+                  style={{ background: p.accent }}
+                />
+                <span className="min-w-0 flex-1">
+                  <span className="block truncate text-[15px] leading-[1.25]">
+                    {p.title}
+                  </span>
+                  <span className="mt-[3px] block truncate font-mono text-[10.5px] tracking-[0.06em] text-faint">
+                    {prettyHost(p.url)}
+                  </span>
+                </span>
+                <span className="mono flex-none text-faint">↗</span>
+              </a>
+            ))}
+          </div>
+          <div className="mt-6 flex flex-wrap gap-2.5">
+            <a
+              href={waLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pill"
+            >
+              WhatsApp
+            </a>
+            <a
+              href={site.social.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pill"
+            >
+              Instagram
+            </a>
+          </div>
+        </div>
+
+        {/* CRT gövdesi — sadece masaüstü */}
+        <div className="mx-auto hidden max-w-[1060px] rounded-[22px] lg:block bg-[linear-gradient(170deg,#ded8c6,#c3bca8_42%,#a9a291)] p-4 pb-0 shadow-[inset_0_2px_0_rgba(255,255,255,.65),inset_0_-2px_0_rgba(0,0,0,.18),0_40px_90px_-40px_rgba(0,0,0,.9)] lg:rounded-[26px] lg:p-[22px] lg:pb-0">
           <div className="rounded-[10px] bg-[linear-gradient(160deg,#6f6a5c,#4c483e)] p-2.5 shadow-[inset_0_2px_5px_rgba(0,0,0,.6)]">
             <div
               ref={ekranRef}
@@ -457,7 +509,7 @@ export default function Desktop({ projects }: { projects: Project[] }) {
           </div>
         </div>
 
-        <p className="mono mx-auto mt-3.5 max-w-[1060px] px-1 text-white/70">
+        <p className="mono mx-auto mt-3.5 hidden max-w-[1060px] px-1 text-white/70 lg:block">
           {dokunmatik
             ? "Klasörlere dokun — listede bir satıra dokununca site açılır"
             : "Klasörlere tıkla — listede satıra çift tıklayınca site açılır"}

@@ -1,13 +1,22 @@
 import { getProjects } from "@/lib/projects";
 import { site, waLink } from "@/lib/site";
+import { mockupSrc } from "@/lib/mockup";
 import Form3D from "./Form3D";
 import Showcase from "./Showcase";
 
 export default async function Hero() {
   const projects = await getProjects();
+  // Vitrinde ilk akacak referans — görselleri daha ilk boyamada istensin.
+  const ilk = projects[0] ? mockupSrc(projects[0].image_url) : null;
 
   return (
     <section className="relative isolate flex min-h-[620px] flex-col overflow-hidden lg:min-h-[min(840px,94svh)]">
+      {ilk && (
+        <>
+          <link rel="preload" as="image" href={ilk.masa} fetchPriority="high" />
+          <link rel="preload" as="image" href={ilk.mobil} fetchPriority="high" />
+        </>
+      )}
       <Form3D />
 
       {/* üstten ve alttan hafif karartma — yazılar her zaman okunsun */}

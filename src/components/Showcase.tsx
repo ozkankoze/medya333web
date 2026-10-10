@@ -30,15 +30,15 @@ export default function Showcase({
   const masaRef = useRef<HTMLImageElement>(null);
   const mobilRef = useRef<HTMLImageElement>(null);
 
-  const p = aktif === null ? null : projects[aktif];
+  /** Ziyaretçinin seçtiği marka. Hiçbiri seçilmemişken ilk referans akar. */
+  const secili = aktif === null ? null : projects[aktif];
+  const gosterilenIndeks = aktif ?? 0;
+  const p = projects[gosterilenIndeks];
 
-  /* mobilde dokunmatik düzen + ilk marka hazır gelsin */
+  /* mobilde dokunmatik düzen */
   useEffect(() => {
     const mq = window.matchMedia("(max-width: 1023px)");
-    const uygula = () => {
-      setMobil(mq.matches);
-      if (mq.matches) setAktif((a) => (a === null ? 0 : a));
-    };
+    const uygula = () => setMobil(mq.matches);
     uygula();
     mq.addEventListener("change", uygula);
     return () => mq.removeEventListener("change", uygula);
@@ -67,11 +67,8 @@ export default function Showcase({
   );
 
   useEffect(() => {
-    if (!p) {
-      window.__formRengi?.(ILK_RENK);
-      return;
-    }
-    window.__formRengi?.(p.accent);
+    window.__formRengi?.(p?.accent ?? ILK_RENK);
+    if (!p) return;
     const src = mockupSrc(p.image_url);
     const oran = mockupOran(p.image_url);
     reelKur(masaRef.current, src.masa, oran.d, 6);
@@ -99,14 +96,14 @@ export default function Showcase({
   };
 
   const etiketler = p ? metricList(p.metrics) : [];
-  const satirlar = p && !mobil ? [p.title] : ilkBaslik;
+  const satirlar = secili && !mobil ? [secili.title] : ilkBaslik;
 
   return (
     <div className="relative z-2 flex min-w-0 flex-1 flex-col gap-[18px] pb-[26px] pt-[6px] lg:grid lg:grid-cols-[minmax(150px,185px)_minmax(0,1fr)_auto] lg:grid-rows-[auto_1fr_auto] lg:gap-x-[30px] lg:gap-y-0 lg:pb-[30px] lg:pt-1">
       {/* dev iddia */}
       <h1
         className={`display m-0 lg:col-start-2 lg:row-start-2 lg:max-w-[12ch] lg:self-end ${
-          p && !mobil
+          secili && !mobil
             ? "text-[clamp(2.3rem,6.4vw,5rem)]"
             : "text-[clamp(2.9rem,12vw,9rem)]"
         }`}
@@ -130,17 +127,12 @@ export default function Showcase({
 
       {/* kısa metin */}
       <p className="gir max-w-[32ch] text-[14.5px] leading-[1.52] text-chalk [animation-delay:.3s] lg:col-start-2 lg:col-end-4 lg:row-start-1 lg:min-h-[4.6em] lg:max-w-[28ch] lg:justify-self-end lg:pt-[42px]">
-        {p && !mobil ? p.description : ilkMetin}
+        {secili && !mobil ? secili.description : ilkMetin}
       </p>
 
       {/* cihazlar */}
       <div className="gir mt-auto [animation-delay:.42s] lg:col-start-3 lg:row-start-2 lg:mt-0 lg:self-end lg:justify-self-end">
-      <div
-        aria-hidden={!p}
-        className={`flex items-end justify-center transition-[opacity,transform] duration-[550ms] lg:justify-end ${
-          p ? "opacity-100" : "translate-y-4 opacity-0"
-        }`}
-      >
+      <div className="flex items-end justify-center lg:justify-end">
         <div className="w-[min(66vw,258px)] flex-none lg:w-[300px] xl:w-[370px]">
           <div className="rounded-[10px] border border-white/20 bg-[#121218]/80 p-[7px] pb-2 shadow-[0_26px_60px_-22px_rgba(0,0,0,.95)] backdrop-blur-[10px]">
             <div className="relative aspect-16/10 overflow-hidden rounded bg-[#0b0b10]">
@@ -175,19 +167,18 @@ export default function Showcase({
 
       {/* etiket şeridi */}
       <div className="mono gir flex min-h-[1.4em] flex-wrap items-baseline gap-x-5 gap-y-[7px] text-mute [animation-delay:.5s] lg:col-start-2 lg:col-end-4 lg:row-start-3 lg:pt-5">
-        {etiketler.length ? (
-          etiketler
-            .slice(0, mobil ? 3 : 4)
-            .map((e) => <span key={e}>{e}</span>)
-        ) : (
-          <span>Bir markanın üstüne gelin</span>
+        {etiketler.slice(0, mobil ? 3 : 4).map((e) => (
+          <span key={e}>{e}</span>
+        ))}
+        {!secili && !mobil && (
+          <span className="text-faint">Bir markanın üstüne gelin</span>
         )}
         {p && (
           <a
             href={p.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-chalk underline-offset-4 hover:underline lg:hidden"
+            className="font-mono text-[10.5px] tracking-[0.06em] text-chalk underline-offset-4 hover:underline lg:hidden"
           >
             {prettyHost(p.url)} ↗
           </a>
@@ -205,14 +196,14 @@ export default function Showcase({
             key={x.id ?? x.url}
             type="button"
             role="listitem"
-            aria-current={aktif === i}
+            aria-current={gosterilenIndeks === i}
             onMouseEnter={() => goster(i)}
             onFocus={() => goster(i)}
             onClick={() => tikla(i)}
-            className={`inline-flex flex-none snap-start items-center whitespace-nowrap rounded-full px-4 py-2 text-[13.5px] tracking-[-0.01em] text-chalk backdrop-blur-[14px] transition-all duration-250 ${
-              aktif === i
-                ? "bg-white/[0.22] lg:translate-x-1"
-                : "bg-white/[0.09] hover:bg-white/[0.22] lg:hover:translate-x-1"
+            className={`inline-flex flex-none origin-left snap-start items-center whitespace-nowrap rounded-full px-4 py-2 text-[13.5px] tracking-[-0.01em] backdrop-blur-[14px] transition-all duration-300 ${
+              gosterilenIndeks === i
+                ? "scale-[1.07] bg-chalk font-medium text-void shadow-[0_8px_26px_-10px_rgba(0,0,0,.9)] lg:translate-x-1.5"
+                : "bg-white/[0.09] text-chalk hover:bg-white/[0.22] lg:hover:translate-x-1"
             }`}
           >
             {x.title}
