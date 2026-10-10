@@ -49,7 +49,7 @@ export default async function Hero() {
             <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-line pt-5">
               <span className="mono">İstanbul</span>
               <span className="mono">7+ yıl</span>
-              <span className="mono">Ortalama teslim 9 gün</span>
+              <span className="mono">8 sitede Google SEO 100/100</span>
               <a
                 href={`tel:${site.phoneRaw}`}
                 className="mono mono-ink link-slide"

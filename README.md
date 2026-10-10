@@ -122,7 +122,42 @@ Sitedeki görseller **kırpılmamış, tam sayfa** ekran görüntüleridir. Vitr
 
 Görsel yoksa otomatik olarak marka adıyla bir önizleme kartı gösterilir.
 
+### Sonuç rakamları (kartlardaki ölçümler)
+
+Her referans kartının altında ölçülmüş rakamlar var. Panelden
+**Sonuç rakamları** alanına `·` ile ayırarak yazılır:
+
+```
+Google SEO 100/100 · Mobil hız 90/100 · İndekslenebilir sayfa 280
+```
+
+Son kelime büyük punto ile sağa yazılır — **rakamı sona koy**.
+`280 sayfa indekslenebilir` değil, `İndekslenebilir sayfa 280`.
+
+Şu anki rakamlar Ekim 2026'da ölçüldü:
+
+- **Hız / SEO:** Google Lighthouse, mobil. Kendin kontrol etmek için
+  [pagespeed.web.dev](https://pagespeed.web.dev)
+- **İndekslenebilir sayfa:** sitenin kendi `sitemap.xml` dosyasındaki URL sayısı
+
+> Müşteriden gerçek veri alabilirsen (&laquo;ayda 25 WhatsApp teklifi&raquo;,
+> &laquo;sipariş %40 arttı&raquo;) en ikna edici şey odur — panelden ekle.
+> Doğrulayamadığın hiçbir rakamı yazma; B2B alıcısı kontrol eder.
+
 ---
+
+## Sektör sayfaları (outreach için)
+
+Soğuk mesaj atarken ana sayfa yerine sektör sayfasının adresini gönder:
+
+| Adres | Kime |
+|---|---|
+| `/is-guvenligi-web-tasarim` | LOTO / EKED / KKD firmaları (4 referansın var) |
+
+Yeni sektör eklemek için `src/lib/sektor.ts` içine bir kayıt ekle — sayfa,
+SEO etiketleri ve `sitemap.xml` kaydı otomatik oluşur.
+`referansBasliklari` alanındaki isimler referansların başlığıyla birebir
+aynı olmalı.
 
 ## Tasarım sistemi
 

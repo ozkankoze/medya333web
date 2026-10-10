@@ -29,6 +29,10 @@ export async function ensureSchema() {
       created_at    TIMESTAMPTZ NOT NULL DEFAULT NOW()
     )
   `;
+  // Sonuç rakamları (ör. "SEO 100/100 · 280 sayfa").
+  // Eski kurulumlarda kolon yoksa eklenir; varsa hiçbir şey yapmaz.
+  await sql`ALTER TABLE projects ADD COLUMN IF NOT EXISTS metrics TEXT NOT NULL DEFAULT ''`;
+
   await sql`
     CREATE TABLE IF NOT EXISTS leads (
       id          SERIAL PRIMARY KEY,

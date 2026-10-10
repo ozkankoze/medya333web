@@ -1,12 +1,16 @@
 import { site, waLink } from "@/lib/site";
 
 const links = [
-  { href: "#isler", label: "İşler" },
-  { href: "#hizmetler", label: "Hizmetler" },
-  { href: "#yontem", label: "Yöntem" },
-  { href: "#paketler", label: "Paketler" },
-  { href: "#sss", label: "S.S.S." },
-  { href: "#iletisim", label: "İletişim" },
+  { href: "/#isler", label: "İşler" },
+  { href: "/#hizmetler", label: "Hizmetler" },
+  { href: "/#yontem", label: "Yöntem" },
+  { href: "/#paketler", label: "Paketler" },
+  { href: "/#sss", label: "S.S.S." },
+  { href: "/#iletisim", label: "İletişim" },
+];
+
+const sayfalar = [
+  { href: "/is-guvenligi-web-tasarim", label: "İş güvenliği firmaları" },
 ];
 
 export default function Footer() {
@@ -55,7 +59,7 @@ export default function Footer() {
             </a>
           </div>
 
-          <div className="md:col-span-3">
+          <div className="md:col-span-2">
             <span className="mono text-white/40">Menü</span>
             <ul className="mt-4 space-y-2">
               {links.map((l) => (
@@ -71,7 +75,23 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="md:col-span-4">
+          <div className="md:col-span-2">
+            <span className="mono text-white/40">Sayfalar</span>
+            <ul className="mt-4 space-y-2">
+              {sayfalar.map((l) => (
+                <li key={l.href}>
+                  <a
+                    href={l.href}
+                    className="link-slide text-[15px] text-white/75 transition-colors hover:text-paper"
+                  >
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="md:col-span-3">
             <span className="mono text-white/40">İletişim</span>
             <ul className="mt-4 space-y-2 text-[15px]">
               <li>

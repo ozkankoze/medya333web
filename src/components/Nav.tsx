@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import { site, waLink } from "@/lib/site";
 
 const LINKS = [
-  { href: "#isler", label: "İşler" },
-  { href: "#yontem", label: "Yöntem" },
-  { href: "#paketler", label: "Paketler" },
-  { href: "#iletisim", label: "İletişim" },
+  { href: "/#isler", label: "İşler" },
+  { href: "/#yontem", label: "Yöntem" },
+  { href: "/#paketler", label: "Paketler" },
+  { href: "/#iletisim", label: "İletişim" },
 ];
 
 export default function Nav() {

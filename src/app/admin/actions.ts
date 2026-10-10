@@ -55,6 +55,7 @@ export async function saveProjectAction(fd: FormData) {
     description: str(fd, "description", 1000),
     image_url: str(fd, "image_url", 500),
     tags: str(fd, "tags", 300),
+    metrics: str(fd, "metrics", 300),
     accent: str(fd, "accent", 20) || "#6E56F8",
     sort_order: Number(fd.get("sort_order") || 0),
     published: fd.get("published") === "on",
@@ -66,15 +67,15 @@ export async function saveProjectAction(fd: FormData) {
       UPDATE projects SET
         title=${data.title}, url=${data.url}, category=${data.category},
         description=${data.description}, image_url=${data.image_url},
-        tags=${data.tags}, accent=${data.accent},
+        tags=${data.tags}, metrics=${data.metrics}, accent=${data.accent},
         sort_order=${data.sort_order}, published=${data.published}
       WHERE id=${id}
     `;
   } else {
     await sql!`
-      INSERT INTO projects (title,url,category,description,image_url,tags,accent,sort_order,published)
+      INSERT INTO projects (title,url,category,description,image_url,tags,metrics,accent,sort_order,published)
       VALUES (${data.title},${data.url},${data.category},${data.description},
-              ${data.image_url},${data.tags},${data.accent},${data.sort_order},${data.published})
+              ${data.image_url},${data.tags},${data.metrics},${data.accent},${data.sort_order},${data.published})
     `;
   }
   revalidatePath("/");
@@ -96,9 +97,9 @@ export async function importSeedAction() {
   if ((rows[0]?.c ?? 0) > 0) return;
   for (const p of seedProjects) {
     await sql!`
-      INSERT INTO projects (title,url,category,description,image_url,tags,accent,sort_order,published)
+      INSERT INTO projects (title,url,category,description,image_url,tags,metrics,accent,sort_order,published)
       VALUES (${p.title},${p.url},${p.category},${p.description},
-              ${p.image_url},${p.tags},${p.accent},${p.sort_order},${p.published})
+              ${p.image_url},${p.tags},${p.metrics},${p.accent},${p.sort_order},${p.published})
     `;
   }
   revalidatePath("/");

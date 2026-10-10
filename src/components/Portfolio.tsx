@@ -27,6 +27,12 @@ export default async function Portfolio() {
           </div>
         </div>
 
+        <p className="mono -mt-6 pb-10 leading-[1.6]">
+          Kartlardaki rakamlar ölçümdür, iddia değil — Google Lighthouse (mobil)
+          ve sitelerin kendi site haritaları, Ekim 2026. Siz de
+          pagespeed.web.dev adresinden kontrol edebilirsiniz.
+        </p>
+
         <div className="grid gap-x-10 gap-y-16 pb-20 sm:grid-cols-2 lg:gap-x-14 lg:gap-y-20 lg:pb-28">
           {projects.map((p, i) => (
             <Reveal key={p.id ?? p.url} delay={(i % 2) * 80} className="h-full">

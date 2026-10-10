@@ -31,6 +31,23 @@ export default function ProjectForm({ p }: { p?: Project }) {
         <label className={label}>Açıklama</label>
         <textarea name="description" rows={3} defaultValue={p?.description} className={`${field} resize-y`} />
       </div>
+      <div className="sm:col-span-2">
+        <label className={label}>
+          Sonuç rakamları — &laquo;·&raquo; ile ayırın. Son kelime büyük
+          yazılır, o yüzden rakamı sona koyun.
+        </label>
+        <input
+          name="metrics"
+          defaultValue={p?.metrics}
+          className={field}
+          placeholder="Google SEO 100/100 · Mobil hız 90/100 · Aylık teklif 25"
+        />
+        <p className="mt-1.5 text-[11.5px] leading-[1.5] text-muted-2">
+          Sadece doğrulayabildiğin rakamları yaz. Müşteriden aldığın gerçek
+          veriler (&laquo;ayda 25 WhatsApp teklifi&raquo; gibi) buraya en çok
+          yakışan şey — onları eklediğinde kart çok daha ikna edici olur.
+        </p>
+      </div>
       <div>
         <label className={label}>Etiketler (virgülle ayırın)</label>
         <input name="tags" defaultValue={p?.tags} className={field} placeholder="E-Ticaret, SEO, Mobil" />

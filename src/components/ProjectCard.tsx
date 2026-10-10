@@ -1,4 +1,4 @@
-import { Project, tagList } from "@/lib/projects";
+import { Project, metricList, tagList } from "@/lib/projects";
 import { creepSeconds, prettyHost, webpFor } from "@/lib/shots";
 
 export default function ProjectCard({
@@ -11,6 +11,7 @@ export default function ProjectCard({
   priority?: boolean;
 }) {
   const tags = tagList(p.tags);
+  const metrics = metricList(p.metrics);
   const webp = webpFor(p.image_url);
   const host = prettyHost(p.url);
 
@@ -76,9 +77,29 @@ export default function ProjectCard({
           <span className="link-slide">{p.title}</span>
         </h3>
 
-        <p className="mt-3 flex-1 max-w-[52ch] text-[15px] leading-[1.62] text-muted">
+        <p className="mt-3 max-w-[52ch] text-[15px] leading-[1.62] text-muted">
           {p.description}
         </p>
+
+        {/* ölçülmüş sonuçlar — süslemeden, rakam olarak */}
+        {metrics.length > 0 && (
+          <dl className="mt-5 flex-1 border-t border-ink">
+            {metrics.map((m) => {
+              const i = m.lastIndexOf(" ");
+              const head = m.slice(0, i);
+              const val = m.slice(i + 1);
+              return (
+                <div
+                  key={m}
+                  className="flex items-baseline justify-between gap-4 border-b border-line py-2"
+                >
+                  <dt className="mono">{head}</dt>
+                  <dd className="display-sm text-[15px] tabular-nums">{val}</dd>
+                </div>
+              );
+            })}
+          </dl>
+        )}
 
         {tags.length > 0 && (
           <div className="mono mt-5 flex flex-wrap gap-x-4 gap-y-1">
