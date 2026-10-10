@@ -10,14 +10,18 @@ export default function Footer() {
           <span>
             © {yil} {site.name} — Tüm hakları saklıdır
           </span>
-          <a
-            href={site.parentBrand.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-chalk"
-          >
-            Bir {site.parentBrand.name} markasıdır ↗
-          </a>
+          {site.parentBrand.url ? (
+            <a
+              href={site.parentBrand.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-chalk"
+            >
+              Bir {site.parentBrand.name} markasıdır ↗
+            </a>
+          ) : (
+            <span>Bir {site.parentBrand.name} markasıdır</span>
+          )}
         </div>
       </div>
     </footer>

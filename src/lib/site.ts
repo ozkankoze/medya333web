@@ -6,10 +6,11 @@
 export const site = {
   name: "Medya 333 Web",
   shortName: "333",
-  domain: "www.medya333web.com",
-  // Sitenin gerçekte açıldığı adres (medya333web.com → www'ye yönleniyor).
+  domain: "www.medya333.com",
+  // Sitenin gerçekte açıldığı adres. Vercel'de birincil (primary) domain bu;
+  // medya333.com ve medya333web.com buraya yönlenir.
   // Sitemap, canonical ve JSON-LD hep bunu kullanır — sonundaki / olmayacak.
-  url: "https://www.medya333web.com",
+  url: "https://www.medya333.com",
   tagline: "Web Tasarım & Geliştirme",
   description:
     "Kurumsal web sitesi, e-ticaret ve landing page tasarımı. Hızlı açılan, mobil uyumlu, Google'da bulunan siteler tasarlıyoruz.",
@@ -30,9 +31,10 @@ export const site = {
     youtube: "",
   },
 
+  // Alt bilgideki marka satırı. url boşsa link değil, düz yazı olarak çıkar.
   parentBrand: {
     name: "Medya 333",
-    url: "https://www.medya333.com/",
+    url: "",
   },
 } as const;
 
