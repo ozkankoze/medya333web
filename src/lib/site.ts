@@ -20,7 +20,7 @@ export const site = {
   whatsapp: "905060409511", // wa.me linki için, + ve boşluk olmadan
   whatsappMessage:
     "Merhaba, web sitesi yaptırmak istiyorum. Bilgi alabilir miyim?",
-  email: "info@medya333web.com",
+  email: "info@medya333.com",
   address: "", // ofis adresi eklemek istersen buraya yaz, otomatik görünür
 
   social: {

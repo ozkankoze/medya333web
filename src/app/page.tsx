@@ -1,31 +1,24 @@
-import Nav from "@/components/Nav";
+import Cursor from "@/components/Cursor";
 import Hero from "@/components/Hero";
-import Portfolio from "@/components/Portfolio";
-import Services from "@/components/Services";
-import Process from "@/components/Process";
-import Packages from "@/components/Packages";
-import Faq from "@/components/Faq";
-import Contact from "@/components/Contact";
+import Desktop from "@/components/Desktop";
+import Chat from "@/components/Chat";
 import Footer from "@/components/Footer";
-import WhatsAppFab from "@/components/WhatsAppFab";
+import { getProjects } from "@/lib/projects";
 
 export const revalidate = 60;
 
-export default function Home() {
+export default async function Home() {
+  const projects = await getProjects();
+
   return (
     <>
-      <Nav />
+      <Cursor />
       <main>
         <Hero />
-        <Portfolio />
-        <Services />
-        <Process />
-        <Packages />
-        <Faq />
-        <Contact />
+        <Desktop projects={projects} />
+        <Chat />
       </main>
       <Footer />
-      <WhatsAppFab />
     </>
   );
 }

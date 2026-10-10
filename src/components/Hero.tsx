@@ -1,71 +1,74 @@
-import { getProjects, sayiyla } from "@/lib/projects";
+import { getProjects } from "@/lib/projects";
 import { site, waLink } from "@/lib/site";
-import Stage from "./Stage";
+import Form3D from "./Form3D";
+import Showcase from "./Showcase";
 
 export default async function Hero() {
   const projects = await getProjects();
-  const n = projects.length;
-  const yazi = sayiyla(n);
 
   return (
-    <section className="relative rule-b">
-      <div className="wrap">
-        <div className="grid gap-10 pb-14 pt-10 lg:grid-cols-12 lg:gap-12 lg:pb-20 lg:pt-16">
-          {/* ---- sol: iddia ---- */}
-          <div className="min-w-0 lg:col-span-5 lg:pr-4">
-            <div className="flex items-center gap-3">
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-ink opacity-60" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-ink" />
-              </span>
-              <span className="mono mono-ink">Canlı vitrin</span>
-            </div>
+    <section className="relative isolate flex min-h-[620px] flex-col overflow-hidden lg:min-h-[min(840px,94svh)]">
+      <Form3D />
 
-            <h1 className="display mt-7 text-[clamp(2.6rem,7.4vw,5.1rem)]">
-              {yazi} marka.
-              <br />
-              {yazi} canlı site.
-              <br />
-              <span className="text-muted-2">Hepsi şu an</span>
-              <br />
-              internette.
-            </h1>
+      {/* üstten ve alttan hafif karartma — yazılar her zaman okunsun */}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(to_bottom,rgba(5,5,8,.6)_0%,transparent_24%,transparent_50%,rgba(5,5,8,.74)_100%)]"
+      />
 
-            <p className="mt-7 max-w-[46ch] text-[16px] leading-[1.65] text-muted lg:text-[17px]">
-              Portfolyo diye kırpılmış görseller koymuyoruz. Gördüğün şey
-              müşterimizin sitesinin{" "}
-              <span className="text-ink underline-ink">tamamı</span> — ilk
-              pikselinden son pikseline kadar, kendi kendine akıyor. Beğenmediğin
-              yeri göster, konuşalım.
-            </p>
+      <div className="gutter relative z-[4]">
+        <header className="grid grid-cols-[1fr_auto_1fr] items-center gap-2.5 py-[15px]">
+          <span className="pill justify-self-start">İstanbul</span>
 
-            <div className="mt-9 flex flex-wrap items-center gap-3">
-              <a href={waLink} target="_blank" rel="noopener noreferrer" className="btn">
-                İşimi konuşalım
-              </a>
-              <a href="#isler" className="btn btn-ghost">
-                Hepsini gör
-              </a>
-            </div>
+          <span className="justify-self-center">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/mockup/logo-beyaz.webp"
+              alt={site.name}
+              width={300}
+              height={133}
+              className="block h-[26px] w-auto lg:h-[30px]"
+            />
+          </span>
 
-            <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-line pt-5">
-              <span className="mono">İstanbul</span>
-              <span className="mono">7+ yıl</span>
-              <span className="mono">{n} sitede Google SEO 100/100</span>
-              <a
-                href={`tel:${site.phoneRaw}`}
-                className="mono mono-ink link-slide"
+          <span className="flex items-center gap-2.5 justify-self-end">
+            <a
+              href={`tel:${site.phoneRaw}`}
+              className="mono hidden text-chalk sm:inline"
+            >
+              {site.phoneDisplay}
+            </a>
+            <a
+              href={waLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp'tan yazın"
+              className="grid h-8 w-8 place-items-center rounded-full bg-white/[0.09] backdrop-blur-[14px] transition-colors hover:bg-white/20"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden
+                className="block h-[15px] w-[15px]"
               >
-                {site.phoneDisplay}
-              </a>
-            </div>
-          </div>
+                <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.07s.9 2.4 1.02 2.56c.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.29Z" />
+              </svg>
+            </a>
+          </span>
+        </header>
+      </div>
 
-          {/* ---- sağ: vitrin ---- */}
-          <div className="min-w-0 lg:col-span-7">
-            <Stage projects={projects} />
-          </div>
-        </div>
+      <div className="gutter relative z-[2] flex flex-1">
+        <Showcase
+          projects={projects}
+          ilkMetin="Yedi yıldır İstanbul'dan, kurumsal siteden e-ticarete on markanın internetteki yüzünü biz kurduk. Hepsi şu an yayında."
+          ilkBaslik={
+            <>
+              İnternetteki
+              <span className="block pl-[1.1em] lg:pl-[1.3em]">yüzünüz</span>
+            </>
+          }
+        />
       </div>
     </section>
   );

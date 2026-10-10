@@ -6,10 +6,15 @@ export type Project = {
   url: string;
   category: string;
   description: string;
+  /** Vitrin görsellerinin anahtarı: /mockup/<image_url>-d.webp ve -m.webp */
   image_url: string;
-  tags: string;
-  /** Ölçülmüş sonuç rakamları. "·" ile ayrılır. Boş olabilir. */
+  /**
+   * Özellik etiketleri, "·" ile ayrılır.
+   * Örn: "SEO Uyumlu · Gelişmiş Site Hızı · Mobil Uyumlu"
+   * (Veritabanındaki kolon adı tarihsel sebeple "metrics".)
+   */
   metrics: string;
+  tags: string;
   accent: string;
   sort_order: number;
   published: boolean;
@@ -17,7 +22,7 @@ export type Project = {
 
 /**
  * Veritabanı yokken (veya boşken) gösterilecek referanslar.
- * Admin panelden referans eklendiğinde bunlar yerine veritabanı kullanılır.
+ * Sıra, ana sayfadaki sıradır.
  */
 export const seedProjects: Project[] = [
   {
@@ -26,12 +31,11 @@ export const seedProjects: Project[] = [
     url: "https://www.locksansafety.com",
     category: "E-Ticaret",
     description:
-      "LOTO / EKED iş güvenliği ekipmanları üreticisi için 400+ ürünlük e-ticaret altyapısı. Ürün filtreleme, katalog indirme ve hızlı teklif akışı.",
-    image_url: "/referanslar/locksansafety.jpg",
-    metrics:
-      "Google SEO 100/100 · Mobil hız 90/100 · İndekslenebilir sayfa 280",
+      "LOTO / EKED iş güvenliği ekipmanları üreticisi için 400+ ürünlük e-ticaret altyapısı. Filtreleme, katalog indirme ve hızlı teklif akışı.",
+    image_url: "locksansafety",
+    metrics: "SEO Uyumlu · Gelişmiş Site Hızı · Mobil Uyumlu · Katalog İndirme",
     tags: "E-Ticaret,Katalog,SEO",
-    accent: "#D62828",
+    accent: "#E03131",
     sort_order: 1,
     published: true,
   },
@@ -41,12 +45,11 @@ export const seedProjects: Project[] = [
     url: "https://www.lockoutturkey.com",
     category: "E-Ticaret",
     description:
-      "EKED / LOTO kilitleme ekipmanlarında 184 ürünlük katalog. Kilitlenecek noktayı görselden seçtiren rehber, set oluşturucu ve teklif sepeti.",
-    image_url: "/referanslar/lockoutturkey.jpg",
-    metrics:
-      "Google SEO 100/100 · Mobil hız 96/100 · İndekslenebilir sayfa 209",
+      "184 ürünlük kilitleme kataloğu. Kilitlenecek noktayı görselden seçtiren rehber, set oluşturucu ve teklif sepeti.",
+    image_url: "lockoutturkey",
+    metrics: "SEO Uyumlu · Gelişmiş Site Hızı · Mobil Uyumlu · Teklif Sepeti",
     tags: "E-Ticaret,Ürün Seçici,Teklif Sepeti",
-    accent: "#C81E26",
+    accent: "#D62839",
     sort_order: 2,
     published: true,
   },
@@ -56,103 +59,112 @@ export const seedProjects: Project[] = [
     url: "https://www.otocentermarket.com",
     category: "E-Ticaret",
     description:
-      "2.600+ ürün ve 54 araç markası için OEM / motor kodu ile parça bulma motoru. Araç seviyesinde uyumluluk kontrolü ve sipariş takibi.",
-    image_url: "/referanslar/otocentermarket.jpg",
+      "2.600+ ürün ve 54 araç markası için OEM / motor kodu ile parça bulma motoru. Araç seviyesinde uyumluluk kontrolü.",
+    image_url: "otocentermarket",
     metrics:
-      "Google SEO 100/100 · Mobil hız 88/100 · İndekslenebilir sayfa 3.894",
+      "SEO Uyumlu · Gelişmiş Site Hızı · Mobil Uyumlu · Parça Arama Motoru",
     tags: "E-Ticaret,Ürün Arama,Entegrasyon",
-    accent: "#1D4ED8",
+    accent: "#3B6EF0",
     sort_order: 3,
     published: true,
   },
   {
     id: -4,
-    title: "Deren Gigi",
-    url: "https://www.derengigi.com",
-    category: "Özel Tasarım",
+    title: "Next Stop Network",
+    url: "https://www.nextstopbackpackers.com",
+    category: "Platform",
     description:
-      "DJ ve prodüktör için deneysel kimlik sitesi. Akışkan WebGL görsel, sesle tepki veren arayüz ve tam ekran tipografi.",
-    image_url: "/referanslar/derengigi.jpg",
-    metrics:
-      "Google SEO 100/100 · Erişilebilirlik 100/100",
-    tags: "Özel Tasarım,Animasyon,WebGL",
-    accent: "#A855F7",
+      "Hostel ağı için çok dilli rezervasyon platformu. Destinasyon arama, tarih filtreleri ve üyelik bazlı geçiş sistemi.",
+    image_url: "nextstop",
+    metrics: "SEO Uyumlu · Mobil Uyumlu · Çok Dilli · Rezervasyon",
+    tags: "Platform,Rezervasyon,Çok Dilli",
+    accent: "#F0529B",
     sort_order: 4,
     published: true,
   },
   {
     id: -5,
-    title: "Next Stop Network",
-    url: "https://www.nextstopbackpackers.com",
-    category: "Platform",
+    title: "Sofilx Filtre",
+    url: "https://www.sofilx.com",
+    category: "E-Ticaret",
     description:
-      "Hostel ağı için çok dilli rezervasyon platformu. Destinasyon arama, tarih ve kişi filtreleri, üyelik bazlı Next Pass sistemi.",
-    image_url: "/referanslar/nextstop.jpg",
-    metrics:
-      "Google SEO 100/100 · Mobil hız 79/100",
-    tags: "Platform,Rezervasyon,Çok Dilli",
-    accent: "#EC4899",
+      "Kompresör ve vakum pompası filtreleri. 40+ marka için orijinal ve muadil parça, çapraz referans koduyla arama ve teklif listesi.",
+    image_url: "sofilx",
+    metrics: "SEO Uyumlu · Mobil Uyumlu · Çapraz Referans Arama · Teklif Listesi",
+    tags: "E-Ticaret,Çapraz Referans,Teklif",
+    accent: "#1FB85C",
     sort_order: 5,
     published: true,
   },
   {
     id: -6,
-    title: "Eren Mobilya Tasarım",
-    url: "https://www.erenmobilyatasarimatasehir.com",
-    category: "Kurumsal",
+    title: "Sofilx LOTO",
+    url: "https://www.sofilxloto.com",
+    category: "E-Ticaret",
     description:
-      "Ataşehir'de ölçüye özel mutfak ve dolap üretimi yapan atölye için galeri odaklı kurumsal site. Proje vitrini ve yerel SEO kurgusu.",
-    image_url: "/referanslar/erenmobilya.jpg",
-    metrics:
-      "Google SEO 100/100 · Erişilebilirlik 100/100",
-    tags: "Kurumsal,Galeri,Yerel SEO",
-    accent: "#8B6F47",
+      "2010'dan beri kilitleme-etiketleme ekipmanları. Kampanya alanı ve WhatsApp üzerinden teklif akışı.",
+    image_url: "sofilxloto",
+    metrics: "SEO Uyumlu · Mobil Uyumlu · Ürün Vitrini · WhatsApp Teklif",
+    tags: "E-Ticaret,LOTO,Teklif",
+    accent: "#D13343",
     sort_order: 6,
     published: true,
   },
   {
     id: -7,
-    title: "KKD Markt",
-    url: "https://www.kkdmarkt.com",
-    category: "E-Ticaret",
+    title: "Deren Gigi",
+    url: "https://www.derengigi.com",
+    category: "Özel Tasarım",
     description:
-      "Kişisel koruyucu donanım pazaryeri: 931 ürün, 9 ana kategori, 23 global marka. Kategori ağacı ve hızlı teklif talebi üzerine kurulu.",
-    image_url: "/referanslar/kkdmarkt.jpg",
-    metrics:
-      "Google SEO 100/100 · Mobil hız 84/100 · İndekslenebilir sayfa 1.010",
-    tags: "E-Ticaret,Çok Kategori,B2B",
-    accent: "#E11D48",
+      "DJ ve prodüktör için deneysel kimlik sitesi. Akışkan WebGL görsel, sese tepki veren arayüz ve tam ekran tipografi.",
+    image_url: "derengigi",
+    metrics: "Mobil Uyumlu · Özel Tasarım · WebGL Animasyon",
+    tags: "Özel Tasarım,Animasyon,WebGL",
+    accent: "#B06CF5",
     sort_order: 7,
     published: true,
   },
   {
     id: -8,
-    title: "Sofilx LOTO",
-    url: "https://www.sofilxloto.com",
-    category: "E-Ticaret",
+    title: "Eren Mobilya",
+    url: "https://www.erenmobilyatasarimatasehir.com",
+    category: "Kurumsal",
     description:
-      "Kilitleme-etiketleme ekipmanlarında 2010'dan beri faaliyet gösteren markanın ürün vitrini. Kampanya alanı ve WhatsApp'tan teklif akışı.",
-    image_url: "/referanslar/sofilxloto.jpg",
-    metrics:
-      "Google SEO 100/100 · İndekslenebilir sayfa 259",
-    tags: "E-Ticaret,Marka,Teklif Akışı",
-    accent: "#B91C2C",
+      "Ataşehir'de özel üretim mobilya atölyesi için oda bazlı katalog ve proje galerisi.",
+    image_url: "erenmobilya",
+    metrics: "SEO Uyumlu · Mobil Uyumlu · Proje Galerisi",
+    tags: "Kurumsal,Katalog,Galeri",
+    accent: "#C9A227",
     sort_order: 8,
     published: true,
   },
   {
     id: -9,
+    title: "KKD Markt",
+    url: "https://www.kkdmarkt.com",
+    category: "E-Ticaret",
+    description:
+      "Kişisel koruyucu donanımda geniş katalog. Marka ve kategori bazlı filtreleme, hızlı teklif.",
+    image_url: "kkdmarkt",
+    metrics:
+      "SEO Uyumlu · Gelişmiş Site Hızı · Mobil Uyumlu · Kategori Filtreleme",
+    tags: "E-Ticaret,KKD,Filtreleme",
+    accent: "#F0405E",
+    sort_order: 9,
+    published: true,
+  },
+  {
+    id: -10,
     title: "SOFT Safety",
     url: "https://www.ekedurunleri.com",
     category: "Kurumsal",
     description:
-      "Enerji izolasyon çözümleri için sade, editoryal ürün anlatımı. Teknik föy tabloları ve mühendis diline uygun içerik mimarisi.",
-    image_url: "/referanslar/ekedurunleri.jpg",
-    metrics:
-      "Google SEO 100/100 · İndekslenebilir sayfa 168",
-    tags: "Kurumsal,Teknik İçerik,Katalog",
-    accent: "#DC2626",
-    sort_order: 9,
+      "LOTO ekipmanları ve enerji izolasyon çözümleri. Prosedür odaklı ürün anlatımı ve katalog.",
+    image_url: "ekedurunleri",
+    metrics: "SEO Uyumlu · Mobil Uyumlu · Ürün Kataloğu",
+    tags: "Kurumsal,LOTO,Katalog",
+    accent: "#E8453C",
+    sort_order: 10,
     published: true,
   },
 ];
@@ -181,6 +193,7 @@ export async function getProjects(
   }
 }
 
+/** "E-Ticaret,SEO" -> ["E-Ticaret", "SEO"] */
 export function tagList(tags: string): string[] {
   return tags
     .split(",")
@@ -188,7 +201,7 @@ export function tagList(tags: string): string[] {
     .filter(Boolean);
 }
 
-/** "SEO 100/100 · 280 sayfa" -> ["SEO 100/100", "280 sayfa"] */
+/** "SEO Uyumlu · Mobil Uyumlu" -> ["SEO Uyumlu", "Mobil Uyumlu"] */
 export function metricList(metrics: string): string[] {
   return (metrics || "")
     .split("·")
@@ -196,12 +209,11 @@ export function metricList(metrics: string): string[] {
     .filter(Boolean);
 }
 
-/** 1–20 arası sayıyı yazıyla verir. Başlıklarda "Dokuz marka." için. */
-export function sayiyla(n: number): string {
-  const s = [
-    "sıfır", "Bir", "İki", "Üç", "Dört", "Beş", "Altı", "Yedi", "Sekiz",
-    "Dokuz", "On", "On bir", "On iki", "On üç", "On dört", "On beş",
-    "On altı", "On yedi", "On sekiz", "On dokuz", "Yirmi",
-  ];
-  return s[n] ?? String(n);
+/** "https://www.locksansafety.com" -> "locksansafety.com" */
+export function prettyHost(url: string): string {
+  try {
+    return new URL(url).hostname.replace(/^www\./, "");
+  } catch {
+    return url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+  }
 }

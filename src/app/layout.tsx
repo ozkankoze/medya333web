@@ -6,7 +6,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — Web Sitesi Tasarımı & E-Ticaret`,
+    default: `${site.name} — İnternetteki Yüzünüz`,
     template: `%s | ${site.name}`,
   },
   description: site.description,
@@ -24,12 +24,12 @@ export const metadata: Metadata = {
     locale: "tr_TR",
     url: site.url,
     siteName: site.name,
-    title: `${site.name} — Web Sitesi Tasarımı & E-Ticaret`,
+    title: `${site.name} — İnternetteki Yüzünüz`,
     description: site.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — Web Sitesi Tasarımı & E-Ticaret`,
+    title: `${site.name} — İnternetteki Yüzünüz`,
     description: site.description,
   },
   robots: { index: true, follow: true },
@@ -76,10 +76,10 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Inter+Tight:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap"
           rel="stylesheet"
         />
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#050508" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
