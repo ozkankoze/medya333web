@@ -17,7 +17,7 @@ export default async function Hero() {
       />
 
       <div className="gutter relative z-[4]">
-        <header className="grid grid-cols-[1fr_auto_1fr] items-center gap-2.5 py-[15px]">
+        <header className="gir grid grid-cols-[1fr_auto_1fr] items-center gap-2.5 py-[15px]">
           <span className="pill justify-self-start">İstanbul</span>
 
           <span className="justify-self-center">
@@ -62,12 +62,7 @@ export default async function Hero() {
         <Showcase
           projects={projects}
           ilkMetin="Yedi yıldır İstanbul'dan, kurumsal siteden e-ticarete on markanın internetteki yüzünü biz kurduk. Hepsi şu an yayında."
-          ilkBaslik={
-            <>
-              İnternetteki
-              <span className="block pl-[1.1em] lg:pl-[1.3em]">yüzünüz</span>
-            </>
-          }
+          ilkBaslik={["İnternetteki", "yüzünüz"]}
         />
       </div>
     </section>

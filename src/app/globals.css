@@ -186,6 +186,38 @@ body {
   }
 }
 
+/* ---------------- açılış ---------------- */
+
+/* Başlık satırları maskenin altından yukarı sürülür,
+   geri kalan parçalar sırayla yerine oturur. */
+@keyframes perde {
+  from {
+    transform: translateY(105%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes gir {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.perde {
+  animation: perde 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.gir {
+  animation: gir 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
 @keyframes acil {
   from {
     opacity: 0;

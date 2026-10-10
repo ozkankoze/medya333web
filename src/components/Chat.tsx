@@ -42,7 +42,7 @@ export default function Chat() {
   return (
     <section id="iletisim" className="relative z-[2] bg-void">
       <div className="gutter">
-        <div className="grid items-center gap-9 pb-[26px] pt-[66px] lg:grid-cols-[minmax(0,1fr)_minmax(0,440px)] lg:gap-14">
+        <div className="grid items-center gap-7 pb-[26px] pt-[34px] lg:grid-cols-[minmax(0,1fr)_minmax(0,440px)] lg:gap-14 lg:pt-[66px]">
           <div>
             <h2 className="display m-0 max-w-[13ch] text-[clamp(2.2rem,6.4vw,4.4rem)] leading-[1.02]">
               Sıradaki sizinki olsun.

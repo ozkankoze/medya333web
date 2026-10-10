@@ -55,8 +55,14 @@ const ETIKET =
 export default function Desktop({ projects }: { projects: Project[] }) {
   const [acik, setAcik] = useState(false);
   const [saat, setSaat] = useState("—");
+  const [dokunmatik, setDokunmatik] = useState(false);
   const ekranRef = useRef<HTMLDivElement>(null);
   const kendiAcildi = useRef(false);
+
+  // dokunmatikte çift tıklama yok — tek dokunuş siteyi açsın
+  useEffect(() => {
+    setDokunmatik(window.matchMedia("(hover: none)").matches);
+  }, []);
 
   useEffect(() => {
     const yaz = () => {
@@ -104,14 +110,14 @@ export default function Desktop({ projects }: { projects: Project[] }) {
   }, []);
 
   return (
-    <section id="isler" className="relative z-[2] bg-void py-[70px] lg:py-[72px]">
+    <section id="isler" className="relative z-[2] bg-void py-[46px] lg:py-[72px]">
       <div className="gutter">
         {/* CRT gövdesi */}
         <div className="mx-auto max-w-[1060px] rounded-[22px] bg-[linear-gradient(170deg,#ded8c6,#c3bca8_42%,#a9a291)] p-4 pb-0 shadow-[inset_0_2px_0_rgba(255,255,255,.65),inset_0_-2px_0_rgba(0,0,0,.18),0_40px_90px_-40px_rgba(0,0,0,.9)] lg:rounded-[26px] lg:p-[22px] lg:pb-0">
           <div className="rounded-[10px] bg-[linear-gradient(160deg,#6f6a5c,#4c483e)] p-2.5 shadow-[inset_0_2px_5px_rgba(0,0,0,.6)]">
             <div
               ref={ekranRef}
-              className="relative flex min-h-[470px] flex-col overflow-hidden rounded bg-[#2f7fc9] lg:min-h-[560px]"
+              className="relative flex min-h-[528px] flex-col overflow-hidden rounded bg-[#2f7fc9] lg:min-h-[560px]"
             >
               {/* duvar kâğıdı — kendi çizimimiz */}
               <svg
@@ -332,15 +338,29 @@ export default function Desktop({ projects }: { projects: Project[] }) {
 
                     <div className="mx-[7px] mb-[7px] flex min-h-0 flex-1 bg-white shadow-[inset_1px_1px_0_#868686,0_0_0_1px_#5a5a5a]">
                       <div className="min-w-0 flex-1 overflow-auto">
-                        <table className="w-full min-w-[620px] border-collapse">
+                        <table className="w-full border-collapse sm:min-w-[620px]">
                           <thead>
                             <tr>
-                              {["Ad", "Tür", "Özellikler", "Durum"].map((h) => (
+                              {[
+                                ["Ad", ""],
+                                ["Tür", "hidden sm:table-cell"],
+                                ["Özellikler", "hidden sm:table-cell"],
+                                ["Durum", "w-px"],
+                              ].map(([h, c]) => (
                                 <th
                                   key={h}
-                                  className="sticky top-0 z-[2] whitespace-nowrap border-r border-w-mid bg-w-face px-2 py-1 text-left text-[11.5px] font-medium shadow-[inset_1px_1px_0_#fff,inset_-1px_-1px_0_#868686]"
+                                  className={`sticky top-0 z-[2] whitespace-nowrap border-r border-w-mid bg-w-face px-2 py-1 text-left text-[11.5px] font-medium shadow-[inset_1px_1px_0_#fff,inset_-1px_-1px_0_#868686] ${c}`}
                                 >
-                                  {h}
+                                  {h === "Durum" ? (
+                                    <>
+                                      <span className="hidden sm:inline">
+                                        Durum
+                                      </span>
+                                      <span className="sm:hidden">Aç</span>
+                                    </>
+                                  ) : (
+                                    h
+                                  )}
                                 </th>
                               ))}
                             </tr>
@@ -351,6 +371,10 @@ export default function Desktop({ projects }: { projects: Project[] }) {
                                 key={p.id ?? p.url}
                                 data-url={p.url}
                                 tabIndex={0}
+                                onClick={() => {
+                                  if (dokunmatik)
+                                    window.open(p.url, "_blank", "noopener");
+                                }}
                                 onDoubleClick={() =>
                                   window.open(p.url, "_blank", "noopener")
                                 }
@@ -360,28 +384,30 @@ export default function Desktop({ projects }: { projects: Project[] }) {
                                 }}
                                 className="group/row cursor-default hover:bg-w-navy hover:text-white"
                               >
-                                <td className="whitespace-nowrap px-2 py-[5px] text-[12.5px]">
-                                  <span className="inline-flex items-center gap-[7px]">
+                                <td className="px-2 py-[5px] text-[12.5px]">
+                                  <span className="flex items-center gap-[7px]">
                                     <i
                                       className="block h-[15px] w-[15px] flex-none rounded-[2px] shadow-[inset_0_0_0_1px_rgba(0,0,0,.35),inset_2px_2px_0_rgba(255,255,255,.4)]"
                                       style={{ background: p.accent }}
                                     />
-                                    {p.title}{" "}
-                                    <span className="font-mono text-[11px] text-[#4a4a4a] group-hover/row:text-[#c6d2ff]">
-                                      {prettyHost(p.url)}
+                                    <span className="flex min-w-0 flex-col leading-[1.18] sm:flex-row sm:items-center sm:gap-[7px] sm:leading-normal">
+                                      <span className="truncate">{p.title}</span>
+                                      <span className="truncate font-mono text-[11px] text-[#4a4a4a] group-hover/row:text-[#c6d2ff]">
+                                        {prettyHost(p.url)}
+                                      </span>
                                     </span>
                                   </span>
                                 </td>
-                                <td className="whitespace-nowrap px-2 py-[5px] text-[12.5px]">
+                                <td className="hidden whitespace-nowrap px-2 py-[5px] text-[12.5px] sm:table-cell">
                                   {p.category}
                                 </td>
-                                <td className="whitespace-nowrap px-2 py-[5px]">
+                                <td className="hidden whitespace-nowrap px-2 py-[5px] sm:table-cell">
                                   <span className="font-mono text-[11px] text-[#4a4a4a] group-hover/row:text-[#c6d2ff]">
                                     {metricList(p.metrics).slice(0, 3).join(" · ")}
                                   </span>
                                 </td>
-                                <td className="whitespace-nowrap px-2 py-[5px] text-right font-mono text-[11px]">
-                                  Yayında ↗
+                                <td className="w-px whitespace-nowrap px-2 py-[5px] text-right font-mono text-[11px]">
+                                  <span className="hidden sm:inline">Yayında </span>↗
                                 </td>
                               </tr>
                             ))}
@@ -432,7 +458,9 @@ export default function Desktop({ projects }: { projects: Project[] }) {
         </div>
 
         <p className="mono mx-auto mt-3.5 max-w-[1060px] px-1 text-white/70">
-          Klasörlere tıkla — listede satıra çift tıklayınca site açılır
+          {dokunmatik
+            ? "Klasörlere dokun — listede bir satıra dokununca site açılır"
+            : "Klasörlere tıkla — listede satıra çift tıklayınca site açılır"}
         </p>
       </div>
     </section>
