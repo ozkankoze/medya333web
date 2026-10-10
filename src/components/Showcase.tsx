@@ -55,10 +55,14 @@ export default function Showcase({
         const w = ekran.clientWidth;
         const h = ekran.clientHeight;
         if (!w || !h) return;
-        img.style.setProperty("--win", `${h}px`);
+        // Yolu pikselle veriyoruz: keyframe'de yüzde kullanınca Safari, görsel
+        // daha yüklenmemişken yüzdeyi sıfır sayıp akışı ters çevirebiliyor.
+        const gorselYukseklik = w * oran;
+        const yol = Math.max(0, gorselYukseklik - h);
+        img.style.setProperty("--yol", `-${yol.toFixed(1)}px`);
         img.style.animation = "none";
         void img.offsetWidth;
-        img.style.animation = `kay ${kaymaSuresi(w * oran, h, temel).toFixed(
+        img.style.animation = `kay ${kaymaSuresi(gorselYukseklik, h, temel).toFixed(
           1
         )}s linear infinite`;
       });

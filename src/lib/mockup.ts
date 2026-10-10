@@ -48,5 +48,5 @@ export function kaymaSuresi(
   temel = 6
 ): number {
   const yol = Math.max(0, gorselYukseklik - pencereYukseklik);
-  return Math.min(52, Math.max(14, (yol / 100) * 1.1 + temel));
+  return Math.min(52, Math.max(16, (yol / 100) * 1.1 + temel));
 }
