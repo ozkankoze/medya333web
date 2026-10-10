@@ -239,7 +239,7 @@ body {
   }
 }
 .creep {
-  animation: creep var(--dur, 26s) linear infinite alternate;
+  animation: creep var(--dur, 26s) linear infinite;
 }
 
 @keyframes barfill {
@@ -293,12 +293,42 @@ body {
   transform: translateY(calc(-100% + var(--win, 280px)));
 }
 
+/* Tek yönlü akış: yukarı çıkar, başa dönerken görünmez olur.
+   "alternate" kullanılmıyor — geri sarması ters akıyor gibi duruyordu. */
+@keyframes creep-loop {
+  /* 0–3%: başa dönüş tamamlanana kadar görünmez bekle */
+  0%,
+  3% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  8% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  /* 8–88%: tek yönde, yukarı doğru ak */
+  88% {
+    transform: translateY(calc(-100% + var(--win, 280px)));
+    opacity: 1;
+  }
+  /* 88–95%: sonda dur ve kaybol */
+  95% {
+    transform: translateY(calc(-100% + var(--win, 280px)));
+    opacity: 0;
+  }
+  /* 95–100%: görünmezken başa sar */
+  100% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+}
+
 /* Dokunmatik cihazda hover yok — görsel kendi kendine aksın,
    mobilde de sitenin tamamı görülebilsin. */
 @media (hover: none) {
   .peek img {
     transition: none;
-    animation: creep var(--dur, 22s) linear infinite alternate;
+    animation: creep-loop var(--dur, 22s) linear infinite;
   }
 }
 

@@ -30,13 +30,14 @@ export const sektorler: Sektor[] = [
     slug: "is-guvenligi-web-tasarim",
     seoTitle: "İş Güvenliği Firmaları İçin Web Sitesi ve E-Ticaret",
     seoDescription:
-      "LOTO, EKED ve KKD üreticileri için ürün kataloğu, teklif akışı ve bayi girişi olan web siteleri. Bu sektörde dört canlı referans.",
+      "LOTO, EKED ve KKD üreticileri için ürün kataloğu, teklif akışı ve bayi girişi olan web siteleri. Bu sektörde beş canlı referans.",
     eyebrow: "Sektör — İş güvenliği",
     h1: ["İş güvenliği", "firmaları için", "site yapıyoruz."],
     intro:
-      "LOTO kilitleri, EKED setleri, KKD ürünleri — bu ürünleri satan bir firmanın sitesi, moda sitesine benzemez. Yüzlerce teknik ürün, standart numaraları, PDF katalog, bayi fiyatı ve en önemlisi teklif talebi vardır. Dördünü de yaptık, hâlâ yayındalar.",
+      "LOTO kilitleri, EKED setleri, KKD ürünleri — bu ürünleri satan bir firmanın sitesi, moda sitesine benzemez. Yüzlerce teknik ürün, standart numaraları, PDF katalog, bayi fiyatı ve en önemlisi teklif talebi vardır. Beşini de yaptık, hâlâ yayındalar.",
     referansBasliklari: [
       "Locksan Safety",
+      "Lockout Turkey",
       "Sofilx LOTO",
       "KKD Markt",
       "SOFT Safety",

@@ -107,11 +107,12 @@ Sitedeki görseller **kırpılmamış, tam sayfa** ekran görüntüleridir. Vitr
 
 > 4. adım atlanırsa görsel yine görünür, sadece kayma hızı varsayılan değere düşer.
 
-Şu an yayında olan 8 referans:
+Şu an yayında olan 9 referans:
 
 | Dosya | Site | Oran |
 |---|---|---|
 | `locksansafety` | locksansafety.com | 3.611 |
+| `lockoutturkey` | lockoutturkey.com | 3.611 |
 | `otocentermarket` | otocentermarket.com | 2.928 |
 | `derengigi` | derengigi.com | 3.611 |
 | `nextstop` | nextstopbackpackers.com | 1.813 |

@@ -1,9 +1,11 @@
-import { getProjects } from "@/lib/projects";
+import { getProjects, sayiyla } from "@/lib/projects";
 import { site, waLink } from "@/lib/site";
 import Stage from "./Stage";
 
 export default async function Hero() {
   const projects = await getProjects();
+  const n = projects.length;
+  const yazi = sayiyla(n);
 
   return (
     <section className="relative rule-b">
@@ -20,9 +22,9 @@ export default async function Hero() {
             </div>
 
             <h1 className="display mt-7 text-[clamp(2.6rem,7.4vw,5.1rem)]">
-              Sekiz marka.
+              {yazi} marka.
               <br />
-              Sekiz canlı site.
+              {yazi} canlı site.
               <br />
               <span className="text-muted-2">Hepsi şu an</span>
               <br />
@@ -49,7 +51,7 @@ export default async function Hero() {
             <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-line pt-5">
               <span className="mono">İstanbul</span>
               <span className="mono">7+ yıl</span>
-              <span className="mono">8 sitede Google SEO 100/100</span>
+              <span className="mono">{n} sitede Google SEO 100/100</span>
               <a
                 href={`tel:${site.phoneRaw}`}
                 className="mono mono-ink link-slide"

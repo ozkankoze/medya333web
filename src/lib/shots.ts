@@ -8,6 +8,7 @@
 
 const RATIO: Record<string, number> = {
   locksansafety: 3.611,
+  lockoutturkey: 3.611,
   otocentermarket: 2.928,
   derengigi: 3.611,
   nextstop: 1.813,

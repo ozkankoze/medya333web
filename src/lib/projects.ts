@@ -37,6 +37,21 @@ export const seedProjects: Project[] = [
   },
   {
     id: -2,
+    title: "Lockout Turkey",
+    url: "https://www.lockoutturkey.com",
+    category: "E-Ticaret",
+    description:
+      "EKED / LOTO kilitleme ekipmanlarında 184 ürünlük katalog. Kilitlenecek noktayı görselden seçtiren rehber, set oluşturucu ve teklif sepeti.",
+    image_url: "/referanslar/lockoutturkey.jpg",
+    metrics:
+      "Google SEO 100/100 · Mobil hız 96/100 · İndekslenebilir sayfa 209",
+    tags: "E-Ticaret,Ürün Seçici,Teklif Sepeti",
+    accent: "#C81E26",
+    sort_order: 2,
+    published: true,
+  },
+  {
+    id: -3,
     title: "Oto Center Market",
     url: "https://www.otocentermarket.com",
     category: "E-Ticaret",
@@ -47,11 +62,11 @@ export const seedProjects: Project[] = [
       "Google SEO 100/100 · Mobil hız 88/100 · İndekslenebilir sayfa 3.894",
     tags: "E-Ticaret,Ürün Arama,Entegrasyon",
     accent: "#1D4ED8",
-    sort_order: 2,
+    sort_order: 3,
     published: true,
   },
   {
-    id: -3,
+    id: -4,
     title: "Deren Gigi",
     url: "https://www.derengigi.com",
     category: "Özel Tasarım",
@@ -62,11 +77,11 @@ export const seedProjects: Project[] = [
       "Google SEO 100/100 · Erişilebilirlik 100/100",
     tags: "Özel Tasarım,Animasyon,WebGL",
     accent: "#A855F7",
-    sort_order: 3,
+    sort_order: 4,
     published: true,
   },
   {
-    id: -4,
+    id: -5,
     title: "Next Stop Network",
     url: "https://www.nextstopbackpackers.com",
     category: "Platform",
@@ -77,11 +92,11 @@ export const seedProjects: Project[] = [
       "Google SEO 100/100 · Mobil hız 79/100",
     tags: "Platform,Rezervasyon,Çok Dilli",
     accent: "#EC4899",
-    sort_order: 4,
+    sort_order: 5,
     published: true,
   },
   {
-    id: -5,
+    id: -6,
     title: "Eren Mobilya Tasarım",
     url: "https://www.erenmobilyatasarimatasehir.com",
     category: "Kurumsal",
@@ -92,11 +107,11 @@ export const seedProjects: Project[] = [
       "Google SEO 100/100 · Erişilebilirlik 100/100",
     tags: "Kurumsal,Galeri,Yerel SEO",
     accent: "#8B6F47",
-    sort_order: 5,
+    sort_order: 6,
     published: true,
   },
   {
-    id: -6,
+    id: -7,
     title: "KKD Markt",
     url: "https://www.kkdmarkt.com",
     category: "E-Ticaret",
@@ -107,11 +122,11 @@ export const seedProjects: Project[] = [
       "Google SEO 100/100 · Mobil hız 84/100 · İndekslenebilir sayfa 1.010",
     tags: "E-Ticaret,Çok Kategori,B2B",
     accent: "#E11D48",
-    sort_order: 6,
+    sort_order: 7,
     published: true,
   },
   {
-    id: -7,
+    id: -8,
     title: "Sofilx LOTO",
     url: "https://www.sofilxloto.com",
     category: "E-Ticaret",
@@ -122,11 +137,11 @@ export const seedProjects: Project[] = [
       "Google SEO 100/100 · İndekslenebilir sayfa 259",
     tags: "E-Ticaret,Marka,Teklif Akışı",
     accent: "#B91C2C",
-    sort_order: 7,
+    sort_order: 8,
     published: true,
   },
   {
-    id: -8,
+    id: -9,
     title: "SOFT Safety",
     url: "https://www.ekedurunleri.com",
     category: "Kurumsal",
@@ -137,7 +152,7 @@ export const seedProjects: Project[] = [
       "Google SEO 100/100 · İndekslenebilir sayfa 168",
     tags: "Kurumsal,Teknik İçerik,Katalog",
     accent: "#DC2626",
-    sort_order: 8,
+    sort_order: 9,
     published: true,
   },
 ];
@@ -179,4 +194,14 @@ export function metricList(metrics: string): string[] {
     .split("·")
     .map((m) => m.trim())
     .filter(Boolean);
+}
+
+/** 1–20 arası sayıyı yazıyla verir. Başlıklarda "Dokuz marka." için. */
+export function sayiyla(n: number): string {
+  const s = [
+    "sıfır", "Bir", "İki", "Üç", "Dört", "Beş", "Altı", "Yedi", "Sekiz",
+    "Dokuz", "On", "On bir", "On iki", "On üç", "On dört", "On beş",
+    "On altı", "On yedi", "On sekiz", "On dokuz", "Yirmi",
+  ];
+  return s[n] ?? String(n);
 }
