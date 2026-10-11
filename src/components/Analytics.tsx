@@ -2,13 +2,14 @@
 
 import Script from "next/script";
 import { useEffect } from "react";
-import { conversions, gtagId, trackConversion } from "@/lib/gtag";
+import { conversions, gtagIds, trackConversion } from "@/lib/gtag";
 
 /**
  * Google etiketi + otomatik dönüşüm yakalama.
  *
- * Sayfadaki TÜM WhatsApp (wa.me) linkleri ve telefon (tel:) linkleri
- * otomatik olarak dönüşüm sayılır — ayrı ayrı kod eklemeye gerek yok.
+ * Sayfadaki TÜM WhatsApp (wa.me) ve telefon (tel:) bağlantıları otomatik
+ * olarak dönüşüm sayılır — ayrı ayrı kod eklemeye gerek yok.
+ * WhatsApp ve telefon ayrı dönüşüm olarak gider.
  */
 export default function Analytics() {
   useEffect(() => {
@@ -18,21 +19,26 @@ export default function Analytics() {
       if (!link) return;
 
       const href = link.getAttribute("href") || "";
-      const isWhatsApp = href.includes("wa.me") || href.includes("api.whatsapp.com");
+      const isWhatsApp =
+        href.includes("wa.me") ||
+        href.includes("api.whatsapp.com") ||
+        href.startsWith("whatsapp:");
       const isPhone = href.startsWith("tel:");
       if (!isWhatsApp && !isPhone) return;
+
+      const etiket = isPhone ? conversions.telefon : conversions.whatsapp;
 
       // yeni sekmede açılıyorsa yönlendirmeyi biz yapmayalım
       const newTab =
         link.target === "_blank" || e.metaKey || e.ctrlKey || e.button === 1;
 
       if (newTab) {
-        trackConversion(conversions.whatsapp);
+        trackConversion(etiket);
         return;
       }
 
       e.preventDefault();
-      trackConversion(conversions.whatsapp, link.href);
+      trackConversion(etiket, link.href);
     }
 
     document.addEventListener("click", onClick);
@@ -44,14 +50,14 @@ export default function Analytics() {
       <Script
         id="gtag-src"
         strategy="afterInteractive"
-        src={`https://www.googletagmanager.com/gtag/js?id=${gtagId}`}
+        src={`https://www.googletagmanager.com/gtag/js?id=${gtagIds[0]}`}
       />
       <Script id="gtag-init" strategy="afterInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', '${gtagId}');
+          ${gtagIds.map((id) => `gtag('config', '${id}');`).join("\n          ")}
         `}
       </Script>
     </>
