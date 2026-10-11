@@ -36,13 +36,13 @@ export async function loginAction(_prev: string | null, fd: FormData) {
     path: "/",
     maxAge: COOKIE_MAX_AGE,
   });
-  redirect("/admin");
+  redirect("/panel");
 }
 
 export async function logoutAction() {
   const store = await cookies();
   store.delete(COOKIE_NAME);
-  redirect("/admin");
+  redirect("/panel");
 }
 
 export async function saveProjectAction(fd: FormData) {
@@ -79,7 +79,7 @@ export async function saveProjectAction(fd: FormData) {
     `;
   }
   revalidatePath("/");
-  revalidatePath("/admin");
+  revalidatePath("/panel");
 }
 
 export async function deleteProjectAction(fd: FormData) {
@@ -87,7 +87,7 @@ export async function deleteProjectAction(fd: FormData) {
   const id = Number(fd.get("id") || 0);
   if (id > 0) await sql!`DELETE FROM projects WHERE id=${id}`;
   revalidatePath("/");
-  revalidatePath("/admin");
+  revalidatePath("/panel");
 }
 
 /** Koddaki başlangıç referanslarını veritabanına aktarır. */
@@ -95,7 +95,7 @@ export async function importSeedAction() {
   await guard();
   await tohumlaEgerBosse();
   revalidatePath("/");
-  revalidatePath("/admin");
+  revalidatePath("/panel");
 }
 
 export async function updateLeadStatusAction(fd: FormData) {
@@ -103,12 +103,12 @@ export async function updateLeadStatusAction(fd: FormData) {
   const id = Number(fd.get("id") || 0);
   const status = str(fd, "status", 20) || "yeni";
   if (id > 0) await sql!`UPDATE leads SET status=${status} WHERE id=${id}`;
-  revalidatePath("/admin");
+  revalidatePath("/panel");
 }
 
 export async function deleteLeadAction(fd: FormData) {
   await guard();
   const id = Number(fd.get("id") || 0);
   if (id > 0) await sql!`DELETE FROM leads WHERE id=${id}`;
-  revalidatePath("/admin");
+  revalidatePath("/panel");
 }
