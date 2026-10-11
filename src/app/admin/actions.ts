@@ -11,7 +11,7 @@ import {
   COOKIE_NAME,
   COOKIE_MAX_AGE,
 } from "@/lib/auth";
-import { seedProjects } from "@/lib/projects";
+import { tohumlaEgerBosse } from "@/lib/projects";
 
 const str = (fd: FormData, k: string, max = 500) =>
   String(fd.get(k) ?? "").trim().slice(0, max);
@@ -93,15 +93,7 @@ export async function deleteProjectAction(fd: FormData) {
 /** Koddaki başlangıç referanslarını veritabanına aktarır. */
 export async function importSeedAction() {
   await guard();
-  const rows = await sql!`SELECT COUNT(*)::int AS c FROM projects`;
-  if ((rows[0]?.c ?? 0) > 0) return;
-  for (const p of seedProjects) {
-    await sql!`
-      INSERT INTO projects (title,url,category,description,image_url,tags,metrics,accent,sort_order,published)
-      VALUES (${p.title},${p.url},${p.category},${p.description},
-              ${p.image_url},${p.tags},${p.metrics},${p.accent},${p.sort_order},${p.published})
-    `;
-  }
+  await tohumlaEgerBosse();
   revalidatePath("/");
   revalidatePath("/admin");
 }

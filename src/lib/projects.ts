@@ -193,6 +193,26 @@ export async function getProjects(
   }
 }
 
+/**
+ * Veritabanı boşsa koddaki referansları aktarır.
+ * Böylece DATABASE_URL ilk bağlandığında liste bir anda boşalmaz.
+ * Döndürdüğü sayı: kaç referans yazıldı (zaten doluysa 0).
+ */
+export async function tohumlaEgerBosse(): Promise<number> {
+  if (!sql) return 0;
+  await ensureSchema();
+  const rows = await sql`SELECT COUNT(*)::int AS c FROM projects`;
+  if ((rows[0]?.c ?? 0) > 0) return 0;
+  for (const p of seedProjects) {
+    await sql`
+      INSERT INTO projects (title,url,category,description,image_url,tags,metrics,accent,sort_order,published)
+      VALUES (${p.title},${p.url},${p.category},${p.description},
+              ${p.image_url},${p.tags},${p.metrics},${p.accent},${p.sort_order},${p.published})
+    `;
+  }
+  return seedProjects.length;
+}
+
 /** "E-Ticaret,SEO" -> ["E-Ticaret", "SEO"] */
 export function tagList(tags: string): string[] {
   return tags

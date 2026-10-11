@@ -9,7 +9,7 @@ import {
   updateLeadStatusAction,
   deleteLeadAction,
 } from "./actions";
-import type { Project } from "@/lib/projects";
+import { tohumlaEgerBosse, type Project } from "@/lib/projects";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
@@ -67,6 +67,9 @@ export default async function AdminPage() {
   }
 
   await ensureSchema();
+  // Veritabanı yeni bağlandıysa koddaki referansları bir kez aktar —
+  // tablo boşken panelden tek proje eklenirse site listesi boşalmasın.
+  const aktarilan = await tohumlaEgerBosse();
   const leads = (await sql`SELECT * FROM leads ORDER BY created_at DESC LIMIT 200`) as Lead[];
   const projects = (await sql`SELECT * FROM projects ORDER BY sort_order ASC, id ASC`) as Project[];
 
@@ -212,9 +215,14 @@ export default async function AdminPage() {
             {projects.length === 0 && (
               <form action={importSeedAction}>
                 <button className="rounded-lg border border-line px-3.5 py-2 text-[13.5px] hover:border-accent/60">
-                  Mevcut 4 referansı içeri aktar
+                  Koddaki referansları içeri aktar
                 </button>
               </form>
+            )}
+            {aktarilan > 0 && (
+              <span className="rounded-lg border border-emerald-400/50 px-3.5 py-2 text-[13.5px] text-emerald-300">
+                {aktarilan} referans veritabanına aktarıldı
+              </span>
             )}
           </div>
 
