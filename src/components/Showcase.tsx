@@ -115,7 +115,7 @@ export default function Showcase({
         {satirlar.map((s, i) => (
           <span
             key={s}
-            className={`-mb-[0.14em] block overflow-hidden pb-[0.14em] ${
+            className={`-mb-[0.14em] -mt-[0.16em] block overflow-hidden pb-[0.14em] pt-[0.16em] ${
               i === 1 ? "pl-[1.1em] lg:pl-[1.3em]" : ""
             }`}
           >
