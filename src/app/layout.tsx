@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { site } from "@/lib/site";
+import { gtagId } from "@/lib/gtag";
 import Analytics from "@/components/Analytics";
 import "./globals.css";
 
@@ -80,6 +81,20 @@ export default function RootLayout({
           rel="stylesheet"
         />
         <meta name="theme-color" content="#050508" />
+
+        {/* Google etiketi (gtag.js) — Medya 333 Google Ads */}
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${gtagId}`}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${gtagId}');`,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

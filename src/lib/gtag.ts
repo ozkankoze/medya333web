@@ -1,30 +1,18 @@
 /**
  * GOOGLE ADS DÖNÜŞÜM TAKİBİ
  *
- * İki Google Ads etiketi birlikte çalışır:
- *   - AW-17874832936 — eski hesap (eski kampanyaların dönüşümü kaybolmasın diye duruyor)
- *   - AW-18452628149 — yeni hesap
- *
- * Eski hesabı tamamen kapatmak istersen ETIKETLER listesinden ve aşağıdaki
- * dönüşüm dizilerinden o satırları silmen yeterli.
+ * Tek etiket: AW-18452628149.
+ * Etiketin kendisi layout.tsx içinde <head>'e basılır; burada sadece
+ * dönüşüm etiketleri ve gönderme işi var.
  */
 
-const ESKI = "AW-17874832936";
-const YENI = "AW-18452628149";
-
-/** Sayfada yapılandırılacak etiketler. */
-export const gtagIds = [ESKI, YENI] as const;
-
-/** Geriye dönük uyumluluk için ilk etiket. */
-export const gtagId = ESKI;
+export const gtagId = "AW-18452628149";
 
 export const conversions = {
   /** WhatsApp bağlantısına tıklandığında */
-  whatsapp: [`${ESKI}/tAwvCJG48uYcEKicsctC`, `${YENI}/3xFbCIGVkJkdELWF895E`],
+  whatsapp: `${gtagId}/3xFbCIGVkJkdELWF895E`,
   /** Telefon numarasına tıklandığında */
-  telefon: [`${YENI}/Kh1bCISVkJkdELWF895E`],
-  /** İletişim formu — sitede form yok, kayıt olarak duruyor */
-  form: [`${ESKI}/DVpsCI648uYcEKicsctC`],
+  telefon: `${gtagId}/Kh1bCISVkJkdELWF895E`,
 } as const;
 
 type Gtag = (...args: unknown[]) => void;
@@ -44,14 +32,8 @@ const gonderildi = new Set<string>();
  * `url` verilirse dönüşüm gönderildikten sonra o adrese yönlendirir
  * (tıklama dönüşümlerinin kaybolmaması için).
  */
-export function trackConversion(
-  sendTo: string | readonly string[],
-  url?: string
-) {
+export function trackConversion(sendTo: string, url?: string) {
   if (typeof window === "undefined") return;
-
-  const etiketler = (Array.isArray(sendTo) ? sendTo : [sendTo]) as string[];
-  const anahtar = etiketler.join("|");
 
   let done = false;
   const go = () => {
@@ -60,14 +42,14 @@ export function trackConversion(
     if (url) window.location.href = url;
   };
 
-  if (typeof window.gtag !== "function" || gonderildi.has(anahtar)) {
+  if (typeof window.gtag !== "function" || gonderildi.has(sendTo)) {
     go();
     return;
   }
-  gonderildi.add(anahtar);
+  gonderildi.add(sendTo);
 
   window.gtag("event", "conversion", {
-    send_to: etiketler,
+    send_to: sendTo,
     value: 1.0,
     currency: "TRY",
     transport_type: "beacon",

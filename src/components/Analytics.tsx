@@ -1,15 +1,14 @@
 "use client";
 
-import Script from "next/script";
 import { useEffect } from "react";
-import { conversions, gtagIds, trackConversion } from "@/lib/gtag";
+import { conversions, trackConversion } from "@/lib/gtag";
 
 /**
- * Google etiketi + otomatik dönüşüm yakalama.
+ * Dönüşüm yakalama.
  *
- * Sayfadaki TÜM WhatsApp (wa.me) ve telefon (tel:) bağlantıları otomatik
- * olarak dönüşüm sayılır — ayrı ayrı kod eklemeye gerek yok.
- * WhatsApp ve telefon ayrı dönüşüm olarak gider.
+ * Google etiketinin kendisi layout.tsx içinde <head>'de duruyor.
+ * Burada sadece tıklamalar dinlenir: sayfadaki TÜM WhatsApp (wa.me) ve
+ * telefon (tel:) bağlantıları otomatik olarak dönüşüm sayılır.
  */
 export default function Analytics() {
   useEffect(() => {
@@ -19,11 +18,8 @@ export default function Analytics() {
       if (!link) return;
 
       const href = link.getAttribute("href") || "";
-      const isWhatsApp =
-        href.includes("wa.me") ||
-        href.includes("api.whatsapp.com") ||
-        href.startsWith("whatsapp:");
-      const isPhone = href.startsWith("tel:");
+      const isWhatsApp = /wa\.me|whatsapp/i.test(href);
+      const isPhone = /^tel:/i.test(href);
       if (!isWhatsApp && !isPhone) return;
 
       const etiket = isPhone ? conversions.telefon : conversions.whatsapp;
@@ -41,25 +37,9 @@ export default function Analytics() {
       trackConversion(etiket, link.href);
     }
 
-    document.addEventListener("click", onClick);
-    return () => document.removeEventListener("click", onClick);
+    document.addEventListener("click", onClick, true);
+    return () => document.removeEventListener("click", onClick, true);
   }, []);
 
-  return (
-    <>
-      <Script
-        id="gtag-src"
-        strategy="afterInteractive"
-        src={`https://www.googletagmanager.com/gtag/js?id=${gtagIds[0]}`}
-      />
-      <Script id="gtag-init" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          ${gtagIds.map((id) => `gtag('config', '${id}');`).join("\n          ")}
-        `}
-      </Script>
-    </>
-  );
+  return null;
 }
