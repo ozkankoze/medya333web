@@ -3,6 +3,7 @@ baslik: İş güvenliği firmaları için web sitesi — beş projeden çıkard�
 ozet: LOTO, EKED ve KKD satan beş firmanın sitesini kurduk. Bu sektörde neyin işe yaradığını, neyin boşa para olduğunu anlatıyoruz.
 tarih: 2026-10-12
 etiket: Sektör
+renk: "#E03131"
 ---
 
 İş güvenliği ekipmanı satan bir firmanın web sitesi, tişört satan bir mağazanın sitesine benzemez. Bunu beş ayrı projede öğrendik: Locksan Safety, Lockout Turkey, Sofilx LOTO, KKD Markt ve SOFT Safety. Hepsi yayında, hepsi farklı bir problemi çözüyor.
@@ -16,6 +17,8 @@ Normal bir e-ticarette insan "siyah tişört" arar. Sizde öyle değil. Karşın
 Lockout Turkey'de bunu şöyle çözdük: 184 ürünlük katalogda arama kutusuyla yetinmedik, kilitlenecek noktayı görselden seçtiren bir rehber kurduk. Kullanıcı "kelebek vana" resmini seçiyor, uygun kilitleme ekipmanları önüne geliyor.
 
 Sonuç olarak şunu söyleyebiliriz: ürün listesi değil, **karar akışı** kurun. Ziyaretçiyi ürün adını bilmek zorunda bırakan her site, telefonla sorulan sorulara mahkûm olur.
+
+::proje:lockoutturkey::
 
 ## 2. Kimse sepete atıp kredi kartı girmiyor
 
@@ -35,6 +38,8 @@ Dördü de aynı mantığın farklı yüzü: ziyaretçinin elindeki listeyi **ko
 Dijitalleşme adına herkes PDF'ten kaçıyor ama bu sektörde satın alma süreci e-postayla ilerliyor. Teknik şartnameye eklenecek, müdüre iletilecek, ihale dosyasına girecek bir belge lazım.
 
 Locksan Safety'de 400'den fazla ürünlük kataloğu indirilebilir tuttuk. Site, PDF'i **değiştirmek** için değil, PDF'e giden yolu kısaltmak için var.
+
+::proje:locksansafety::
 
 ## 4. Çapraz referans arama, en çok işe yarayan tek özellik
 

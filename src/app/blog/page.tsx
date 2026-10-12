@@ -56,7 +56,7 @@ export default function BlogPage() {
 
             <div className="py-14 lg:py-20">
               <span className="mono text-faint">Blog</span>
-              <h1 className="display mt-6 max-w-[16ch] text-[clamp(2.6rem,8vw,5.2rem)]">
+              <h1 className="duz mt-6 max-w-[17ch] text-[clamp(2.2rem,6.4vw,4rem)]">
                 Ne yaptığımızı yazıyoruz.
               </h1>
               <p className="mt-7 max-w-[52ch] text-[16px] leading-[1.65] text-mute">
@@ -85,25 +85,58 @@ export default function BlogPage() {
               </p>
             ) : (
               <div className="border-t border-[var(--line)]">
-                {liste.map((y) => (
+                {liste.map((y, i) => (
                   <Link
                     key={y.slug}
                     href={`/blog/${y.slug}`}
-                    className="group block border-b border-[var(--line)] py-7 transition-[padding] duration-300 lg:hover:pl-3"
+                    style={{
+                      ["--vurgu" as string]: y.renk,
+                      animationDelay: `${0.06 * i + 0.12}s`,
+                    }}
+                    className="gir group relative block border-b border-[var(--line)] py-7 transition-[padding] duration-300 lg:hover:pl-5"
                   >
-                    <div className="mono flex flex-wrap items-center gap-x-4 gap-y-1 text-faint">
-                      <span>{y.etiket}</span>
+                    {/* sol kenarda yazının rengi */}
+                    <span
+                      aria-hidden
+                      className="absolute bottom-7 left-0 top-7 w-[3px] origin-top scale-y-0 rounded-full bg-[var(--vurgu)] transition-transform duration-[450ms] group-hover:scale-y-100"
+                    />
+                    {/* arkada hafif ışıma */}
+                    <span
+                      aria-hidden
+                      className="pointer-events-none absolute -inset-x-6 inset-y-0 -z-1 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                      style={{
+                        background:
+                          "radial-gradient(42% 92% at 0% 50%, color-mix(in srgb, var(--vurgu) 24%, transparent) 0%, transparent 72%)",
+                      }}
+                    />
+                    <div className="mono flex flex-wrap items-center gap-x-4 gap-y-1.5 text-faint">
+                      <span
+                        className="rounded-full px-2.5 py-1"
+                        style={{
+                          color: y.renk,
+                          background:
+                            "color-mix(in srgb, var(--vurgu) 16%, transparent)",
+                        }}
+                      >
+                        {y.etiket}
+                      </span>
                       <span>{tarihYaz(y.tarih)}</span>
                       <span>{y.dakika} dk okuma</span>
                     </div>
-                    <h2 className="display mt-3 max-w-[26ch] text-[clamp(1.5rem,4.2vw,2.4rem)]">
+                    <h2 className="duz mt-3.5 max-w-[28ch] text-[clamp(1.35rem,3.6vw,2.1rem)]">
                       {y.baslik}
                     </h2>
                     <p className="mt-3 max-w-[62ch] text-[15px] leading-[1.6] text-mute">
                       {y.ozet}
                     </p>
-                    <span className="mono mt-4 inline-block text-faint group-hover:text-chalk">
-                      Yazıyı oku →
+                    <span className="mono mt-4 inline-flex items-center gap-2 text-faint transition-colors group-hover:text-chalk">
+                      Yazıyı oku
+                      <span
+                        aria-hidden
+                        className="inline-block transition-transform duration-300 group-hover:translate-x-1"
+                      >
+                        →
+                      </span>
                     </span>
                   </Link>
                 ))}

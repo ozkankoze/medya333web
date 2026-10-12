@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import Cursor from "@/components/Cursor";
 import Chat from "@/components/Chat";
 import Footer from "@/components/Footer";
+import ProjeKarti from "@/components/ProjeKarti";
+import { getProjects } from "@/lib/projects";
 import { site, waLink } from "@/lib/site";
 import { tarihYaz, yaziBul, yazilar } from "@/lib/blog";
 
@@ -41,6 +43,24 @@ export async function generateMetadata({
   };
 }
 
+/** `::proje:anahtar::` işaretlerini bulup metni parçalara ayırır. */
+function parcala(html: string) {
+  const desen = /<p>\s*::proje:([a-z0-9-]+)::\s*<\/p>/gi;
+  const parcalar: Array<{ tip: "html"; icerik: string } | { tip: "proje"; anahtar: string }> = [];
+  let son = 0;
+  let m: RegExpExecArray | null;
+
+  while ((m = desen.exec(html))) {
+    if (m.index > son) {
+      parcalar.push({ tip: "html", icerik: html.slice(son, m.index) });
+    }
+    parcalar.push({ tip: "proje", anahtar: m[1] });
+    son = m.index + m[0].length;
+  }
+  if (son < html.length) parcalar.push({ tip: "html", icerik: html.slice(son) });
+  return parcalar;
+}
+
 export default async function YaziPage({
   params,
 }: {
@@ -50,6 +70,8 @@ export default async function YaziPage({
   const y = yaziBul(slug);
   if (!y) notFound();
 
+  const projeler = await getProjects();
+  const parcalar = parcala(y.html);
   const digerleri = yazilar()
     .filter((d) => d.slug !== y.slug)
     .slice(0, 3);
@@ -74,8 +96,18 @@ export default async function YaziPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main>
-        <section className="border-b border-[var(--line)]">
+      <main style={{ ["--vurgu" as string]: y.renk }}>
+        <section className="relative isolate overflow-hidden border-b border-[var(--line)]">
+          {/* yazının rengiyle ışıyan başlık alanı */}
+          <span
+            aria-hidden
+            className="pointer-events-none absolute inset-x-0 -top-[320px] -z-1 h-[640px] opacity-[0.28]"
+            style={{
+              background:
+                "radial-gradient(44% 52% at 50% 60%, var(--vurgu) 0%, transparent 70%)",
+            }}
+          />
+
           <div className="gutter">
             <header className="flex items-center justify-between gap-4 py-[15px]">
               <Link href="/" className="block">
@@ -93,16 +125,24 @@ export default async function YaziPage({
               </Link>
             </header>
 
-            <div className="mx-auto max-w-[68ch] py-12 lg:py-16">
-              <div className="mono flex flex-wrap items-center gap-x-4 gap-y-1 text-faint">
-                <span>{y.etiket}</span>
+            <div className="gir mx-auto max-w-[68ch] py-12 lg:py-16">
+              <div className="mono flex flex-wrap items-center gap-x-4 gap-y-1.5 text-faint">
+                <span
+                  className="rounded-full px-2.5 py-1"
+                  style={{
+                    color: y.renk,
+                    background: "color-mix(in srgb, var(--vurgu) 16%, transparent)",
+                  }}
+                >
+                  {y.etiket}
+                </span>
                 <span>{tarihYaz(y.tarih)}</span>
                 <span>{y.dakika} dk okuma</span>
                 {y.guncelleme && (
                   <span>Güncelleme: {tarihYaz(y.guncelleme)}</span>
                 )}
               </div>
-              <h1 className="display mt-6 text-[clamp(2.1rem,6.4vw,3.8rem)]">
+              <h1 className="duz mt-6 text-[clamp(2rem,5.4vw,3.3rem)]">
                 {y.baslik}
               </h1>
               <p className="mt-6 text-[17px] leading-[1.6] text-mute">
@@ -114,15 +154,26 @@ export default async function YaziPage({
 
         <section>
           <div className="gutter py-12 lg:py-16">
-            <article
-              className="yazi mx-auto max-w-[68ch]"
-              dangerouslySetInnerHTML={{ __html: y.html }}
-            />
+            <div className="yazi mx-auto max-w-[68ch]">
+              {parcalar.map((p, i) => {
+                if (p.tip === "html") {
+                  return (
+                    <div
+                      key={i}
+                      dangerouslySetInnerHTML={{ __html: p.icerik }}
+                    />
+                  );
+                }
+                const proje = projeler.find((x) => x.image_url === p.anahtar);
+                if (!proje) return null;
+                return <ProjeKarti key={i} proje={proje} />;
+              })}
+            </div>
 
             <div className="mx-auto mt-14 max-w-[68ch] border-t border-[var(--line)] pt-8">
               <p className="text-[16px] leading-[1.6] text-chalk">
-                Kendi işin için bunu konuşmak istersen, bir kahve içip
-                sohbet edelim.
+                Kendi işin için bunu konuşmak istersen, bir kahve içip sohbet
+                edelim.
               </p>
               <a
                 href={waLink}
@@ -145,12 +196,19 @@ export default async function YaziPage({
                   <Link
                     key={d.slug}
                     href={`/blog/${d.slug}`}
-                    className="group block border-b border-[var(--line)] py-5 transition-[padding] duration-300 lg:hover:pl-3"
+                    className="group flex items-start gap-3.5 border-b border-[var(--line)] py-5 transition-[padding] duration-300 lg:hover:pl-3"
                   >
-                    <span className="mono text-faint">{d.etiket}</span>
-                    <h3 className="display mt-2 max-w-[30ch] text-[clamp(1.2rem,3vw,1.7rem)]">
-                      {d.baslik}
-                    </h3>
+                    <i
+                      aria-hidden
+                      className="mt-[9px] block h-2 w-2 flex-none rounded-full"
+                      style={{ background: d.renk }}
+                    />
+                    <span className="min-w-0">
+                      <span className="mono block text-faint">{d.etiket}</span>
+                      <span className="duz mt-1.5 block max-w-[34ch] text-[clamp(1.05rem,2.6vw,1.35rem)] text-chalk">
+                        {d.baslik}
+                      </span>
+                    </span>
                   </Link>
                 ))}
               </div>

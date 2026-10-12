@@ -15,8 +15,16 @@ import { marked } from "marked";
  *   ozet: Tek cümlelik özet — arama sonucunda ve listede görünür.
  *   tarih: 2026-10-12
  *   etiket: Fiyatlar
- *   guncelleme: 2026-11-02      (isteğe bağlı)
+ *   renk: "#1FB85C"              (isteğe bağlı — yazının vurgu rengi)
+ *   guncelleme: 2026-11-02       (isteğe bağlı)
  *   ---
+ *
+ * Yazının içine kendi projelerimizden canlı bir örnek koymak için,
+ * tek başına bir satıra şunu yaz:
+ *
+ *   ::proje:locksansafety::
+ *
+ * Anahtar, src/lib/projects.ts içindeki image_url değeridir.
  */
 
 export type Yazi = {
@@ -26,10 +34,14 @@ export type Yazi = {
   tarih: string;
   etiket: string;
   guncelleme?: string;
+  /** Yazının vurgu rengi — liste ve başlık alanında kullanılır. */
+  renk: string;
   icerik: string;
   html: string;
   dakika: number;
 };
+
+const VARSAYILAN_RENK = "#6b5cf0";
 
 const KLASOR = path.join(process.cwd(), "src", "content", "blog");
 
@@ -72,6 +84,7 @@ function oku(dosya: string): Yazi | null {
     ozet: alanlar.ozet ?? "",
     tarih: alanlar.tarih ?? "",
     etiket: alanlar.etiket ?? "Yazı",
+    renk: alanlar.renk || VARSAYILAN_RENK,
     ...(alanlar.guncelleme ? { guncelleme: alanlar.guncelleme } : {}),
     icerik: govde,
     html: marked.parse(govde, { async: false }) as string,

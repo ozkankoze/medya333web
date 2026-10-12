@@ -82,6 +82,13 @@ body {
   letter-spacing: -0.015em;
 }
 
+.duz {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
 .mono {
   font-family: var(--font-mono);
   font-size: 10.5px;
@@ -237,16 +244,35 @@ body {
   line-height: 1.72;
   color: var(--color-mute);
 }
-.yazi > * + * {
+.yazi > * + *,
+.yazi > div > * + * {
   margin-top: 1.15em;
+}
+/* metin parçaları <div> içine sarıldığı için ilk eleman boşluk almasın */
+.yazi > div:first-child > :first-child {
+  margin-top: 0;
 }
 .yazi h2,
 .yazi h3 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  line-height: 1.12;
-  letter-spacing: -0.015em;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  line-height: 1.16;
+  letter-spacing: -0.03em;
   color: var(--color-chalk);
+}
+.yazi h2 {
+  position: relative;
+  padding-left: 0.66em;
+}
+.yazi h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.16em;
+  bottom: 0.16em;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--vurgu, var(--glow));
 }
 .yazi h2 {
   margin-top: 2.1em;
@@ -264,7 +290,7 @@ body {
   color: var(--color-chalk);
   text-decoration: underline;
   text-underline-offset: 4px;
-  text-decoration-color: rgba(244, 242, 240, 0.35);
+  text-decoration-color: color-mix(in srgb, var(--vurgu, var(--glow)) 70%, transparent);
 }
 .yazi a:hover {
   text-decoration-color: var(--color-chalk);
@@ -283,15 +309,14 @@ body {
   margin-top: 0.45em;
 }
 .yazi li::marker {
-  color: var(--color-faint);
+  color: var(--vurgu, var(--glow));
 }
 .yazi blockquote {
-  border-left: 1px solid var(--line);
+  border-left: 2px solid var(--vurgu, var(--glow));
   padding-left: 1.1em;
   color: var(--color-chalk);
-  font-family: var(--font-display);
-  font-size: 1.22em;
-  line-height: 1.35;
+  font-size: 1.08em;
+  line-height: 1.5;
 }
 .yazi hr {
   border: 0;
@@ -332,7 +357,7 @@ body {
   vertical-align: top;
 }
 .yazi th {
-  color: var(--color-chalk);
+  color: var(--vurgu, var(--color-chalk));
   font-weight: 500;
   white-space: nowrap;
 }
