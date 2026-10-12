@@ -230,6 +230,120 @@ body {
   }
 }
 
+/* ---------------- blog yazısı ---------------- */
+
+.yazi {
+  font-size: 16.5px;
+  line-height: 1.72;
+  color: var(--color-mute);
+}
+.yazi > * + * {
+  margin-top: 1.15em;
+}
+.yazi h2,
+.yazi h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  color: var(--color-chalk);
+}
+.yazi h2 {
+  margin-top: 2.1em;
+  font-size: clamp(1.55rem, 4vw, 2.1rem);
+}
+.yazi h3 {
+  margin-top: 1.7em;
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+}
+.yazi strong {
+  color: var(--color-chalk);
+  font-weight: 500;
+}
+.yazi a {
+  color: var(--color-chalk);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: rgba(244, 242, 240, 0.35);
+}
+.yazi a:hover {
+  text-decoration-color: var(--color-chalk);
+}
+.yazi ul,
+.yazi ol {
+  padding-left: 1.3em;
+}
+.yazi ul {
+  list-style: disc;
+}
+.yazi ol {
+  list-style: decimal;
+}
+.yazi li + li {
+  margin-top: 0.45em;
+}
+.yazi li::marker {
+  color: var(--color-faint);
+}
+.yazi blockquote {
+  border-left: 1px solid var(--line);
+  padding-left: 1.1em;
+  color: var(--color-chalk);
+  font-family: var(--font-display);
+  font-size: 1.22em;
+  line-height: 1.35;
+}
+.yazi hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin-block: 2.4em;
+}
+.yazi code {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+  background: rgba(255, 255, 255, 0.07);
+  padding: 0.14em 0.4em;
+  border-radius: 3px;
+  color: var(--color-chalk);
+}
+.yazi pre {
+  overflow-x: auto;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--line);
+  padding: 1em 1.1em;
+  border-radius: 4px;
+}
+.yazi pre code {
+  background: none;
+  padding: 0;
+}
+.yazi table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.93em;
+  display: block;
+  overflow-x: auto;
+}
+.yazi th,
+.yazi td {
+  border-bottom: 1px solid var(--line);
+  padding: 0.62em 0.9em 0.62em 0;
+  text-align: left;
+  vertical-align: top;
+}
+.yazi th {
+  color: var(--color-chalk);
+  font-weight: 500;
+  white-space: nowrap;
+}
+.yazi img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+
 /* ---------------- erişilebilirlik ---------------- */
 
 @media (prefers-reduced-motion: reduce) {

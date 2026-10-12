@@ -1,9 +1,11 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/lib/site";
 import { sektorler } from "@/lib/sektor";
+import { yazilar } from "@/lib/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
+  const blog = yazilar();
 
   return [
     {
@@ -18,6 +20,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 0.9,
+    })),
+    ...(blog.length
+      ? [
+          {
+            url: `${site.url}/blog`,
+            lastModified: now,
+            changeFrequency: "weekly" as const,
+            priority: 0.8,
+          },
+        ]
+      : []),
+    ...blog.map((y) => ({
+      url: `${site.url}/blog/${y.slug}`,
+      lastModified: new Date(y.guncelleme || y.tarih || now),
+      changeFrequency: "yearly" as const,
+      priority: 0.7,
     })),
   ];
 }

@@ -6,10 +6,13 @@ export default function Footer() {
   return (
     <footer className="relative z-[2] bg-void">
       <div className="gutter">
-        <div className="mono flex flex-wrap justify-between gap-2.5 border-t border-[var(--line)] pb-8 pt-[18px] text-faint">
+        <div className="mono flex flex-wrap items-center justify-between gap-x-6 gap-y-2.5 border-t border-[var(--line)] pb-8 pt-[18px] text-faint">
           <span>
             © {yil} {site.name} — Tüm hakları saklıdır
           </span>
+          <a href="/blog" className="hover:text-chalk">
+            Blog
+          </a>
           {site.parentBrand.url ? (
             <a
               href={site.parentBrand.url}
