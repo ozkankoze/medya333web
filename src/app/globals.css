@@ -14,6 +14,12 @@
   --color-mute: #9b9995;
   --color-faint: #6e6c69;
 
+  /* panel ekranlarında kullanılan takma adlar */
+  --color-muted: #9b9995;
+  --color-muted-2: #6e6c69;
+  --color-gold: #d4af37;
+  --color-line: rgba(244, 242, 240, 0.16);
+
   /* eski masaüstü paleti — sadece referans bölümünde */
   --color-w-face: #c6c6c6;
   --color-w-lit: #ffffff;

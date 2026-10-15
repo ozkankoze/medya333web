@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Claude'un bu klasore biraktigi calisma dosyalari
+/Claude outputs/

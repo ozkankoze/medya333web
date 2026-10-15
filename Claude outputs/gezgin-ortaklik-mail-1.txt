@@ -26,14 +26,15 @@ satıyorsun. Siteyi biz yapıyoruz, parayı ikiye bölüyoruz.
     600 dolarlık siteden 300 dolar senin.
   • Siteyi 2 günde yayına alıyoruz. Sen bir yerde uzun kalmıyorsun;
     iş satış sıcakken bitmiş oluyor.
-  • Teslimden sonra 7 saat içinde payın hesabında.
+  • Teslimden sonra 7 saat içinde payın hesabında, hafta sonu dahil.
   • Satın alacağın bir şey yok: kayıt ücreti yok, eğitim paketi yok,
     stok yok. Satarsan kazanırsın, satmazsan hiçbir şey ödemezsin.
 
 Teknik hiçbir şey bilmene gerek yok. Müşterinin soracağı her şeyin
 cevabını biz veriyoruz; sen sadece konuşmayı yapıyorsun. Alan adı ve
 hosting ilk yıl fiyatın içinde, sayfa sınırı yok, müşteri beğenene
-kadar revizyon devam ediyor.
+kadar revizyon devam ediyor. İkinci yıldan itibaren alan adı ve hosting
+yenilemesi müşteriye yılda 100 dolar.
 
 İşlerimizden bazıları, açıp gösterebilirsin:
 locksansafety.com · nextstopbackpackers.com · lockoutturkey.com · sofilx.com
@@ -55,7 +56,7 @@ Gezdiğin yerlerde sitesi olmayan ya da telefonda bozuk görünen küçük
 işletmeler oluyor: kafe, salon, butik otel. Konuşup satarsan siteyi
 biz yapıyoruz, paranın %50'si senin. Taban fiyat 300 dolar, yukarısı
 işe göre. 2 günde yayına alıyoruz, teslimden 7 saat sonra payın
-hesabında.
+hesabında, hafta sonu dahil.
 
 Satın alacağın bir şey yok, kayıt ücreti yok. Satarsan kazanıyorsun.
 
@@ -80,6 +81,10 @@ Satın alacağın bir şey yok, kayıt ücreti yok. Satarsan kazanıyorsun.
 → Çünkü her iş aynı değil. 5 sayfalık bir kafe sitesi ile rezervasyon
    alan bir otel sitesi aynı emek değil. Tabanımız 300 dolar;
    firmayı anlattığında fiyatı sana biz söylüyoruz, sonra satıyorsun.
+
+"İkinci yıl ne ödeyeceğim?" (müşteri sorar)
+→ Alan adı ve hosting yenilemesi yılda 100 dolar. İlk yıl fiyata dahil,
+   ikinci yıldan itibaren bu ücret işliyor.
 
 "Kaç tane satabilirim?"
 → Sınır yok. Ayda 20 siteyi de 50 siteyi de yayına alabilecek
