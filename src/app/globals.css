@@ -19,6 +19,11 @@
   --color-muted-2: #6e6c69;
   --color-gold: #d4af37;
   --color-line: rgba(244, 242, 240, 0.16);
+  --color-paper: #050508;
+  --color-paper-2: #0e0e13;
+  --color-ink: #f4f2f0;
+  --color-ink-2: #c9c7c4;
+  --color-accent: #6b5cf0;
 
   /* eski masaüstü paleti — sadece referans bölümünde */
   --color-w-face: #c6c6c6;

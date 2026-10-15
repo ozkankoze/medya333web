@@ -87,7 +87,7 @@ export default async function AdminPage() {
             </span>
           </div>
           <div className="flex items-center gap-3">
-            <a href="/panel/gezginler" className="text-[13.5px] text-gold hover:text-chalk">
+            <a href="/panel/gezginler" className="rounded-lg border border-gold/50 px-3.5 py-2 text-[13.5px] text-gold hover:bg-gold/10">
               Gezginler
             </a>
             <a href="/" className="text-[13.5px] text-muted hover:text-ink">
