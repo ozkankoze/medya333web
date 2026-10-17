@@ -3,6 +3,7 @@ import { site, waLink } from "@/lib/site";
 import { mockupSrc } from "@/lib/mockup";
 import Form3D from "./Form3D";
 import Showcase from "./Showcase";
+import DilSecici from "./DilSecici";
 
 export default async function Hero() {
   const projects = await getProjects();
@@ -41,6 +42,7 @@ export default async function Hero() {
           </span>
 
           <span className="flex items-center gap-2.5 justify-self-end">
+            <DilSecici aktif="tr" />
             <a
               href={`tel:${site.phoneRaw}`}
               className="mono hidden text-chalk sm:inline"

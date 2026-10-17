@@ -14,6 +14,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 1,
     },
+    // Yabancı dil sayfaları
+    ...["en", "bs"].map((k) => ({
+      url: `${site.url}/${k}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    })),
     // Sektöre özel landing sayfaları — outreach bu adreslere gider.
     ...sektorler.map((s) => ({
       url: `${site.url}/${s.slug}`,

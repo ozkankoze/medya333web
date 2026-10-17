@@ -34,7 +34,10 @@ export const metadata: Metadata = {
     description: site.description,
   },
   robots: { index: true, follow: true },
-  alternates: { canonical: "/" },
+  alternates: {
+    canonical: "/",
+    languages: { tr: "/", en: "/en", bs: "/bs" },
+  },
   // Google Search Console doğrulaması.
   // Search Console "HTML etiketi" yöntemindeki content="..." değerini
   // Vercel'de GOOGLE_SITE_VERIFICATION değişkenine yapıştırman yeterli.

@@ -19,10 +19,13 @@ export default function Showcase({
   projects,
   ilkBaslik,
   ilkMetin,
+  metrikSozluk,
 }: {
   projects: Project[];
   ilkBaslik: string[];
   ilkMetin: string;
+  /** Yabancı dil sayfalarında etiketleri çevirmek için. */
+  metrikSozluk?: Record<string, string>;
 }) {
   const [aktif, setAktif] = useState<number | null>(null);
   const [mobil, setMobil] = useState(false);
@@ -99,7 +102,9 @@ export default function Showcase({
     }
   };
 
-  const etiketler = p ? metricList(p.metrics) : [];
+  const etiketler = (p ? metricList(p.metrics) : []).map((e) =>
+    metrikSozluk ? metrikSozluk[e] ?? e : e
+  );
   const satirlar = secili && !mobil ? [secili.title] : ilkBaslik;
 
   return (
