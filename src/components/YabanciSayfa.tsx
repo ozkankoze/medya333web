@@ -2,6 +2,7 @@ import { site } from "@/lib/site";
 import { getProjects } from "@/lib/projects";
 import { mockupSrc } from "@/lib/mockup";
 import { prettyHost } from "@/lib/projects";
+import Cursor from "./Cursor";
 import Showcase from "./Showcase";
 import Form3D from "./Form3D";
 import Footer from "./Footer";
@@ -28,6 +29,7 @@ export default async function YabanciSayfa({
 
   return (
     <>
+      <Cursor />
       <main>
         {/* ---------- üst bölüm ---------- */}
         <section className="relative isolate flex min-h-[620px] flex-col overflow-hidden lg:min-h-[min(840px,94svh)]">
