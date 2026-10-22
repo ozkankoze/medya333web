@@ -32,6 +32,7 @@ export default function Showcase({
   const sabit = useRef<number | null>(null);
   const masaRef = useRef<HTMLImageElement>(null);
   const mobilRef = useRef<HTMLImageElement>(null);
+  const baslikRef = useRef<HTMLHeadingElement>(null);
 
   /** Ziyaretçinin seçtiği marka. Hiçbiri seçilmemişken ilk referans akar. */
   const secili = aktif === null ? null : projects[aktif];
@@ -106,11 +107,51 @@ export default function Showcase({
     metrikSozluk ? metrikSozluk[e] ?? e : e
   );
   const satirlar = secili && !mobil ? [secili.title] : ilkBaslik;
+  const satirAnahtari = satirlar.join("\n");
+
+  /**
+   * Dev başlığı sütuna sığdırır.
+   *
+   * Başlığın boyu ekran genişliğine (vw) bağlıydı, oysa içinde durduğu sütun
+   * sağdaki cihaz görseli yüzünden ekrandan çok daha dar. 1366 pikselin
+   * altındaki dizüstü ekranlarında son harfler kırpılıyordu. Burada satırın
+   * gerçek genişliğini ölçüp gerekirse puntoyu küçültüyoruz.
+   *
+   * Ölçüm sütunu izler, başlığı değil: sütunun genişliği punto ile
+   * değişmediği için sonsuz ölçüm döngüsü oluşmaz.
+   */
+  useEffect(() => {
+    const h = baslikRef.current;
+    const kap = h?.parentElement;
+    if (!h || !kap) return;
+
+    const sigdir = () => {
+      h.style.fontSize = "";
+      const taban = parseFloat(getComputedStyle(h).fontSize);
+      if (!taban) return;
+      let hedef = taban;
+      h.querySelectorAll<HTMLElement>(":scope > span").forEach((s) => {
+        const yer = s.clientWidth;
+        const gerek = s.scrollWidth;
+        if (yer > 0 && gerek > yer) hedef = Math.min(hedef, (yer / gerek) * taban);
+      });
+      // yarım piksel pay — yuvarlama yüzünden son harf kırpılmasın
+      if (hedef < taban) h.style.fontSize = `${(hedef - 0.5).toFixed(1)}px`;
+    };
+
+    sigdir();
+    const ro = new ResizeObserver(sigdir);
+    ro.observe(kap);
+    // fontlar yüklenince harf genişlikleri değişir, yeniden ölç
+    document.fonts?.ready.then(sigdir).catch(() => {});
+    return () => ro.disconnect();
+  }, [satirAnahtari]);
 
   return (
     <div className="relative z-2 flex min-w-0 flex-1 flex-col gap-[18px] pb-[26px] pt-[6px] lg:grid lg:grid-cols-[minmax(150px,185px)_minmax(0,1fr)_auto] lg:grid-rows-[auto_1fr_auto] lg:gap-x-[30px] lg:gap-y-0 lg:pb-[30px] lg:pt-1">
       {/* dev iddia */}
       <h1
+        ref={baslikRef}
         className={`display m-0 lg:col-start-2 lg:row-start-2 lg:max-w-[12ch] lg:self-end ${
           secili && !mobil
             ? "text-[clamp(2.3rem,6.4vw,5rem)]"
