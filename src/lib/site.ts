@@ -16,9 +16,9 @@ export const site = {
     "Kurumsal web sitesi, e-ticaret ve landing page tasarımı. Hızlı açılan, mobil uyumlu, Google'da bulunan siteler tasarlıyoruz.",
 
   // ---- İLETİŞİM ----
-  phoneDisplay: "0506 040 95 11",
-  phoneRaw: "+905060409511", // tel: linki için, boşluksuz
-  whatsapp: "905060409511", // wa.me linki için, + ve boşluk olmadan
+  phoneDisplay: "0537 010 86 11",
+  phoneRaw: "+905370108611", // tel: linki için, boşluksuz
+  whatsapp: "905370108611", // wa.me linki için, + ve boşluk olmadan
   whatsappMessage:
     "Merhaba, web sitesi yaptırmak istiyorum. Bilgi alabilir miyim?",
   email: "info@medya333.com",

@@ -164,7 +164,7 @@ export default async function GezginPage() {
       </section>
 
       <footer className="mt-10 border-t border-line pt-6 text-[12.5px] text-muted-2">
-        Medya 333 · İstanbul · 0506 040 95 11 · info@medya333.com
+        Medya 333 · İstanbul · 0537 010 86 11 · info@medya333.com
       </footer>
     </div>
   );
