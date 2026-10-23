@@ -1,6 +1,7 @@
 ---
 baslik: Google İşletme Profili yeterli mi? Web sitesi olmadan nereye kadar gidersiniz
 ozet: Haritada çıkıyorsunuz, aramalarda yoksunuz. İşletme profilinin ne yaptığını, nerede yetmediğini ve sitesi olmayan bir firmanın teklif aşamasında neden elendiğini anlatıyoruz.
+kisaCevap: Google İşletme Profili bir konum kaydıdır: firma adınız arandığında ve haritada görünmenizi sağlar. Ürün ve hizmet aramalarında ise Google haritayı değil sayfaları sıralar, bu yüzden siteniz yoksa o aramalarda hiç yoksunuz. Profil sizi arayan müşteriyi bulur, site ürünü arayan müşteriyi getirir.
 tarih: 2026-10-19
 etiket: Google
 renk: "#3B6EF0"

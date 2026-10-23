@@ -21,6 +21,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.9,
     })),
+    {
+      // ⚠️ VARLIK SAYFASI: "Medya 333 kimdir" sorusunun tek adresi.
+      url: `${site.url}/hakkimizda`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
     // Sektöre özel landing sayfaları — outreach bu adreslere gider.
     ...sektorler.map((s) => ({
       url: `${site.url}/${s.slug}`,

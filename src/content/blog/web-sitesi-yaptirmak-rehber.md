@@ -1,6 +1,7 @@
 ---
 baslik: Web sitesi yaptırmak — fiyatı ne belirler, ne kadar sürer, nelere dikkat etmeli
 ozet: Teklif almadan önce okuyun. Fiyatı belirleyen dört kalem, şablon ile sıfırdan kodlama farkı ve ajansa sorulacak yedi soru.
+kisaCevap: Web sitesi fiyatını dört şey belirler: sayfa ve içerik hacmi, hazır tema yerine sıfırdan kodlama, teknik gereksinimler (çok dillilik, ürün filtreleme, teklif sepeti) ve içeriği kimin hazırladığı. İçerikler hazır olduğunda kurumsal bir site 2 günde yayına alınabilir; alan adı ve hosting ilk yıl dahil, ikinci yıldan itibaren yılda 100 dolardır.
 tarih: 2026-10-17
 etiket: Rehber
 renk: "#D4AF37"

@@ -36,6 +36,15 @@ export type Yazi = {
   guncelleme?: string;
   /** Yazının vurgu rengi — liste ve başlık alanında kullanılır. */
   renk: string;
+  /**
+   * Yazının en başında duran, soruyu TEK BAŞINA yanıtlayan kısa paragraf.
+   *
+   * ⚠️ `ozet` ile aynı şey değildir: `ozet` listede ve arama sonucunda
+   * görünen tanıtım cümlesi, bu ise sayfanın içinde duran cevaptır. Yapay
+   * zeka asistanları ve Google'ın özet kutuları sayfanın tamamını değil,
+   * soruyu doğrudan yanıtlayan kısa paragrafı alıntılıyor.
+   */
+  kisaCevap?: string;
   icerik: string;
   html: string;
   dakika: number;
@@ -85,6 +94,7 @@ function oku(dosya: string): Yazi | null {
     tarih: alanlar.tarih ?? "",
     etiket: alanlar.etiket ?? "Yazı",
     renk: alanlar.renk || VARSAYILAN_RENK,
+    ...(alanlar.kisaCevap ? { kisaCevap: alanlar.kisaCevap } : {}),
     ...(alanlar.guncelleme ? { guncelleme: alanlar.guncelleme } : {}),
     icerik: govde,
     html: marked.parse(govde, { async: false }) as string,

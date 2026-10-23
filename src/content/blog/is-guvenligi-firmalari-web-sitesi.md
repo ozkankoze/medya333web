@@ -1,6 +1,7 @@
 ---
 baslik: İş güvenliği firmaları için web sitesi — beş projeden çıkardığımız dersler
 ozet: LOTO, EKED ve KKD satan beş firmanın sitesini kurduk. Bu sektörde neyin işe yaradığını, neyin boşa para olduğunu anlatıyoruz.
+kisaCevap: İş güvenliği firmalarının sitesi bir tanıtım sitesi değil, teknik bir katalogdur: yüzlerce ürün, standart numaraları, PDF föyler ve en önemlisi teklif talebi vardır. Satın almacı ürünü bulamazsa teklif de istemez, bu yüzden tasarımın asıl işi ürünü aratmak değil buldurmaktır.
 tarih: 2026-10-12
 etiket: Sektör
 renk: "#E03131"
@@ -73,6 +74,23 @@ Kısa liste:
 6. Belgelerinizi ve geçmişinizi görünür yapın
 
 Bu altı maddeyi yapan bir site, "güzel görünen" bir siteden çok daha fazla iş getirir. Beş projede de gördüğümüz şey bu.
+
+## Sık sorulan sorular
+
+**İş güvenliği firması için web sitesi ne kadar sürede yapılır?**
+İçerikler ve ürün listesi hazır olduğunda kurumsal bir site 2 günde yayına alınır. Yüzlerce ürünlü kataloglarda süre, ürün verisinin ne kadar düzenli olduğuna göre değişir.
+
+**Ürünleri tek tek girmem gerekecek mi?**
+Hayır. Excel ya da CSV listesini toplu aktarıyoruz. Görseller ve teknik föyler klasör hâlinde gelse de olur, eşleştirmeyi biz yapıyoruz.
+
+**Sitede ödeme almak zorunda mıyım?**
+Hayır. Bu sektörde alım çoğunlukla teklifle ilerliyor. Doğru kurgu, sepet yerine teklif talebi ve WhatsApp bağlantısıdır; isteyen firmalar için ödeme altyapısı da kurulabiliyor.
+
+**Bayi fiyatı gösterebilir miyim?**
+Evet. Bayi girişi açılabilir, giriş yapan kullanıcıya farklı fiyat listesi gösterilebilir.
+
+**Kataloğumu PDF olarak koyabilir miyim?**
+Evet, hatta koymanız gerekir. Satın almacı kataloğu indirip kurum içinde paylaşıyor, bu yüzden katalog indirme bu sektörde en çok kullanılan özelliklerden biri.
 
 ---
 

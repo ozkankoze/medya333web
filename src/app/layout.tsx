@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { site } from "@/lib/site";
 import { gtagId } from "@/lib/gtag";
 import { yaziSiniflari } from "@/lib/yazitipi";
+import { kurumSemasi } from "@/lib/seo";
 import Analytics from "@/components/Analytics";
 import "./globals.css";
 
@@ -50,26 +51,10 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    name: site.name,
-    description: site.description,
-    url: site.url,
-    telephone: site.phoneRaw,
-    email: site.email,
-    ...(site.address
-      ? { address: { "@type": "PostalAddress", addressLocality: site.address } }
-      : {}),
-    sameAs: Object.values(site.social).filter(Boolean),
-    areaServed: "TR",
-    serviceType: [
-      "Web Sitesi Tasarımı",
-      "E-Ticaret Sitesi Kurulumu",
-      "SEO",
-      "Landing Page Tasarımı",
-    ],
-  };
+  // ⚠️ Kurum şeması TEK YERDE (src/lib/seo.ts). Telefon ve adres `site`
+  //    nesnesinden gelir; iki yerde ayrı yazılsaydı biri değiştiğinde
+  //    diğeri sessizce eski kalırdı.
+  const jsonLd = kurumSemasi();
 
   return (
     <html lang="tr" className={yaziSiniflari}>

@@ -5,6 +5,7 @@ import Chat from "@/components/Chat";
 import Footer from "@/components/Footer";
 import { getProjects, metricList, prettyHost } from "@/lib/projects";
 import { sektorBul, sektorler } from "@/lib/sektor";
+import { hizmetSemasi, kirintiSemasi, sssSemasi } from "@/lib/seo";
 import { site, waLink } from "@/lib/site";
 
 export const revalidate = 60;
@@ -52,8 +53,38 @@ export default async function SektorPage({
     .map((t) => tumu.find((p) => p.title === t))
     .filter((p): p is NonNullable<typeof p> => Boolean(p));
 
+  /**
+   * ⚠️ ŞEMALAR SAYFADAKİ İÇERİKTEN üretilir: hizmet açıklaması, soru cevap
+   * listesi ve yol izi zaten ekranda yazıyor. Sayfada görünmeyen bir
+   * bilgiyi şemaya koymak Google kurallarına aykırıdır.
+   */
+  const hizmet = hizmetSemasi({
+    ad: s.seoTitle,
+    aciklama: s.seoDescription,
+    yol: `/${s.slug}`,
+  });
+  const sss = sssSemasi(s.sss);
+  const kirinti = kirintiSemasi([
+    { ad: "Ana sayfa", yol: "/" },
+    { ad: s.eyebrow.replace(/^Sektör\s*—\s*/i, ""), yol: `/${s.slug}` },
+  ]);
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(hizmet) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(kirinti) }}
+      />
+      {sss && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(sss) }}
+        />
+      )}
       <Cursor />
       <main>
         {/* başlık */}

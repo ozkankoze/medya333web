@@ -8,6 +8,7 @@ import ProjeKarti from "@/components/ProjeKarti";
 import { getProjects } from "@/lib/projects";
 import { site, waLink } from "@/lib/site";
 import { tarihYaz, yaziBul, yazilar } from "@/lib/blog";
+import { kirintiSemasi, markdownSss, sssSemasi } from "@/lib/seo";
 
 export const revalidate = 300;
 export const dynamicParams = false;
@@ -85,9 +86,28 @@ export default async function YaziPage({
     dateModified: y.guncelleme || y.tarih,
     mainEntityOfPage: `${site.url}/blog/${y.slug}`,
     author: { "@type": "Organization", name: site.name, url: site.url },
-    publisher: { "@type": "Organization", name: site.name, url: site.url },
+    // ⚠️ Yayıncı, ana sayfadaki kurum kaydına BAĞLANIR (`@id`). Ayrı bir
+    //    kurum tanımı yazılsaydı her yazı birbirinden habersiz yeni bir
+    //    işletme anlatır, hiçbiri güçlenmezdi.
+    publisher: { "@id": `${site.url}/#kurum` },
     inLanguage: "tr-TR",
+    articleSection: y.etiket,
+    ...(y.kisaCevap ? { abstract: y.kisaCevap } : {}),
+    wordCount: y.icerik.trim().split(/\s+/).length,
   };
+
+  /**
+   * ⚠️ SORU CEVAP ŞEMASI YAZININ KENDİ METNİNDEN ÜRETİLİR.
+   * Elle ikinci bir liste tutulsaydı, yazıdaki cevap düzeltildiğinde şema
+   * eski cevabı göstermeye devam ederdi. Bölüm yoksa şema basılmaz.
+   */
+  const sss = sssSemasi(markdownSss(y.icerik));
+
+  const kirinti = kirintiSemasi([
+    { ad: "Ana sayfa", yol: "/" },
+    { ad: "Blog", yol: "/blog" },
+    { ad: y.baslik, yol: `/blog/${y.slug}` },
+  ]);
 
   return (
     <>
@@ -96,6 +116,16 @@ export default async function YaziPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(kirinti) }}
+      />
+      {sss && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(sss) }}
+        />
+      )}
       <main style={{ ["--vurgu" as string]: y.renk }}>
         <section className="relative isolate overflow-hidden border-b border-[var(--line)]">
           {/* yazının rengiyle ışıyan başlık alanı */}
@@ -148,6 +178,29 @@ export default async function YaziPage({
               <p className="mt-6 text-[17px] leading-[1.6] text-mute">
                 {y.ozet}
               </p>
+              {/*
+                ⚠️ KISA CEVAP KUTUSU: yazının sorusunu tek paragrafta
+                yanıtlar. Hem aceleci okuyucu hem de sayfayı alıntılayan
+                yapay zeka asistanı için konur; sayfanın en üstünde,
+                başlığın hemen altında durur ki alıntılanan metin doğru
+                cevap olsun.
+              */}
+              {y.kisaCevap && (
+                <div
+                  className="mt-7 rounded-[14px] border p-5"
+                  style={{
+                    borderColor: "color-mix(in srgb, var(--vurgu) 38%, transparent)",
+                    background: "color-mix(in srgb, var(--vurgu) 9%, transparent)",
+                  }}
+                >
+                  <p className="mono" style={{ color: y.renk }}>
+                    Kısa cevap
+                  </p>
+                  <p className="mt-2.5 text-[16.5px] leading-[1.65] text-chalk">
+                    {y.kisaCevap}
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         </section>

@@ -1,6 +1,7 @@
 ---
 baslik: ChatGPT reklamları Türkiye'de: nasıl çalışır, kime yarar, Google Ads'ten farkı ne
 ozet: ChatGPT artık Türkiye'deki kullanıcılara reklam gösteriyor. Sistemin nasıl çalıştığını, minimum bütçeyi, anahtar kelime hedeflemesinin neden olmadığını ve hangi firmanın denemesi gerektiğini anlatıyoruz.
+kisaCevap: ChatGPT reklamları Türkiye dahil yayında ve reklamlar yalnızca ücretsiz ile Go planındaki kullanıcılara gösteriliyor. Minimum günlük bütçe 25 dolar, üç kampanya hedefi var (gösterim, tıklama, dönüşüm) ve Google Ads'ten en büyük farkı anahtar kelime hedeflemesinin bulunmaması: reklamın hangi sohbette çıkacağına sistem karar veriyor.
 tarih: 2026-10-22
 etiket: Yapay Zeka
 renk: "#10A37F"

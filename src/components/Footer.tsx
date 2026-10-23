@@ -10,6 +10,12 @@ export default function Footer() {
           <span>
             © {yil} {site.name} — Tüm hakları saklıdır
           </span>
+          {/* ⚠️ HAKKIMIZDA BAĞLANTISI ŞART: sayfaya hiçbir yerden link
+              verilmezse hem ziyaretçi bulamaz hem de arama motorları onu
+              "yetim sayfa" sayıp daha az güvenir. */}
+          <a href="/hakkimizda" className="hover:text-chalk">
+            Hakkımızda
+          </a>
           <a href="/blog" className="hover:text-chalk">
             Blog
           </a>
