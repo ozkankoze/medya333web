@@ -13,7 +13,7 @@ export const site = {
   url: "https://www.medya333.com",
   tagline: "Web Tasarım & Geliştirme",
   description:
-    "Kurumsal web sitesi, e-ticaret ve landing page tasarımı. Hızlı açılan, mobil uyumlu, Google'da bulunan siteler tasarlıyoruz.",
+    "İstanbul'da kurumsal web sitesi, e-ticaret ve landing page tasarlıyoruz. Hazır tema değil, firmanıza özel kod. 10 firma yayında — projeleri inceleyin.",
 
   // ---- İLETİŞİM ----
   phoneDisplay: "0537 010 86 11",

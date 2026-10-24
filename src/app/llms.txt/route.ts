@@ -32,7 +32,7 @@ export async function GET() {
     `- Ad: ${site.name}`,
     `- Konum: İstanbul, Türkiye`,
     `- Hizmetler: kurumsal web sitesi, e-ticaret sitesi, ürün kataloğu ve teklif sistemi, landing page, SEO, çok dilli site`,
-    `- Teslim süresi: içerikler hazır olduğunda kurumsal sitelerde 2 gün`,
+    `- Teslim süresi: içerikler hazır olduğunda kurumsal sitelerde 2–7 gün`,
     `- Alan adı ve hosting: ilk yıl dahil, ikinci yıldan itibaren yılda 100 USD`,
     `- Revizyon: sınırsız, müşteri onaylayana kadar`,
     `- Hazır tema kullanılmaz, her site o firma için sıfırdan yazılır`,

@@ -72,7 +72,7 @@ export default async function Hero() {
       <div className="gutter relative z-[2] flex flex-1">
         <Showcase
           projects={projects}
-          ilkMetin="İstanbul'dan çalışıyoruz. Kurumsal siteden e-ticarete, bir markanın internette nasıl göründüğünü baştan kuruyoruz — tasarım, yazılım, yayın, hepsi tek elden."
+          ilkMetin="İstanbul'da web tasarım ve yazılım yapıyoruz. Kurumsal web sitesi, e-ticaret ve landing page — tasarım, kod, yayın, hepsi tek elden. Hazır tema kullanmıyoruz."
           ilkBaslik={["İnternetteki", "yüzünüz"]}
         />
       </div>

@@ -101,7 +101,7 @@ export const process = [
 export const faqs = [
   {
     q: "Bir web sitesi ne kadar sürede teslim edilir?",
-    a: "Tek sayfa bir tanıtım sitesi ortalama 3–7 gün, kurumsal site 2–3 hafta, e-ticaret projeleri 3–6 hafta sürüyor. Süreyi en çok etkileyen şey içerik (yazı, görsel, logo) hazırlığıdır.",
+    a: "İçerikler (yazı, görsel, logo) hazır olduğunda kurumsal bir site 2–7 günde yayına alınıyor. Ürün kataloğu olan e-ticaret projelerinde süre, ürün verisinin ne kadar düzenli olduğuna göre değişir. Süreyi en çok etkileyen şey içerik hazırlığıdır.",
   },
   {
     q: "Fiyatlar neden sitede yazmıyor?",

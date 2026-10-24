@@ -51,7 +51,7 @@ const SSS = [
   },
   {
     q: "Bir site kaç günde teslim ediliyor?",
-    a: "İçerikler elimize geçtikten sonra kurumsal sitelerde standart teslim süresi 2 gündür. Ürün kataloğu olan projelerde süre, ürün verisinin ne kadar düzenli olduğuna göre değişir.",
+    a: "İçerikler elimize geçtikten sonra kurumsal sitelerde teslim süresi 2–7 gündür. Ürün kataloğu olan projelerde süre, ürün verisinin ne kadar düzenli olduğuna göre değişir.",
   },
   {
     q: "Alan adı ve hosting fiyata dahil mi?",
@@ -129,7 +129,7 @@ export default async function HakkimizdaPage() {
                 teklif sistemleri ile landing page projeleri yapar. Kurucusu{" "}
                 <strong>Özkan Köse</strong>’dir. Siteler hazır tema üzerine kurulmaz, her proje
                 o firma için sıfırdan yazılır; içerikler hazır olduğunda kurumsal bir site{" "}
-                <strong>2 günde</strong> yayına alınır.
+                <strong>2–7 günde</strong> yayına alınır.
               </p>
 
               <h2 className="duz mt-12 text-[clamp(1.4rem,3vw,2rem)]">Ne yapıyoruz</h2>

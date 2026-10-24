@@ -9,7 +9,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — İnternetteki Yüzünüz`,
+    // ⚠️ ARAMA SONUCUNDA GÖRÜNEN BAŞLIK. Marka sloganı değil, insanların
+    // Google'a yazdığı ifade başta durmalı — "web tasarım ajansı".
+    default: "Web Tasarım Ajansı | Kurumsal ve E-Ticaret Siteleri — Medya 333",
     template: `%s | ${site.name}`,
   },
   description: site.description,
@@ -27,13 +29,17 @@ export const metadata: Metadata = {
     locale: "tr_TR",
     url: site.url,
     siteName: site.name,
-    title: `${site.name} — İnternetteki Yüzünüz`,
+    title: "Web Tasarım Ajansı | Kurumsal ve E-Ticaret Siteleri — Medya 333",
     description: site.description,
+    // ⚠️ PAYLAŞIM GÖRSELİ OLMADAN link önizlemesi boş çıkıyordu; WhatsApp ve
+    // LinkedIn'de tıklanma oranını doğrudan düşüren bir eksikti.
+    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: site.name }],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — İnternetteki Yüzünüz`,
+    title: "Web Tasarım Ajansı | Kurumsal ve E-Ticaret Siteleri — Medya 333",
     description: site.description,
+    images: ["/og.jpg"],
   },
   robots: { index: true, follow: true },
   alternates: {
