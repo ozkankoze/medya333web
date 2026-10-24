@@ -69,7 +69,7 @@ Sitesi olmayan bir firmanın başlangıçta devasa bir projeye ihtiyacı yok. Ti
 5. **İletişim:** telefon, WhatsApp, e-posta, harita, teklif formu.
 6. **Katalog indirme:** PDF kataloğunuz varsa siteden inmesi gerekir. Satın almacı kataloğu bilgisayarına indirip içeride paylaşır.
 
-Beş altı sayfa. Üzerine ürün sayınız artınca filtreleme, çapraz kod arama, teklif sepeti gibi parçalar eklenir. Bizde içerikler elimize geçtikten sonra bu yapının yayına alınma süresi **2 gündür**.
+Beş altı sayfa. Üzerine ürün sayınız artınca filtreleme, çapraz kod arama, teklif sepeti gibi parçalar eklenir. Bizde içerikler elimize geçtikten sonra bu yapının yayına alınma süresi **2–7 gündür**.
 
 ## 6. Bugün yapabileceğiniz, ücretsiz altı iş
 

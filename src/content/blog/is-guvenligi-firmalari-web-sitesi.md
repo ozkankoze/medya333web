@@ -78,7 +78,7 @@ Bu altı maddeyi yapan bir site, "güzel görünen" bir siteden çok daha fazla 
 ## Sık sorulan sorular
 
 **İş güvenliği firması için web sitesi ne kadar sürede yapılır?**
-İçerikler ve ürün listesi hazır olduğunda kurumsal bir site 2 günde yayına alınır. Yüzlerce ürünlü kataloglarda süre, ürün verisinin ne kadar düzenli olduğuna göre değişir.
+İçerikler ve ürün listesi hazır olduğunda kurumsal bir site 2–7 günde yayına alınır. Yüzlerce ürünlü kataloglarda süre, ürün verisinin ne kadar düzenli olduğuna göre değişir.
 
 **Ürünleri tek tek girmem gerekecek mi?**
 Hayır. Excel ya da CSV listesini toplu aktarıyoruz. Görseller ve teknik föyler klasör hâlinde gelse de olur, eşleştirmeyi biz yapıyoruz.

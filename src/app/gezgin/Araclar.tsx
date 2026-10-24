@@ -14,13 +14,13 @@ Sizin için de bir site hazırlayabiliriz:
 • Tasarım tamamen size özel, sayfa sınırı yok
 • Alan adı ve hosting ilk yıl dahil
 • Mobil uyumlu, hızlı açılan, Google'a hazır
-• 2 günde yayında
+• 2–7 günde yayında
 
 İşlerimizden bazıları: locksansafety.com, nextstopbackpackers.com, sofilx.com
 
 İlgilenirseniz detayları konuşalım.`;
 
-const DM = `Merhaba! İşletmeniz için web sitesi hazırlıyoruz. Hazır şablon değil, tamamen size özel kodlanmış bir site. Alan adı ve hosting ilk yıl dahil, 2 günde yayında. İşlerimiz: locksansafety.com, sofilx.com. İlgilenir misiniz?`;
+const DM = `Merhaba! İşletmeniz için web sitesi hazırlıyoruz. Hazır şablon değil, tamamen size özel kodlanmış bir site. Alan adı ve hosting ilk yıl dahil, 2–7 günde yayında. İşlerimiz: locksansafety.com, sofilx.com. İlgilenir misiniz?`;
 
 function Kopyala({ metin, ad }: { metin: string; ad: string }) {
   const [tamam, setTamam] = useState(false);
@@ -82,7 +82,7 @@ export default function Araclar() {
         <dl className="mt-3 grid gap-3 text-[13.5px] leading-relaxed">
           <div>
             <dt className="text-chalk">“Ne kadar sürede biter?”</dt>
-            <dd className="text-muted">2 gün. Fotoğraflar ve metinler elimize geçtikten sonra.</dd>
+            <dd className="text-muted">2–7 gün. Fotoğraflar ve metinler elimize geçtikten sonra.</dd>
           </div>
           <div>
             <dt className="text-chalk">“İkinci yıl ne ödeyeceğim?”</dt>

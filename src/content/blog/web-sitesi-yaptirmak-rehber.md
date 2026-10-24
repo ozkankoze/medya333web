@@ -1,7 +1,7 @@
 ---
 baslik: Web sitesi yaptırmak — fiyatı ne belirler, ne kadar sürer, nelere dikkat etmeli
 ozet: Teklif almadan önce okuyun. Fiyatı belirleyen dört kalem, şablon ile sıfırdan kodlama farkı ve ajansa sorulacak yedi soru.
-kisaCevap: Web sitesi fiyatını dört şey belirler: sayfa ve içerik hacmi, hazır tema yerine sıfırdan kodlama, teknik gereksinimler (çok dillilik, ürün filtreleme, teklif sepeti) ve içeriği kimin hazırladığı. İçerikler hazır olduğunda kurumsal bir site 2 günde yayına alınabilir; alan adı ve hosting ilk yıl dahil, ikinci yıldan itibaren yılda 100 dolardır.
+kisaCevap: Web sitesi fiyatını dört şey belirler: sayfa ve içerik hacmi, hazır tema yerine sıfırdan kodlama, teknik gereksinimler (çok dillilik, ürün filtreleme, teklif sepeti) ve içeriği kimin hazırladığı. İçerikler hazır olduğunda kurumsal bir site 2–7 günde yayına alınabilir; alan adı ve hosting ilk yıl dahil, ikinci yıldan itibaren yılda 100 dolardır.
 tarih: 2026-10-17
 etiket: Rehber
 renk: "#D4AF37"
@@ -43,7 +43,7 @@ Burada iki şeye dikkat edin:
 
 ## 4. Süre: iki gün mü, iki ay mı
 
-Teslim süresi iki şeye bağlı: işin kapsamı ve içeriğin ne zaman geldiği. Tanıtım amaçlı, içeriği hazır bir kurumsal site birkaç günde yayına alınabilir. Bizde içerikler elimize geçtikten sonra standart süre **2 gündür**. Dört yüz ürünlük bir katalog sitesinde süre, ürün verisinin ne kadar düzenli olduğuna göre değişir.
+Teslim süresi iki şeye bağlı: işin kapsamı ve içeriğin ne zaman geldiği. Tanıtım amaçlı, içeriği hazır bir kurumsal site birkaç günde yayına alınabilir. Bizde içerikler elimize geçtikten sonra standart süre **2–7 gündür**. Dört yüz ürünlük bir katalog sitesinde süre, ürün verisinin ne kadar düzenli olduğuna göre değişir.
 
 Size ay bazında süre veren bir teklifte, o sürenin neden uzun olduğunu sorun. Çoğu zaman cevap teknik değil, ajansın iş yoğunluğudur.
 
@@ -70,7 +70,7 @@ Kendi sitenizi test etmenin en basit yolu: telefonunuzdan açın ve kaç saniyed
 ## Sık sorulan sorular
 
 **Web sitesi yaptırmak ne kadar sürer?**
-İçerikler hazırsa birkaç gün. Kurumsal sitelerde standart süremiz 2 gün. Ürün kataloğu olan projelerde süre, ürün verisinin düzenine göre değişir.
+İçerikler hazırsa birkaç gün. Kurumsal sitelerde standart süremiz 2–7 gün. Ürün kataloğu olan projelerde süre, ürün verisinin düzenine göre değişir.
 
 **Alan adı ve hosting fiyata dahil mi?**
 İlk yıl dahil. İkinci yıldan itibaren yenileme yılda 100 dolar.
