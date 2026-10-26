@@ -197,6 +197,16 @@ export const seedProjects: Project[] = [
   },
 ];
 
+/** Adresleri karşılaştırmak için sadeleştirir: protokol, www ve son / atılır. */
+function anahtarla(url: string): string {
+  return (url || "")
+    .trim()
+    .toLowerCase()
+    .replace(/^https?:\/\//, "")
+    .replace(/^www\./, "")
+    .replace(/\/+$/, "");
+}
+
 export async function getProjects(
   includeUnpublished = false
 ): Promise<Project[]> {
@@ -214,7 +224,21 @@ export async function getProjects(
         ? seedProjects
         : seedProjects.filter((p) => p.published);
     }
-    return rows as Project[];
+
+    // Veritabanı asıl kaynak. Ama koda yeni bir referans eklendiğinde
+    // panele girilmeden de görünsün diye, veritabanında karşılığı
+    // olmayan seed kayıtlarını listeye ekliyoruz (adrese göre eşleştirme).
+    // Not: buradan gelen bir referansı panelden silersen koddan da
+    // silmen gerekir, yoksa tekrar görünür.
+    const dbRows = rows as Project[];
+    const mevcut = new Set(dbRows.map((r) => anahtarla(r.url)));
+    const eksik = seedProjects.filter(
+      (p) => !mevcut.has(anahtarla(p.url)) && (includeUnpublished || p.published)
+    );
+
+    return [...dbRows, ...eksik].sort(
+      (a, b) => a.sort_order - b.sort_order || a.id - b.id
+    );
   } catch (e) {
     console.error("getProjects başarısız, seed verisine düşüldü:", e);
     return seedProjects;
