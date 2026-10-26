@@ -181,6 +181,20 @@ export const seedProjects: Project[] = [
     sort_order: 11,
     published: true,
   },
+  {
+    id: -12,
+    title: "NexTopluluk",
+    url: "https://www.nextopluluk.com",
+    category: "Platform",
+    description:
+      "Soru-cevap ve tartışma topluluğu. Sıfırdan kurulan sistem: başlık açma, yukarı-aşağı oylama, yorum akışı ve üyelik; gündem, popüler ve cevapsız için ayrı listeler.",
+    image_url: "nextopluluk",
+    metrics: "SEO Uyumlu · Mobil Uyumlu · Üyelik Sistemi · Oylama ve Yorum",
+    tags: "Platform,Topluluk,Üyelik",
+    accent: "#15803D",
+    sort_order: 12,
+    published: true,
+  },
 ];
 
 export async function getProjects(

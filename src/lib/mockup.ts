@@ -26,6 +26,7 @@ const ORAN: Record<string, Oran> = {
   kkdmarkt: { d: 2.7, m: 6.153 },
   ekedurunleri: { d: 3.611, m: 6.153 },
   nexteknohaber: { d: 1.525, m: 6.153 },
+  nextopluluk: { d: 2.2, m: 6.153 },
 };
 
 const VARSAYILAN: Oran = { d: 2.6, m: 6.0 };
