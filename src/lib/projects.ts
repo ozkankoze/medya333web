@@ -168,20 +168,6 @@ export const seedProjects: Project[] = [
     published: true,
   },
   {
-    id: -11,
-    title: "NexTekno Topluluk",
-    url: "https://nexteknohaber.com",
-    category: "Platform",
-    description:
-      "Teknoloji meraklıları için soru-cevap ve tartışma platformu. Başlık açma, oylama, anket ve yorum akışıyla üye odaklı bir topluluk.",
-    image_url: "nexteknohaber",
-    metrics: "SEO Uyumlu · Mobil Uyumlu · Üyelik Sistemi · Oylama ve Anket",
-    tags: "Platform,Topluluk,Üyelik",
-    accent: "#0E7C4A",
-    sort_order: 11,
-    published: true,
-  },
-  {
     id: -12,
     title: "NexTopluluk",
     url: "https://www.nextopluluk.com",
