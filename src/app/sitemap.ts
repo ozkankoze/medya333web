@@ -51,5 +51,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly" as const,
       priority: 0.7,
     })),
+    {
+      // Uçan Lülülü oyununun gizlilik politikası. App Store bu adresi
+      // istiyor; arama sonuçlarında öne çıkmasına gerek yok.
+      url: `${site.url}/lululu`,
+      lastModified: now,
+      changeFrequency: "yearly" as const,
+      priority: 0.3,
+    },
   ];
 }
