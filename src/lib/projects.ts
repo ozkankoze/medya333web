@@ -181,6 +181,34 @@ export const seedProjects: Project[] = [
     sort_order: 12,
     published: true,
   },
+  {
+    id: -13,
+    title: "Bey Perde",
+    url: "https://www.beyperde.com",
+    category: "Kurumsal",
+    description:
+      "Perde, tül, duvar kağıdı ve dekoratif halı koleksiyonu. Pencere, duvar ve zemin ürünlerini tek katalogda toplayan, ölçü ve montaj akışıyla teklif alan vitrin.",
+    image_url: "beyperde",
+    metrics: "SEO Uyumlu · Gelişmiş Site Hızı · Mobil Uyumlu · Çok Dilli",
+    tags: "Kurumsal,Katalog,Dekorasyon",
+    accent: "#8A6A45",
+    sort_order: 13,
+    published: true,
+  },
+  {
+    id: -14,
+    title: "Salonkolay",
+    url: "https://www.salonkolay.com",
+    category: "Platform",
+    description:
+      "Kuaför ve güzellik salonları için randevu platformu. Her salona kendi sayfası, müşteriye çevrimiçi randevu, salona panel; takvim, kasa ve bildirimleriyle birlikte iOS uygulaması.",
+    image_url: "salonkolay",
+    metrics: "SEO Uyumlu · Mobil Uyumlu · Online Randevu · Mobil Uygulama",
+    tags: "Platform,Randevu,Mobil Uygulama",
+    accent: "#9B4A5A",
+    sort_order: 14,
+    published: true,
+  },
 ];
 
 /** Adresleri karşılaştırmak için sadeleştirir: protokol, www ve son / atılır. */
