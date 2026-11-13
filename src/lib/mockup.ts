@@ -26,7 +26,9 @@ const ORAN: Record<string, Oran> = {
   kkdmarkt: { d: 2.7, m: 6.153 },
   ekedurunleri: { d: 3.611, m: 6.153 },
   nextopluluk: { d: 2.2, m: 6.153 },
-  beyperde: { d: 2.5, m: 6.5 },
+  // Masaüstü görseli, sitenin kaydırma animasyonunun kareleri:
+  // oda boşken başlayıp duvar kâğıdı, perde, halı ve koltukla doluyor.
+  beyperde: { d: 5.806, m: 6.5 },
   salonkolay: { d: 3.354, m: 6.5 },
 };
 
