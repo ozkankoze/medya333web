@@ -229,7 +229,7 @@ export default async function YabanciSayfa({
                   rel="noopener noreferrer"
                   className="btn btn-ghost"
                 >
-                  {s.iletisim.ig} · @medya333_tr
+                  {s.iletisim.ig} · @{site.instagramKullanici}
                 </a>
               </div>
             </div>

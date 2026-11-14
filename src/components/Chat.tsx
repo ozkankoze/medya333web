@@ -64,7 +64,7 @@ export default function Chat() {
                 rel="noopener noreferrer"
                 className="hover:text-chalk"
               >
-                @medya333_tr ↗
+                @{site.instagramKullanici} ↗
               </a>
             </div>
           </div>

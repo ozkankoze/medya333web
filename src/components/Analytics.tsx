@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { conversions, trackConversion } from "@/lib/gtag";
+import { metaOlay } from "@/lib/meta";
 
 /**
  * Dönüşüm yakalama.
@@ -23,6 +24,10 @@ export default function Analytics() {
       if (!isWhatsApp && !isPhone) return;
 
       const etiket = isPhone ? conversions.telefon : conversions.whatsapp;
+
+      // Meta tarafı: iki kanal da "Contact" sayılıyor. Google'ın
+      // yönlendirmeyi bekletmesinden bağımsız, hemen gönderiliyor.
+      metaOlay("Contact");
 
       // yeni sekmede açılıyorsa yönlendirmeyi biz yapmayalım
       const newTab =

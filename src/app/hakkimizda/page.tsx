@@ -212,7 +212,7 @@ export default async function HakkimizdaPage() {
                   rel="noopener noreferrer"
                   className="text-chalk underline-offset-4 hover:underline"
                 >
-                  @medya333_tr
+                  @{site.instagramKullanici}
                 </a>
                 <br />
                 Konum: İstanbul, Türkiye

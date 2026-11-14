@@ -24,8 +24,12 @@ export const site = {
   email: "info@medya333.com",
   address: "", // ofis adresi eklemek istersen buraya yaz, otomatik görünür
 
+  // Instagram kullanıcı adı tek yerde: metinlerde @ ile yazdığımız her
+  // yer buradan okuyor, hesap değişince tek satır yetiyor.
+  instagramKullanici: "medya333web",
+
   social: {
-    instagram: "https://instagram.com/medya333_tr",
+    instagram: "https://instagram.com/medya333web",
     facebook: "",
     linkedin: "",
     youtube: "",
