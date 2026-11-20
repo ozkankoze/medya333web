@@ -30,6 +30,7 @@ const ORAN: Record<string, Oran> = {
   // oda boşken başlayıp duvar kâğıdı, perde, halı ve koltukla doluyor.
   beyperde: { d: 5.806, m: 6.5 },
   salonkolay: { d: 3.354, m: 6.5 },
+  nexdoviz: { d: 1.262, m: 6.153 },
 };
 
 const VARSAYILAN: Oran = { d: 2.6, m: 6.0 };

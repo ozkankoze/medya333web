@@ -209,6 +209,20 @@ export const seedProjects: Project[] = [
     sort_order: 14,
     published: true,
   },
+  {
+    id: -15,
+    title: "NexDöviz Sigorta",
+    url: "https://nexdoviz.com/sigorta/",
+    category: "Platform",
+    description:
+      "NexDöviz'in sigorta bölümü. Trafik, kasko, DASK ve sağlık sigortalarını anlatan bilgilendirme platformu; sigorta rehberi yazıları, acentelerle iş birliği ve bilgi talebi akışı bir arada.",
+    image_url: "nexdoviz",
+    metrics: "SEO Uyumlu · Mobil Uyumlu · İçerik Mimarisi · Bilgi Talebi Formu",
+    tags: "Platform,Sigorta,İçerik",
+    accent: "#2563EB",
+    sort_order: 15,
+    published: true,
+  },
 ];
 
 /** Adresleri karşılaştırmak için sadeleştirir: protokol, www ve son / atılır. */
