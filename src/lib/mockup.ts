@@ -31,6 +31,9 @@ const ORAN: Record<string, Oran> = {
   beyperde: { d: 5.806, m: 6.5 },
   salonkolay: { d: 3.354, m: 6.5 },
   nexdoviz: { d: 1.262, m: 6.153 },
+  // Masaüstü: hero, ürünler, "bir dilimin anatomisi", özel günler,
+  // hikâye ve mağaza kareleri alt alta.
+  gaziefendibaklava: { d: 3.375, m: 6.49 },
 };
 
 const VARSAYILAN: Oran = { d: 2.6, m: 6.0 };

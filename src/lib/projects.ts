@@ -223,6 +223,20 @@ export const seedProjects: Project[] = [
     sort_order: 15,
     published: true,
   },
+  {
+    id: -16,
+    title: "Gazi Efendi Baklava",
+    url: "https://www.gaziefendibaklava.com/",
+    category: "Kurumsal",
+    description:
+      "Çekmeköy Alemdağ'daki baklava dükkânının vitrini. Elde açılan yufka ve Antep fıstığıyla hazırlanan beş ürünü tanıtıyor; kaydırdıkça bir dilimin kat kat kurulduğu animasyon, yol tarifi ve tek dokunuşla arama ile bitiyor.",
+    image_url: "gaziefendibaklava",
+    metrics: "SEO Uyumlu · Gelişmiş Site Hızı · Mobil Uyumlu · Yol Tarifi",
+    tags: "Kurumsal,Gastronomi,Vitrin",
+    accent: "#D0AD69",
+    sort_order: 16,
+    published: true,
+  },
 ];
 
 /** Adresleri karşılaştırmak için sadeleştirir: protokol, www ve son / atılır. */
