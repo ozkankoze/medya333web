@@ -31,9 +31,9 @@ const ORAN: Record<string, Oran> = {
   beyperde: { d: 5.806, m: 6.5 },
   salonkolay: { d: 3.354, m: 6.5 },
   nexdoviz: { d: 1.262, m: 6.153 },
-  // Masaüstü: hero, ürünler, "bir dilimin anatomisi", özel günler,
-  // hikâye ve mağaza kareleri alt alta.
-  gaziefendibaklava: { d: 3.375, m: 6.49 },
+  // "Bir dilimin anatomisi" bölümü kaydırdıkça kuruluyor: yufka uçuşuyor,
+  // fıstık dökülüyor, şerbet iniyor. O kareler de görselin içinde.
+  gaziefendibaklava: { d: 6.188, m: 12.983 },
 };
 
 const VARSAYILAN: Oran = { d: 2.6, m: 6.0 };
